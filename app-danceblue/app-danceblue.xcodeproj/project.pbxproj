@@ -1,0 +1,451 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A0009487337291F9C2F228CC /* Pods_app_danceblue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD2FC4D9F274FB611523672 /* Pods_app_danceblue.framework */; };
+		CB0E9A551F23F8A400A717DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A541F23F8A400A717DC /* AppDelegate.swift */; };
+		CB0E9A5C1F23F8A400A717DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB0E9A5A1F23F8A400A717DC /* Main.storyboard */; };
+		CB0E9A5E1F23F8A400A717DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB0E9A5D1F23F8A400A717DC /* Assets.xcassets */; };
+		CB0E9A611F23F8A400A717DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB0E9A5F1F23F8A400A717DC /* LaunchScreen.storyboard */; };
+		CB0E9A6C1F23FBC800A717DC /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A6B1F23FBC800A717DC /* DonateViewController.swift */; };
+		CB0E9A6E1F23FBE600A717DC /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A6D1F23FBE600A717DC /* AboutUsViewController.swift */; };
+		CB0E9A721F23FEF100A717DC /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A711F23FEF100A717DC /* Styles.swift */; };
+		CB0E9A741F241C6D00A717DC /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A731F241C6D00A717DC /* EventsViewController.swift */; };
+		CB0E9A761F241C7600A717DC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A751F241C7600A717DC /* HomeViewController.swift */; };
+		CB0E9A781F241C8200A717DC /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A771F241C8200A717DC /* MoreViewController.swift */; };
+		CB0E9A7A1F24206200A717DC /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A791F24206200A717DC /* EventTableViewCell.swift */; };
+		CB0E9A7C1F24280200A717DC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A7B1F24280200A717DC /* Event.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		16C6CFE043AAFC2142091E3D /* Pods-app-danceblue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app-danceblue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app-danceblue/Pods-app-danceblue.debug.xcconfig"; sourceTree = "<group>"; };
+		1A8A115CD742EF18B9148B54 /* Pods-app-danceblue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app-danceblue.release.xcconfig"; path = "Pods/Target Support Files/Pods-app-danceblue/Pods-app-danceblue.release.xcconfig"; sourceTree = "<group>"; };
+		BFD2FC4D9F274FB611523672 /* Pods_app_danceblue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app_danceblue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB0E9A511F23F8A400A717DC /* app-danceblue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "app-danceblue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB0E9A541F23F8A400A717DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CB0E9A5B1F23F8A400A717DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CB0E9A5D1F23F8A400A717DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CB0E9A601F23F8A400A717DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CB0E9A621F23F8A400A717DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB0E9A6B1F23FBC800A717DC /* DonateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateViewController.swift; sourceTree = "<group>"; };
+		CB0E9A6D1F23FBE600A717DC /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		CB0E9A711F23FEF100A717DC /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		CB0E9A731F241C6D00A717DC /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		CB0E9A751F241C7600A717DC /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CB0E9A771F241C8200A717DC /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		CB0E9A791F24206200A717DC /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		CB0E9A7B1F24280200A717DC /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CB0E9A4E1F23F8A400A717DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0009487337291F9C2F228CC /* Pods_app_danceblue.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1CD46C2358012323592C5EF7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFD2FC4D9F274FB611523672 /* Pods_app_danceblue.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB0E9A481F23F8A400A717DC = {
+			isa = PBXGroup;
+			children = (
+				CB0E9A531F23F8A400A717DC /* app-danceblue */,
+				CB0E9A521F23F8A400A717DC /* Products */,
+				D91642E018D589A54CEF3894 /* Pods */,
+				1CD46C2358012323592C5EF7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CB0E9A521F23F8A400A717DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB0E9A511F23F8A400A717DC /* app-danceblue.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CB0E9A531F23F8A400A717DC /* app-danceblue */ = {
+			isa = PBXGroup;
+			children = (
+				CB0E9A701F23FEDD00A717DC /* Styles */,
+				CB0E9A6F1F23FBFA00A717DC /* Storyboards */,
+				CB0E9A541F23F8A400A717DC /* AppDelegate.swift */,
+				CB0E9A681F23FB3F00A717DC /* Model */,
+				CB0E9A691F23FB4400A717DC /* View */,
+				CB0E9A6A1F23FB5600A717DC /* Controller */,
+				CB0E9A5D1F23F8A400A717DC /* Assets.xcassets */,
+				CB0E9A621F23F8A400A717DC /* Info.plist */,
+			);
+			path = "app-danceblue";
+			sourceTree = "<group>";
+		};
+		CB0E9A681F23FB3F00A717DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CB0E9A7B1F24280200A717DC /* Event.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CB0E9A691F23FB4400A717DC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB0E9A791F24206200A717DC /* EventTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CB0E9A6A1F23FB5600A717DC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CB0E9A751F241C7600A717DC /* HomeViewController.swift */,
+				CB0E9A731F241C6D00A717DC /* EventsViewController.swift */,
+				CB0E9A6B1F23FBC800A717DC /* DonateViewController.swift */,
+				CB0E9A6D1F23FBE600A717DC /* AboutUsViewController.swift */,
+				CB0E9A771F241C8200A717DC /* MoreViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		CB0E9A6F1F23FBFA00A717DC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CB0E9A5A1F23F8A400A717DC /* Main.storyboard */,
+				CB0E9A5F1F23F8A400A717DC /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		CB0E9A701F23FEDD00A717DC /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				CB0E9A711F23FEF100A717DC /* Styles.swift */,
+			);
+			name = Styles;
+			sourceTree = "<group>";
+		};
+		D91642E018D589A54CEF3894 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				16C6CFE043AAFC2142091E3D /* Pods-app-danceblue.debug.xcconfig */,
+				1A8A115CD742EF18B9148B54 /* Pods-app-danceblue.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CB0E9A501F23F8A400A717DC /* app-danceblue */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB0E9A651F23F8A400A717DC /* Build configuration list for PBXNativeTarget "app-danceblue" */;
+			buildPhases = (
+				739054244DA0398BDA7B14FA /* [CP] Check Pods Manifest.lock */,
+				CB0E9A4D1F23F8A400A717DC /* Sources */,
+				CB0E9A4E1F23F8A400A717DC /* Frameworks */,
+				CB0E9A4F1F23F8A400A717DC /* Resources */,
+				AB26EDD5F06149C641412C1E /* [CP] Embed Pods Frameworks */,
+				ED675FD7AABE8237B2F95C8B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "app-danceblue";
+			productName = "app-danceblue";
+			productReference = CB0E9A511F23F8A400A717DC /* app-danceblue.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CB0E9A491F23F8A400A717DC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = DanceBlue;
+				TargetAttributes = {
+					CB0E9A501F23F8A400A717DC = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = CB0E9A4C1F23F8A400A717DC /* Build configuration list for PBXProject "app-danceblue" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CB0E9A481F23F8A400A717DC;
+			productRefGroup = CB0E9A521F23F8A400A717DC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CB0E9A501F23F8A400A717DC /* app-danceblue */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CB0E9A4F1F23F8A400A717DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB0E9A611F23F8A400A717DC /* LaunchScreen.storyboard in Resources */,
+				CB0E9A5E1F23F8A400A717DC /* Assets.xcassets in Resources */,
+				CB0E9A5C1F23F8A400A717DC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		739054244DA0398BDA7B14FA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AB26EDD5F06149C641412C1E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-app-danceblue/Pods-app-danceblue-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED675FD7AABE8237B2F95C8B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-app-danceblue/Pods-app-danceblue-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CB0E9A4D1F23F8A400A717DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB0E9A7A1F24206200A717DC /* EventTableViewCell.swift in Sources */,
+				CB0E9A7C1F24280200A717DC /* Event.swift in Sources */,
+				CB0E9A781F241C8200A717DC /* MoreViewController.swift in Sources */,
+				CB0E9A6E1F23FBE600A717DC /* AboutUsViewController.swift in Sources */,
+				CB0E9A551F23F8A400A717DC /* AppDelegate.swift in Sources */,
+				CB0E9A721F23FEF100A717DC /* Styles.swift in Sources */,
+				CB0E9A6C1F23FBC800A717DC /* DonateViewController.swift in Sources */,
+				CB0E9A741F241C6D00A717DC /* EventsViewController.swift in Sources */,
+				CB0E9A761F241C7600A717DC /* HomeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CB0E9A5A1F23F8A400A717DC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB0E9A5B1F23F8A400A717DC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CB0E9A5F1F23F8A400A717DC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB0E9A601F23F8A400A717DC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CB0E9A631F23F8A400A717DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CB0E9A641F23F8A400A717DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CB0E9A661F23F8A400A717DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16C6CFE043AAFC2142091E3D /* Pods-app-danceblue.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "app-danceblue/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.danceblue.app-danceblue";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		CB0E9A671F23F8A400A717DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A8A115CD742EF18B9148B54 /* Pods-app-danceblue.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "app-danceblue/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.danceblue.app-danceblue";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CB0E9A4C1F23F8A400A717DC /* Build configuration list for PBXProject "app-danceblue" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB0E9A631F23F8A400A717DC /* Debug */,
+				CB0E9A641F23F8A400A717DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB0E9A651F23F8A400A717DC /* Build configuration list for PBXNativeTarget "app-danceblue" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB0E9A661F23F8A400A717DC /* Debug */,
+				CB0E9A671F23F8A400A717DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CB0E9A491F23F8A400A717DC /* Project object */;
+}
