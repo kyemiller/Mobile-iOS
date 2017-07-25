@@ -17,6 +17,7 @@ class Event {
     public var time: String?
     public var id: String?
     public var timestamp: Date?
+    public var address: String?
     
     init(from dictionary: [String : AnyObject]) {
         
@@ -30,6 +31,7 @@ class Event {
         time = dictionary["time"] as? String
         id = dictionary["id"] as? String
         timestamp = dateFormatter.date(from: dictionary["timestamp"] as! String)
+        address = dictionary["address"] as? String
     }
     
 }

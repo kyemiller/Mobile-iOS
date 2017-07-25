@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import SafariServices
 
 class DonateViewController: UIViewController {
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigation()
@@ -25,4 +28,11 @@ class DonateViewController: UIViewController {
         navigation.titleTextAttributes = [NSForegroundColorAttributeName : Styles.mainColor]
     }
 
+    @IBAction func didTapDonate(_ sender: Any) {
+        if let url = URL(string: "https://danceblue.networkforgood.com") {
+            let svc = SFSafariViewController(url: url)
+            svc.preferredControlTintColor = Styles.mainColor
+            self.present(svc, animated: true, completion: nil)
+        }
+    }
 }

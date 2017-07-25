@@ -7,12 +7,25 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
+import TwitterKit
 
 class MoreViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setUpNavigation()
+        
+        if let videoURL = URL(string: "https://www.youtube.com/watch?v=RmHqOSrkZnk"){
+            let player = AVPlayer(url: videoURL)
+            let playerViewController = AVPlayerViewController()
+            playerViewController.player = player
+            self.present(playerViewController, animated: true, completion: nil)
+            playerViewController.player?.play()
+        }
+        
     }
     
     func setUpNavigation() {
@@ -24,5 +37,8 @@ class MoreViewController: UIViewController {
         navigation.barTintColor = Styles.white
         navigation.titleTextAttributes = [NSForegroundColorAttributeName : Styles.mainColor]
     }
+    
+    
+
 
 }

@@ -15,12 +15,17 @@
 		CB0E9A6C1F23FBC800A717DC /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A6B1F23FBC800A717DC /* DonateViewController.swift */; };
 		CB0E9A6E1F23FBE600A717DC /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A6D1F23FBE600A717DC /* AboutUsViewController.swift */; };
 		CB0E9A721F23FEF100A717DC /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A711F23FEF100A717DC /* Styles.swift */; };
-		CB0E9A741F241C6D00A717DC /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A731F241C6D00A717DC /* EventsViewController.swift */; };
+		CB0E9A741F241C6D00A717DC /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A731F241C6D00A717DC /* EventsTableViewController.swift */; };
 		CB0E9A761F241C7600A717DC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A751F241C7600A717DC /* HomeViewController.swift */; };
 		CB0E9A781F241C8200A717DC /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A771F241C8200A717DC /* MoreViewController.swift */; };
 		CB0E9A7A1F24206200A717DC /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A791F24206200A717DC /* EventTableViewCell.swift */; };
 		CB0E9A7C1F24280200A717DC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A7B1F24280200A717DC /* Event.swift */; };
 		CB7DE1CA1F24439A00235145 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7DE1C91F24439A00235145 /* GoogleService-Info.plist */; };
+		CB7DE1CC1F25034A00235145 /* TwitterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1CB1F25034A00235145 /* TwitterTableViewController.swift */; };
+		CB7DE1D01F2514D000235145 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1CF1F2514D000235145 /* EventsViewController.swift */; };
+		CB7DE1D21F25267200235145 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1D11F25267200235145 /* Announcement.swift */; };
+		CB7DE1D61F25288700235145 /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1D51F25288700235145 /* AnnouncementTableViewCell.swift */; };
+		CB7DE1DA1F2597FF00235145 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1D91F2597FF00235145 /* EventDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,12 +41,17 @@
 		CB0E9A6B1F23FBC800A717DC /* DonateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateViewController.swift; sourceTree = "<group>"; };
 		CB0E9A6D1F23FBE600A717DC /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		CB0E9A711F23FEF100A717DC /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
-		CB0E9A731F241C6D00A717DC /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		CB0E9A731F241C6D00A717DC /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		CB0E9A751F241C7600A717DC /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CB0E9A771F241C8200A717DC /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		CB0E9A791F24206200A717DC /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		CB0E9A7B1F24280200A717DC /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		CB7DE1C91F24439A00235145 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CB7DE1CB1F25034A00235145 /* TwitterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterTableViewController.swift; sourceTree = "<group>"; };
+		CB7DE1CF1F2514D000235145 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		CB7DE1D11F25267200235145 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
+		CB7DE1D51F25288700235145 /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
+		CB7DE1D91F2597FF00235145 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,12 +95,12 @@
 		CB0E9A531F23F8A400A717DC /* app-danceblue */ = {
 			isa = PBXGroup;
 			children = (
-				CB0E9A701F23FEDD00A717DC /* Styles */,
-				CB0E9A6F1F23FBFA00A717DC /* Storyboards */,
-				CB0E9A541F23F8A400A717DC /* AppDelegate.swift */,
 				CB0E9A681F23FB3F00A717DC /* Model */,
 				CB0E9A691F23FB4400A717DC /* View */,
 				CB0E9A6A1F23FB5600A717DC /* Controller */,
+				CB0E9A701F23FEDD00A717DC /* Styles */,
+				CB0E9A6F1F23FBFA00A717DC /* Storyboards */,
+				CB0E9A541F23F8A400A717DC /* AppDelegate.swift */,
 				CB0E9A5D1F23F8A400A717DC /* Assets.xcassets */,
 				CB0E9A621F23F8A400A717DC /* Info.plist */,
 				CB7DE1C91F24439A00235145 /* GoogleService-Info.plist */,
@@ -102,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				CB0E9A7B1F24280200A717DC /* Event.swift */,
+				CB7DE1D11F25267200235145 /* Announcement.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -110,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				CB0E9A791F24206200A717DC /* EventTableViewCell.swift */,
+				CB7DE1D51F25288700235145 /* AnnouncementTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -117,8 +129,8 @@
 		CB0E9A6A1F23FB5600A717DC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CB0E9A751F241C7600A717DC /* HomeViewController.swift */,
-				CB0E9A731F241C6D00A717DC /* EventsViewController.swift */,
+				CB7DE1CD1F25149900235145 /* Home */,
+				CB7DE1CE1F2514A600235145 /* Events */,
 				CB0E9A6B1F23FBC800A717DC /* DonateViewController.swift */,
 				CB0E9A6D1F23FBE600A717DC /* AboutUsViewController.swift */,
 				CB0E9A771F241C8200A717DC /* MoreViewController.swift */,
@@ -141,6 +153,25 @@
 				CB0E9A711F23FEF100A717DC /* Styles.swift */,
 			);
 			name = Styles;
+			sourceTree = "<group>";
+		};
+		CB7DE1CD1F25149900235145 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CB0E9A751F241C7600A717DC /* HomeViewController.swift */,
+				CB7DE1CB1F25034A00235145 /* TwitterTableViewController.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		CB7DE1CE1F2514A600235145 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				CB7DE1CF1F2514D000235145 /* EventsViewController.swift */,
+				CB0E9A731F241C6D00A717DC /* EventsTableViewController.swift */,
+				CB7DE1D91F2597FF00235145 /* EventDetailsViewController.swift */,
+			);
+			name = Events;
 			sourceTree = "<group>";
 		};
 		D91642E018D589A54CEF3894 /* Pods */ = {
@@ -187,6 +218,7 @@
 				TargetAttributes = {
 					CB0E9A501F23F8A400A717DC = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 97788Y47A3;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -276,15 +308,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB7DE1D21F25267200235145 /* Announcement.swift in Sources */,
+				CB7DE1D01F2514D000235145 /* EventsViewController.swift in Sources */,
 				CB0E9A7A1F24206200A717DC /* EventTableViewCell.swift in Sources */,
 				CB0E9A7C1F24280200A717DC /* Event.swift in Sources */,
 				CB0E9A781F241C8200A717DC /* MoreViewController.swift in Sources */,
 				CB0E9A6E1F23FBE600A717DC /* AboutUsViewController.swift in Sources */,
 				CB0E9A551F23F8A400A717DC /* AppDelegate.swift in Sources */,
 				CB0E9A721F23FEF100A717DC /* Styles.swift in Sources */,
+				CB7DE1DA1F2597FF00235145 /* EventDetailsViewController.swift in Sources */,
+				CB7DE1CC1F25034A00235145 /* TwitterTableViewController.swift in Sources */,
 				CB0E9A6C1F23FBC800A717DC /* DonateViewController.swift in Sources */,
-				CB0E9A741F241C6D00A717DC /* EventsViewController.swift in Sources */,
+				CB0E9A741F241C6D00A717DC /* EventsTableViewController.swift in Sources */,
 				CB0E9A761F241C7600A717DC /* HomeViewController.swift in Sources */,
+				CB7DE1D61F25288700235145 /* AnnouncementTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,10 +445,14 @@
 			baseConfigurationReference = 16C6CFE043AAFC2142091E3D /* Pods-app-danceblue.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 97788Y47A3;
 				INFOPLIST_FILE = "app-danceblue/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.danceblue.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -421,10 +462,14 @@
 			baseConfigurationReference = 1A8A115CD742EF18B9148B54 /* Pods-app-danceblue.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 97788Y47A3;
 				INFOPLIST_FILE = "app-danceblue/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.danceblue.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
