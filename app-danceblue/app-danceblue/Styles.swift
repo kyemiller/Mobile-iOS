@@ -17,6 +17,7 @@ class Styles {
     // MARK: - Colors
     static let white: UIColor = .white
     static let mainColor: UIColor = UIColor(colorLiteralRed: 9.0/255.0, green: 61/255.0, blue: 161/255.0, alpha: 1.0)
+    static let segmentControllerTintColor: UIColor = UIColor(colorLiteralRed: 9.0/255.0, green: 61/255.0, blue: 161/255.0, alpha: 0.4)
     static let eventsBackgroundColorLight = UIColor(colorLiteralRed: 9.0/255.0, green: 61/255.0, blue: 161/255.0, alpha: 0.1)
     static let eventsBackgroundColorDark = UIColor(colorLiteralRed: 9.0/255.0, green: 61/255.0, blue: 161/255.0, alpha: 0.2)
     

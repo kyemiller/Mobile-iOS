@@ -8,6 +8,10 @@
 
 import UIKit
 import Firebase
+import TwitterKit
+import XCGLogger
+
+let log = XCGLogger.default
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        Twitter.sharedInstance().start(withConsumerKey:"Lhyv3NLgU16loBbc5uzi99drv", consumerSecret:"pxiOy01Rtxz8eYNMxFnPTcn0bzE1FFEqIkvjADiZ5dVldklYi1")
+        log.setup(level: .debug, showThreadName: true, showLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: "path/to/file", fileLevel: .debug)
         return true
     }
 
