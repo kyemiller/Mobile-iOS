@@ -7,6 +7,12 @@
 //
 
 import Foundation
+import UIKit
+import FirebaseStorage
+
+protocol EventDelegate: class {
+    func event(didFinishDownloadingImage image: UIImage)
+}
 
 class Event {
     
@@ -18,6 +24,10 @@ class Event {
     public var id: String?
     public var timestamp: Date?
     public var address: String?
+    public var imageString: String?
+    public var image: UIImage? 
+
+    weak var delegate: EventDelegate?
     
     init(from dictionary: [String : AnyObject]) {
         
@@ -32,6 +42,23 @@ class Event {
         id = dictionary["id"] as? String
         timestamp = dateFormatter.date(from: dictionary["timestamp"] as! String)
         address = dictionary["address"] as? String
+        imageString = dictionary["image"] as? String
+        downloadImageFromFirebase()
     }
     
+    func downloadImageFromFirebase() {
+        let storage = Storage.storage()
+        guard let url = self.imageString else { return }
+        let gsReference = storage.reference(forURL: url)
+        
+        gsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                // Uh-oh, an error occurred!
+                log.debug("Error: \(error.localizedDescription)")
+            } else {
+                self.image = UIImage(data: data!)
+                self.delegate?.event(didFinishDownloadingImage: self.image!)
+            }
+        }
+    }
 }

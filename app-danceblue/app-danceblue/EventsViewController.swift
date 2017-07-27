@@ -8,7 +8,6 @@
 
 import UIKit
 import NVActivityIndicatorView
-import iAd
 
 class EventsViewController: UIViewController, EventsTableViewDelegate {
 
@@ -28,7 +27,7 @@ class EventsViewController: UIViewController, EventsTableViewDelegate {
     
     func setupLoadingIndicator() {
         loadingIndicatorView.color = Styles.segmentControllerTintColor
-        loadingIndicatorView.type = .ballScaleRippleMultiple
+        loadingIndicatorView.type = .ballScaleMultiple
         loadingIndicatorView.startAnimating()
     }
     

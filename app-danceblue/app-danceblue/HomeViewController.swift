@@ -11,6 +11,10 @@ import TwitterKit
 import Firebase
 import FirebaseDatabase
 
+protocol AnnouncementsTableViewDelegate: class {
+    func tableDidLoad()
+}
+
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -26,6 +30,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var announcementData: [Announcement] = []
     private var announcementMap: [String : Announcement] = [:]
     
+    weak var delegate: AnnouncementsTableViewDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         announcementsTableView.delegate = self
@@ -34,6 +40,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         setupFirebase()
         
     }
+    
     
     func setupViews() {
         setUpNavigation()
@@ -80,10 +87,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("here")
             print(snapshot.value!)
             let announcement = Announcement(from: snapshot.value as! [String : AnyObject])
-            print(announcement)
             self.announcementMap[announcement.id!] = announcement
             self.announcementData.append(announcement)
             self.announcementsTableView.reloadData()
+            print("HERE")
+            self.delegate?.tableDidLoad()
         })
         
         
