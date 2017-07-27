@@ -2,6 +2,9 @@ PODS:
   - Firebase/Core (4.0.0):
     - FirebaseAnalytics (= 4.0.0)
     - FirebaseCore (= 4.0.0)
+  - Firebase/Crash (4.0.0):
+    - Firebase/Core
+    - FirebaseCrash (= 2.0.0)
   - Firebase/Database (4.0.0):
     - Firebase/Core
     - FirebaseDatabase (= 4.0.0)
@@ -14,6 +17,12 @@ PODS:
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseCore (4.0.0):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCrash (2.0.0):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - Protobuf (~> 3.1)
   - FirebaseDatabase (4.0.0):
     - FirebaseAnalytics (~> 4.0)
   - FirebaseInstanceID (2.0.0):
@@ -23,6 +32,8 @@ PODS:
     - FirebaseCore (~> 4.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/Logger (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GTMSessionFetcher/Core (1.1.10)
@@ -30,6 +41,7 @@ PODS:
   - ObjcExceptionBridging (1.0.1):
     - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
   - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
+  - Protobuf (3.3.0)
   - TwitterCore (3.0.0)
   - TwitterKit (3.0.3):
     - TwitterCore (>= 3.0.0)
@@ -40,6 +52,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Core
+  - Firebase/Crash
   - Firebase/Database
   - Firebase/Storage
   - NVActivityIndicatorView
@@ -50,6 +63,7 @@ SPEC CHECKSUMS:
   Firebase: 284eea779b73fdff309791817da7c68bff8dd572
   FirebaseAnalytics: 6f08e746f7d66f5452931bc2e822b5df9c66b64a
   FirebaseCore: 85ad466044c2f013cdb167f85d426d15b128114a
+  FirebaseCrash: 600ec2cbd8e10c3064a42de2c6ee7687bd02a076
   FirebaseDatabase: d829b3a8c3e2ac7a16773c5df226966b0805dfc2
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   FirebaseStorage: 8110a1ed2034c8fbfd83890d2acc9cdbbd99afec
@@ -57,10 +71,11 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
+  Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   TwitterCore: 8ce250be1eb34633a0e6acc89520d4165ec52c10
   TwitterKit: 202404be71aadd81d19f677b34579fe77d9cb67e
   XCGLogger: 0b43697155d41e4a1b15fc776f319c2141646b09
 
-PODFILE CHECKSUM: 565b08a03eeed41ad440d74b1cd7edc2bf50a6e1
+PODFILE CHECKSUM: 48437e318e989925570d20ca2de53419c947e546
 
 COCOAPODS: 1.2.1

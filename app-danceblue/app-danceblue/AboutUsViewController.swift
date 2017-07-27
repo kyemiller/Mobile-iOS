@@ -10,6 +10,7 @@ import UIKit
 
 class AboutUsViewController: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigation()
@@ -24,4 +25,7 @@ class AboutUsViewController: UIViewController {
         navigation.barTintColor = Styles.white
         navigation.titleTextAttributes = [NSForegroundColorAttributeName : Styles.mainColor]
     }
+
 }
+
+

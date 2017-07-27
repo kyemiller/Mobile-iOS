@@ -26,6 +26,8 @@
 		CB7DE1D21F25267200235145 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1D11F25267200235145 /* Announcement.swift */; };
 		CB7DE1D61F25288700235145 /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1D51F25288700235145 /* AnnouncementTableViewCell.swift */; };
 		CB7DE1DA1F2597FF00235145 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1D91F2597FF00235145 /* EventDetailsViewController.swift */; };
+		CB7DE1DC1F28418700235145 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1DB1F28418700235145 /* SplashViewController.swift */; };
+		CB7DE1E11F29954E00235145 /* EventsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1E01F29954E00235145 /* EventsHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		CB7DE1D11F25267200235145 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		CB7DE1D51F25288700235145 /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CB7DE1D91F2597FF00235145 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		CB7DE1DB1F28418700235145 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		CB7DE1E01F29954E00235145 /* EventsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,7 @@
 			children = (
 				CB0E9A791F24206200A717DC /* EventTableViewCell.swift */,
 				CB7DE1D51F25288700235145 /* AnnouncementTableViewCell.swift */,
+				CB7DE1E01F29954E00235145 /* EventsHeaderView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 		CB0E9A6A1F23FB5600A717DC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CB7DE1DD1F28418D00235145 /* Splash */,
 				CB7DE1CD1F25149900235145 /* Home */,
 				CB7DE1CE1F2514A600235145 /* Events */,
 				CB0E9A6B1F23FBC800A717DC /* DonateViewController.swift */,
@@ -174,6 +180,14 @@
 			name = Events;
 			sourceTree = "<group>";
 		};
+		CB7DE1DD1F28418D00235145 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				CB7DE1DB1F28418700235145 /* SplashViewController.swift */,
+			);
+			name = Splash;
+			sourceTree = "<group>";
+		};
 		D91642E018D589A54CEF3894 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +210,7 @@
 				CB0E9A4F1F23F8A400A717DC /* Resources */,
 				AB26EDD5F06149C641412C1E /* [CP] Embed Pods Frameworks */,
 				ED675FD7AABE8237B2F95C8B /* [CP] Copy Pods Resources */,
+				CB7DE1E21F2A0F5500235145 /* Crash Reporting */,
 			);
 			buildRules = (
 			);
@@ -286,6 +301,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-app-danceblue/Pods-app-danceblue-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CB7DE1E21F2A0F5500235145 /* Crash Reporting */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Crash Reporting";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:4521399615:ios:77c45223ef47bf99\n\n# Replace the /Path/To/ServiceAccount.json with the path to the key you just downloaded\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"${PROJECT_DIR}/PrivateKey/app-danceblue-firebase-crashreporting-he9w8-45c1482095.json\"";
+		};
 		ED675FD7AABE8237B2F95C8B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,10 +346,12 @@
 				CB0E9A551F23F8A400A717DC /* AppDelegate.swift in Sources */,
 				CB0E9A721F23FEF100A717DC /* Styles.swift in Sources */,
 				CB7DE1DA1F2597FF00235145 /* EventDetailsViewController.swift in Sources */,
+				CB7DE1DC1F28418700235145 /* SplashViewController.swift in Sources */,
 				CB7DE1CC1F25034A00235145 /* TwitterTableViewController.swift in Sources */,
 				CB0E9A6C1F23FBC800A717DC /* DonateViewController.swift in Sources */,
 				CB0E9A741F241C6D00A717DC /* EventsTableViewController.swift in Sources */,
 				CB0E9A761F241C7600A717DC /* HomeViewController.swift in Sources */,
+				CB7DE1E11F29954E00235145 /* EventsHeaderView.swift in Sources */,
 				CB7DE1D61F25288700235145 /* AnnouncementTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

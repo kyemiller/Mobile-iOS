@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class EventTableViewCell: UITableViewCell {
     
@@ -39,14 +40,15 @@ class EventTableViewCell: UITableViewCell {
     }
 
     func configureCell(with event: Event, for indexPath: IndexPath) {
+        self.event = event
         monthLabel.text = event.month
         dateLabel.text = "\(event.date ?? 0)"
         eventTitleLabel.text = event.title
         eventLocationLabel.text = event.location
         eventTimeLabel.text = event.time
-        
         self.backgroundColor = indexPath.row % 2 == 0 ? lightBackgroundColor : darkBackgroundColor
-        
     }
+    
+
     
 }

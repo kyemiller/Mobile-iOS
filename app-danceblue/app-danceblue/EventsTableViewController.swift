@@ -19,13 +19,18 @@ class EventsTableViewController: UITableViewController {
     // TODO: Fix all force unwraps and make code safer!
     
     private var firebaseReference: DatabaseReference?
-    private var addHandle: DatabaseHandle?
-    private var changeHandle: DatabaseHandle?
-    private var deleteHandle: DatabaseHandle?
-    weak var delegate: EventsTableViewDelegate?
+    private var thisWeekAddHandle: DatabaseHandle?
+    private var comingUpAddHandle: DatabaseHandle?
+    private var thisWeekchangeHandle: DatabaseHandle?
+    private var comingUpChangeHandle: DatabaseHandle?
+    private var thisWeekDeleteHandle: DatabaseHandle?
+    private var comingUpDeleteHandle: DatabaseHandle?
     
-    private var eventMap: [String : Event] = [:]
-    private var eventData: [Event] = []
+    weak var delegate: EventsTableViewDelegate?
+    private var thisWeekMap: [String : Event] = [:]
+    private var comingUpMap: [String : Event] = [:]
+    private var eventData: [[Event]] = [[],[]]
+    private var sectionData: [String] = ["This Week", "Coming Up"]
     let eventDetailsSegueIdentifier = "EventDetailsSegue"
     
     // MARK: - Initialization
@@ -35,76 +40,113 @@ class EventsTableViewController: UITableViewController {
         setupFirebase()
     }
 
-    func setupFirebase() {
-        firebaseReference = Database.database().reference()
-        
-        addHandle = firebaseReference?.child("events").observe(.childAdded, with: { (snapshot) in
-            print("here")
-            print(snapshot.value!)
-            let event = Event(from: snapshot.value as! [String : AnyObject])
-            print(event)
-            self.eventMap[event.id!] = event
-            self.eventData.append(event)
-            self.sortEvents()
-            self.tableView.reloadData()
-            self.delegate?.tableDidLoad()
-        })
-        
-        changeHandle = firebaseReference?.child("events").observe(.childChanged, with: { (snapshot) in
-            print("here1")
-            print(snapshot.value!)
-            let event = Event(from: snapshot.value as! [String : AnyObject])
-            print(event)
-            self.eventMap.updateValue(event, forKey: event.id!)
-            self.eventData = Array(self.eventMap.values)
-            self.sortEvents()
-            self.tableView.reloadData()
-        })
-        
-        deleteHandle = firebaseReference?.child("events").observe(.childRemoved, with: { (snapshot) in
-            print("here2")
-            print(snapshot.value!)
-            let event = Event(from: snapshot.value as! [String : AnyObject])
-            print(event)
-            self.eventMap.removeValue(forKey: event.id!)
-            self.eventData = Array(self.eventMap.values)
-            self.sortEvents()
-
-            self.tableView.reloadData()
-        })
-    }
-
     // MARK: - Tableview
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: EventTableViewCell.identifier, for: indexPath) as? EventTableViewCell {
-            cell.configureCell(with: eventData[indexPath.row], for: indexPath)
+           print(eventData[indexPath.section][indexPath.row])
+            cell.configureCell(with: eventData[indexPath.section][indexPath.row], for: indexPath)
             return cell
         }
         return EventTableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventData.count
+        if section == 0 {
+            return eventData[0].count
+        } else {
+            return eventData[1].count
+        }
     }
     
-  //  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-  //      self.performSegue(withIdentifier: "EventDetailsSegue", sender: eventData[indexPath.row])
-//}
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = EventsHeaderView(frame: CGRect(x: 0.0, y: 0.0, width: tableView.bounds.width, height: 30.0))
+        header.configureContent(title: sectionData[section])
+        return header
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30.0
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionData.count
+    }
+
     // MARK: - Storyboard
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let eventDetailsViewController = segue.destination as? EventDetailsViewController, segue.identifier == eventDetailsSegueIdentifier, let index = tableView.indexPathForSelectedRow?.row {
-            eventDetailsViewController.event = eventData[index]
+        if let eventDetailsViewController = segue.destination as? EventDetailsViewController, segue.identifier == eventDetailsSegueIdentifier, let section = tableView.indexPathForSelectedRow?.section, let row = tableView.indexPathForSelectedRow?.row {
+            eventDetailsViewController.event = eventData[section][row]
         }
-        
-        
         
     }
     
     // MARK: - Utility 
     
-    func sortEvents() {
-        eventData.sort(by: {$0.timestamp! < $1.timestamp!})
+    func sortEvents(section: Int) {
+        eventData[section].sort(by: {$0.timestamp ?? Date() < $1.timestamp ?? Date()})
+    }
+    
+    // MARK: - Firebase
+    
+    func setupFirebase() {
+        
+        firebaseReference = Database.database().reference()
+        
+        // This Week Handles
+        
+        thisWeekAddHandle = firebaseReference?.child("events").child("thisWeek").observe(.childAdded, with: { (snapshot) in
+            let event = Event(from: snapshot.value as! [String : AnyObject])
+            print(snapshot.value!)
+            self.thisWeekMap[event.id!] = event
+            self.eventData[0].append(event)
+            self.sortEvents(section: 0)
+            self.tableView.reloadData()
+            self.delegate?.tableDidLoad()
+        })
+        
+        thisWeekchangeHandle = firebaseReference?.child("events").child("thisWeek").observe(.childChanged, with: { (snapshot) in
+            let event = Event(from: snapshot.value as! [String : AnyObject])
+            self.thisWeekMap.updateValue(event, forKey: event.id!)
+            self.eventData[0] = Array(self.thisWeekMap.values)
+            self.sortEvents(section: 0)
+            self.tableView.reloadData()
+        })
+        
+        thisWeekDeleteHandle = firebaseReference?.child("events").child("thisWeek").observe(.childRemoved, with: { (snapshot) in
+            let event = Event(from: snapshot.value as! [String : AnyObject])
+            self.thisWeekMap.removeValue(forKey: event.id!)
+            self.eventData[0] = Array(self.thisWeekMap.values)
+            self.sortEvents(section: 0)
+            self.tableView.reloadData()
+        })
+        
+        // Coming Up Handles
+        
+        comingUpAddHandle = firebaseReference?.child("events").child("comingUp").observe(.childAdded, with: { (snapshot) in
+            let event = Event(from: snapshot.value as! [String : AnyObject])
+            self.comingUpMap[event.id!] = event
+            self.eventData[1].append(event)
+            self.sortEvents(section: 1)
+            self.tableView.reloadData()
+            self.delegate?.tableDidLoad()
+        })
+        
+        comingUpChangeHandle = firebaseReference?.child("events").child("comingUp").observe(.childChanged, with: { (snapshot) in
+            let event = Event(from: snapshot.value as! [String : AnyObject])
+            self.comingUpMap.updateValue(event, forKey: event.id!)
+            self.eventData[1] = Array(self.comingUpMap.values)
+            self.sortEvents(section: 1)
+            self.tableView.reloadData()
+        })
+        
+        comingUpDeleteHandle = firebaseReference?.child("events").child("comingUp").observe(.childRemoved, with: { (snapshot) in
+            let event = Event(from: snapshot.value as! [String : AnyObject])
+            self.comingUpMap.removeValue(forKey: event.id!)
+            self.eventData[1] = Array(self.comingUpMap.values)
+            self.sortEvents(section: 1)
+            self.tableView.reloadData()
+        })
     }
 }

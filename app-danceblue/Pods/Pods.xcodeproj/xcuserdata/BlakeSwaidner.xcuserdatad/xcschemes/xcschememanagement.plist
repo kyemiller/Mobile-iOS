@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Protobuf.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>XCGLogger.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -43,6 +48,11 @@
 			<true/>
 		</dict>
 		<key>2460B4EAD55D2485DF1A9399F7183078</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2A1FAB8B1FD98A4BC63F7EB4E000FB83</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +72,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>762B6EBA33BA5783EA0513FA383CC69E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C5B80060FE8C664DF08841000F41D515</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E1BE978259952E30105B0A52764B9FF0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

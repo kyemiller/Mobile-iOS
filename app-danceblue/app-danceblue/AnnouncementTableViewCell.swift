@@ -18,11 +18,6 @@ class AnnouncementTableViewCell: UITableViewCell {
     
     // MARK: - Initialization
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-    }
-    
     func configureCell(with announcement: Announcement, for indexPath: IndexPath) {
         announcementLabel.text = announcement.text
     }
