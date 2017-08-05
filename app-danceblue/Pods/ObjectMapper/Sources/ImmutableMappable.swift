@@ -83,14 +83,11 @@ public extension Map {
 	public func value<T: RawRepresentable>(_ key: String, nested: Bool? = nil, delimiter: String = ".", file: StaticString = #file, function: StaticString = #function, line: UInt = #line) throws -> T {
 		return try self.value(key, nested: nested, delimiter: delimiter, using: EnumTransform(), file: file, function: function, line: line)
 	}
-<<<<<<< Updated upstream
-=======
 	
 	/// Returns a `[RawRepresentable]` type or throws an error.
 	public func value<T: RawRepresentable>(_ key: String, nested: Bool? = nil, delimiter: String = ".", file: StaticString = #file, function: StaticString = #function, line: UInt = #line) throws -> [T] {
 		return try self.value(key, nested: nested, delimiter: delimiter, using: EnumTransform(), file: file, function: function, line: line)
 	}
->>>>>>> Stashed changes
 
 	// MARK: BaseMappable
 

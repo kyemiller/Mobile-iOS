@@ -48,11 +48,7 @@ internal final class FromJSON {
 	/// Mappable object
 	class func object<N: BaseMappable>(_ field: inout N, map: Map) {
 		if map.toObject {
-<<<<<<< Updated upstream
-			_ = Mapper(context: map.context).map(JSONObject: map.currentValue, toObject: field)
-=======
 			field = Mapper(context: map.context).map(JSONObject: map.currentValue, toObject: field)
->>>>>>> Stashed changes
 		} else if let value: N = Mapper(context: map.context).map(JSONObject: map.currentValue) {
 			field = value
 		}
@@ -61,13 +57,8 @@ internal final class FromJSON {
 	/// Optional Mappable Object
 
 	class func optionalObject<N: BaseMappable>(_ field: inout N?, map: Map) {
-<<<<<<< Updated upstream
-		if let field = field , map.toObject && map.currentValue != nil {
-			_ = Mapper(context: map.context).map(JSONObject: map.currentValue, toObject: field)
-=======
 		if let f = field , map.toObject && map.currentValue != nil {
 			 field = Mapper(context: map.context).map(JSONObject: map.currentValue, toObject: f)
->>>>>>> Stashed changes
 		} else {
 			field = Mapper(context: map.context).map(JSONObject: map.currentValue)
 		}
@@ -75,13 +66,8 @@ internal final class FromJSON {
 	
 	/// Implicitly unwrapped Optional Mappable Object
 	class func optionalObject<N: BaseMappable>(_ field: inout N!, map: Map) {
-<<<<<<< Updated upstream
-		if let field = field , map.toObject && map.currentValue != nil {
-			_ = Mapper(context: map.context).map(JSONObject: map.currentValue, toObject: field)
-=======
 		if let f = field , map.toObject && map.currentValue != nil {
 			field = Mapper(context: map.context).map(JSONObject: map.currentValue, toObject: f)
->>>>>>> Stashed changes
 		} else {
 			field = Mapper(context: map.context).map(JSONObject: map.currentValue)
 		}
@@ -133,11 +119,7 @@ internal final class FromJSON {
 	/// Dctionary containing Mappable objects
 	class func objectDictionary<N: BaseMappable>(_ field: inout Dictionary<String, N>, map: Map) {
 		if map.toObject {
-<<<<<<< Updated upstream
-			_ = Mapper<N>(context: map.context).mapDictionary(JSONObject: map.currentValue, toDictionary: field)
-=======
 			field = Mapper<N>(context: map.context).mapDictionary(JSONObject: map.currentValue, toDictionary: field)
->>>>>>> Stashed changes
 		} else {
 			if let objects = Mapper<N>(context: map.context).mapDictionary(JSONObject: map.currentValue) {
 				field = objects
@@ -147,13 +129,8 @@ internal final class FromJSON {
 	
 	/// Optional dictionary containing Mappable objects
 	class func optionalObjectDictionary<N: BaseMappable>(_ field: inout Dictionary<String, N>?, map: Map) {
-<<<<<<< Updated upstream
-		if let field = field , map.toObject && map.currentValue != nil {
-			_ = Mapper(context: map.context).mapDictionary(JSONObject: map.currentValue, toDictionary: field)
-=======
 		if let f = field , map.toObject && map.currentValue != nil {
 			field = Mapper(context: map.context).mapDictionary(JSONObject: map.currentValue, toDictionary: f)
->>>>>>> Stashed changes
 		} else {
 			field = Mapper(context: map.context).mapDictionary(JSONObject: map.currentValue)
 		}
@@ -161,13 +138,8 @@ internal final class FromJSON {
 	
 	/// Implicitly unwrapped Dictionary containing Mappable objects
 	class func optionalObjectDictionary<N: BaseMappable>(_ field: inout Dictionary<String, N>!, map: Map) {
-<<<<<<< Updated upstream
-		if let field = field , map.toObject && map.currentValue != nil {
-			_ = Mapper(context: map.context).mapDictionary(JSONObject: map.currentValue, toDictionary: field)
-=======
 		if let f = field , map.toObject && map.currentValue != nil {
 			field = Mapper(context: map.context).mapDictionary(JSONObject: map.currentValue, toDictionary: f)
->>>>>>> Stashed changes
 		} else {
 			field = Mapper(context: map.context).mapDictionary(JSONObject: map.currentValue)
 		}

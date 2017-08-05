@@ -14,18 +14,8 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-<<<<<<< Updated upstream:app-danceblue/Pods/Pods.xcodeproj/xcuserdata/BlakeSwaidner.xcuserdatad/xcschemes/Protobuf.xcscheme
-               BlueprintIdentifier = '2A1FAB8B1FD98A4BC63F7EB4E000FB83'
-               BlueprintName = 'Protobuf'
-=======
-<<<<<<< Updated upstream:app-danceblue/Pods/Pods.xcodeproj/xcuserdata/BlakeSwaidner.xcuserdatad/xcschemes/Realm.xcscheme
-               BlueprintIdentifier = 'F1283DC2581F4165356F8535DCB4CFD1'
-               BlueprintName = 'Realm'
-=======
                BlueprintIdentifier = '98395455DD42C7CAE0826047667AA294'
                BlueprintName = 'Protobuf'
->>>>>>> Stashed changes:app-danceblue/Pods/Pods.xcodeproj/xcuserdata/BlakeSwaidner.xcuserdatad/xcschemes/Protobuf.xcscheme
->>>>>>> Stashed changes:app-danceblue/Pods/Pods.xcodeproj/xcuserdata/BlakeSwaidner.xcuserdatad/xcschemes/Realm.xcscheme
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Protobuf.framework'>
             </BuildableReference>

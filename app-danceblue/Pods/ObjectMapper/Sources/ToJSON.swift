@@ -103,11 +103,7 @@ internal final class ToJSON {
 	}
 
 	class func object<N: BaseMappable>(_ field: N, map: Map) {
-<<<<<<< Updated upstream
-		if let result = Mapper(context: map.context).toJSON(field) as Any? {
-=======
 		if let result = Mapper(context: map.context, shouldIncludeNilValues: map.shouldIncludeNilValues).toJSON(field) as Any? {
->>>>>>> Stashed changes
 			setValue(result, map: map)
 		}
 	}
@@ -119,11 +115,7 @@ internal final class ToJSON {
 	}
 
 	class func objectArray<N: BaseMappable>(_ field: Array<N>, map: Map) {
-<<<<<<< Updated upstream
-		let JSONObjects = Mapper(context: map.context).toJSONArray(field)
-=======
 		let JSONObjects = Mapper(context: map.context, shouldIncludeNilValues: map.shouldIncludeNilValues).toJSONArray(field)
->>>>>>> Stashed changes
 		
 		setValue(JSONObjects, map: map)
 	}
@@ -137,11 +129,7 @@ internal final class ToJSON {
 	class func twoDimensionalObjectArray<N: BaseMappable>(_ field: Array<Array<N>>, map: Map) {
 		var array = [[[String: Any]]]()
 		for innerArray in field {
-<<<<<<< Updated upstream
-			let JSONObjects = Mapper(context: map.context).toJSONArray(innerArray)
-=======
 			let JSONObjects = Mapper(context: map.context, shouldIncludeNilValues: map.shouldIncludeNilValues).toJSONArray(innerArray)
->>>>>>> Stashed changes
 			array.append(JSONObjects)
 		}
 		setValue(array, map: map)
@@ -154,11 +142,7 @@ internal final class ToJSON {
 	}
 	
 	class func objectSet<N: BaseMappable>(_ field: Set<N>, map: Map) where N: Hashable {
-<<<<<<< Updated upstream
-		let JSONObjects = Mapper(context: map.context).toJSONSet(field)
-=======
 		let JSONObjects = Mapper(context: map.context, shouldIncludeNilValues: map.shouldIncludeNilValues).toJSONSet(field)
->>>>>>> Stashed changes
 		
 		setValue(JSONObjects, map: map)
 	}
@@ -170,11 +154,7 @@ internal final class ToJSON {
 	}
 	
 	class func objectDictionary<N: BaseMappable>(_ field: Dictionary<String, N>, map: Map) {
-<<<<<<< Updated upstream
-		let JSONObjects = Mapper(context: map.context).toJSONDictionary(field)
-=======
 		let JSONObjects = Mapper(context: map.context, shouldIncludeNilValues: map.shouldIncludeNilValues).toJSONDictionary(field)
->>>>>>> Stashed changes
 		
 		setValue(JSONObjects, map: map)
 	}
@@ -186,11 +166,7 @@ internal final class ToJSON {
 	}
 
 	class func objectDictionaryOfArrays<N: BaseMappable>(_ field: Dictionary<String, [N]>, map: Map) {
-<<<<<<< Updated upstream
-		let JSONObjects = Mapper(context: map.context).toJSONDictionaryOfArrays(field)
-=======
 		let JSONObjects = Mapper(context: map.context, shouldIncludeNilValues: map.shouldIncludeNilValues).toJSONDictionaryOfArrays(field)
->>>>>>> Stashed changes
 
 		setValue(JSONObjects, map: map)
 	}
