@@ -11,11 +11,8 @@ import EventKit
 import MapKit
 import NVActivityIndicatorView
 
-<<<<<<< Updated upstream
-class EventDetailsViewController: UIViewController, EventDelegate, CLLocationManagerDelegate {
-=======
+
 class EventDetailsViewController: UIViewController, EventDelegate {
->>>>>>> Stashed changes
 
     var event: Event?
     let locationManager = CLLocationManager()
@@ -27,10 +24,6 @@ class EventDetailsViewController: UIViewController, EventDelegate {
         super.viewDidLoad()
         event?.delegate = self
         setupLoadingIndicator()
-<<<<<<< Updated upstream
-     //   setupLocationManager()
-=======
->>>>>>> Stashed changes
         setupNavigation()
         setupHeaderImage()
     }

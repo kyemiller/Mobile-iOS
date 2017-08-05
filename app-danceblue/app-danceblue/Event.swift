@@ -45,12 +45,7 @@ class Event {
         imageString = dictionary["image"] as? String
         downloadImageFromFirebase()
     }
-    
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
+
     func downloadImageFromFirebase() {
         let storage = Storage.storage()
         guard let url = self.imageString else { return }
@@ -58,22 +53,13 @@ class Event {
         
         gsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
             if let error = error {
-<<<<<<< Updated upstream
-                // Uh-oh, an error occurred!
-                log.debug("Error: \(error.localizedDescription)")
-            } else {
-=======
                 log.debug("Error: \(error.localizedDescription)")
             } else {
                 log.debug("Image downloaded.")
->>>>>>> Stashed changes
                 self.image = UIImage(data: data!)
                 self.delegate?.event(didFinishDownloadingImage: self.image!)
             }
         }
     }
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
 }

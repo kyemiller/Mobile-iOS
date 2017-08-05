@@ -7,14 +7,9 @@
 //
 
 import UIKit
-<<<<<<< Updated upstream
 import FirebaseStorage
-=======
-<<<<<<< Updated upstream
-=======
 import NVActivityIndicatorView
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
 
 class EventTableViewCell: UITableViewCell, EventDelegate {
     
@@ -36,24 +31,7 @@ class EventTableViewCell: UITableViewCell, EventDelegate {
     // MARK: - Initialization
 
     func configureCell(with event: Event, for indexPath: IndexPath) {
-<<<<<<< Updated upstream
-        self.event = event
-=======
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-        monthLabel.text = event.month
-        dateLabel.text = "\(event.date ?? 0)"
-        eventTitleLabel.text = event.title
-        eventLocationLabel.text = event.location
-        eventTimeLabel.text = event.time
-        self.backgroundColor = indexPath.row % 2 == 0 ? lightBackgroundColor : darkBackgroundColor
-    }
-    
-<<<<<<< Updated upstream
 
-=======
-    
-=======
         self.event = event
         event.delegate = self
         
@@ -72,8 +50,7 @@ class EventTableViewCell: UITableViewCell, EventDelegate {
         dateLabel.text = formatter.string(from: event?.timestamp ?? Date())
         timeLabel.text = event?.time
     }
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
     
     func setupLoadingIndicator() {
         loadingIndicatorView.color = Styles.loadingIndicatorColor

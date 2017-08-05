@@ -71,12 +71,6 @@ class EventsTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = EventsHeaderView(frame: CGRect(x: 0.0, y: 0.0, width: tableView.bounds.width, height: 30.0))
-        header.configureContent(title: sectionData[section])
-        return header
-    }
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return sectionData.count
     }
