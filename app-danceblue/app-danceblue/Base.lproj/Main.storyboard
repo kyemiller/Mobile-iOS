@@ -153,7 +153,6 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< Updated upstream
             <point key="canvasLocation" x="-2194.4000000000001" y="1360.569715142429"/>
         </scene>
         <!--Events View Controller-->
@@ -201,13 +200,8 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uLd-u1-xnh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1439" y="1361"/>
-=======
-<<<<<<< Updated upstream
-            <point key="canvasLocation" x="-2130" y="1361"/>
-=======
             <point key="canvasLocation" x="-2194.4000000000001" y="1360.569715142429"/>
->>>>>>> Stashed changes
+
         </scene>
         <!--Events View Controller-->
         <scene sceneID="4Bb-JB-vkO">
@@ -255,7 +249,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uLd-u1-xnh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-746" y="1361"/>
->>>>>>> Stashed changes
         </scene>
         <!--Blog-->
         <scene sceneID="0ye-aN-j8B">
@@ -268,7 +261,6 @@
                     <view key="view" contentMode="scaleToFill" id="Oq9-e5-N8z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<<<<<<< Updated upstream
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdg-I9-3LZ">
                                 <rect key="frame" x="162.5" y="318.5" width="50" height="30"/>
@@ -278,17 +270,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.0208359696" green="0.064329802990000004" blue="0.32893884179999999" alpha="0.44579721719999998" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="bdg-I9-3LZ" firstAttribute="centerX" secondItem="Oq9-e5-N8z" secondAttribute="centerX" id="K5d-F7-jn9"/>
-                            <constraint firstItem="bdg-I9-3LZ" firstAttribute="centerY" secondItem="Oq9-e5-N8z" secondAttribute="centerY" id="Kzw-6p-Iqq"/>
-                        </constraints>
-=======
-<<<<<<< Updated upstream
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.0208359696" green="0.064329802990000004" blue="0.32893884179999999" alpha="0.44579721719999998" colorSpace="custom" customColorSpace="sRGB"/>
-=======
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehv-SL-DIk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -315,8 +298,6 @@
                             <constraint firstItem="ehv-SL-DIk" firstAttribute="top" secondItem="Oq9-e5-N8z" secondAttribute="top" id="ONF-h7-zyO"/>
                             <constraint firstItem="4aI-q5-cQ6" firstAttribute="centerX" secondItem="Oq9-e5-N8z" secondAttribute="centerX" id="xN2-uD-0JF"/>
                         </constraints>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
                     </view>
                     <navigationItem key="navigationItem" id="JmQ-S5-vjP"/>
                     <connections>
@@ -364,12 +345,6 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Rz-gs-Pe4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< Updated upstream
-            <point key="canvasLocation" x="732" y="1361"/>
-=======
-<<<<<<< Updated upstream
-            <point key="canvasLocation" x="857" y="1361"/>
-=======
             <point key="canvasLocation" x="-2194" y="1991"/>
         </scene>
         <!--Blog Collection View Controller-->
@@ -607,8 +582,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xz1-Ra-GsE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1463.2" y="2057.7211394302849"/>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
         </scene>
         <!--Twitter Table View Controller-->
         <scene sceneID="bnp-n5-gAN">
@@ -647,30 +620,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-<<<<<<< Updated upstream
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="120" id="U4L-Ne-fAT" customClass="EventTableViewCell" customModule="app_danceblue" customModuleProvider="target">
-=======
-<<<<<<< Updated upstream
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="120" id="U4L-Ne-fAT" customClass="EventTableViewCell" customModule="app_danceblue" customModuleProvider="target">
->>>>>>> Stashed changes
-                                <rect key="frame" x="0.0" y="28" width="375" height="120"/>
-=======
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="400" id="Yqe-Vd-Pnc" customClass="EventTableViewCell" customModule="app_danceblue" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="400"/>
->>>>>>> Stashed changes
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yqe-Vd-Pnc" id="BvU-CL-mGE">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="399.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-<<<<<<< Updated upstream
+
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3g-6L-Z6c">
                                             <rect key="frame" x="20" y="20" width="80" height="80"/>
-<<<<<<< Updated upstream
+
                                             <color key="backgroundColor" red="0.0" green="0.1764705882352941" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
-=======
-                                            <color key="backgroundColor" red="0.0" green="0.17606051289999999" blue="0.52854269799999998" alpha="1" colorSpace="calibratedRGB"/>
-=======
+                                          </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7q-po-m7s" userLabel="Divider View">
                                             <rect key="frame" x="0.0" y="379" width="375" height="20"/>
                                             <subviews>
@@ -683,8 +645,6 @@
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
                                             <constraints>
                                                 <constraint firstItem="LGS-93-zCh" firstAttribute="leading" secondItem="Q7q-po-m7s" secondAttribute="leading" id="SZl-z6-88G"/>
                                                 <constraint firstAttribute="trailing" secondItem="LGS-93-zCh" secondAttribute="trailing" id="UC5-my-9Kk"/>
@@ -763,20 +723,14 @@
                                                 <constraint firstAttribute="trailing" secondItem="H5F-Gh-15T" secondAttribute="trailing" constant="12" id="yjY-e6-KK6"/>
                                             </constraints>
                                         </view>
-<<<<<<< Updated upstream
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="V0k-sy-xuW">
-                                            <rect key="frame" x="24" y="20" width="72" height="24"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="24" id="7Pu-gC-IaG"/>
-                                                <constraint firstAttribute="width" constant="72" id="s76-bs-9qr"/>
-=======
-<<<<<<< Updated upstream
+
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0k-sy-xuW">
                                             <rect key="frame" x="20" y="20" width="80" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="7Pu-gC-IaG"/>
                                                 <constraint firstAttribute="width" constant="80" id="s76-bs-9qr"/>
-=======
+                                            </constraints>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="DkN-D0-bVW" firstAttribute="centerX" secondItem="6Gi-O7-CVt" secondAttribute="centerX" id="5Lc-7A-MXq"/>
@@ -841,8 +795,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="c8s-6a-dbk"/>
                                                 <constraint firstAttribute="height" constant="80" id="wOx-AZ-DAm"/>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
                                             </constraints>
                                         </view>
                                         <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glY-oX-OlW">
@@ -949,17 +902,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-<<<<<<< Updated upstream
+
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1500 South Broadway" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a42-Hg-l5A">
-<<<<<<< Updated upstream
-                                            <rect key="frame" x="108" y="44" width="231" height="24"/>
-=======
-                                            <rect key="frame" x="108" y="44" width="247" height="24"/>
-=======
+                                        <rect key="frame" x="108" y="44" width="247" height="24"/>
+                                      </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="pull-quote" translatesAutoresizingMaskIntoConstraints="NO" id="RF4-LB-YbB">
                                             <rect key="frame" x="20" y="0.0" width="45" height="45"/>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="6Uc-1b-P7i"/>
                                                 <constraint firstAttribute="width" constant="40" id="Vrl-M9-Exv"/>
@@ -1019,13 +968,6 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-<<<<<<< Updated upstream
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00PM - 6:30 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02h-Md-xY2">
-<<<<<<< Updated upstream
-                                            <rect key="frame" x="108" y="76" width="231" height="24"/>
-=======
-                                            <rect key="frame" x="108" y="76" width="239" height="24"/>
-=======
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="RfI-rp-BMs" secondAttribute="bottom" constant="8" id="dkN-WU-nbm"/>
@@ -1048,8 +990,7 @@
                                         <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="3tG-UU-fr3" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
                                             <rect key="frame" x="157.5" y="105" width="60" height="60"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="KaC-jp-qNc"/>
                                                 <constraint firstAttribute="height" constant="60" id="XKM-XG-XWH"/>
@@ -1061,7 +1002,7 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-<<<<<<< Updated upstream
+
                                         <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="tnB-bX-5NO">
                                             <rect key="frame" x="347" y="50" width="20" height="20"/>
                                             <constraints>
@@ -1069,9 +1010,7 @@
                                                 <constraint firstAttribute="height" constant="20" id="uC8-49-wbX"/>
                                             </constraints>
                                         </imageView>
-=======
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
+
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="tnB-bX-5NO" firstAttribute="leading" secondItem="a42-Hg-l5A" secondAttribute="trailing" constant="8" id="1WN-bk-Ccp"/>
@@ -1105,10 +1044,8 @@
                                     <outlet property="eventTimeLabel" destination="02h-Md-xY2" id="EJw-LX-llK"/>
                                     <outlet property="eventTitleLabel" destination="B0a-4U-qv0" id="fox-ph-2zZ"/>
                                     <outlet property="monthLabel" destination="V0k-sy-xuW" id="EG5-9x-E04"/>
-<<<<<<< Updated upstream
                                     <segue destination="5FL-o2-fub" kind="show" identifier="EventDetailsSegue" id="yQ9-lq-8DH"/>
-=======
-=======
+
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PDN-VH-Jl0">
                                             <rect key="frame" x="0.0" y="10" width="375" height="250"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1116,6 +1053,7 @@
                                                 <constraint firstAttribute="width" secondItem="PDN-VH-Jl0" secondAttribute="height" multiplier="3:2" id="dig-pb-A5z"/>
                                             </constraints>
                                         </imageView>
+                                </connections>    
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="vko-il-EDy" secondAttribute="trailing" constant="20" id="7gi-OK-UhL"/>
@@ -1127,13 +1065,13 @@
                                         <constraint firstItem="vko-il-EDy" firstAttribute="top" secondItem="PDN-VH-Jl0" secondAttribute="bottom" constant="8" id="jcB-rr-J2o"/>
                                         <constraint firstItem="3tG-UU-fr3" firstAttribute="centerY" secondItem="PDN-VH-Jl0" secondAttribute="centerY" id="s6j-Cj-TzU"/>
                                     </constraints>
+
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="bodyImageView" destination="PDN-VH-Jl0" id="WFu-j2-Id3"/>
                                     <outlet property="descriptionLabel" destination="vko-il-EDy" id="mjr-1T-AgB"/>
                                     <outlet property="loadingIndicator" destination="3tG-UU-fr3" id="yzb-jX-2qB"/>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1146,14 +1084,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KK3-Ya-VGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< Updated upstream
-            <point key="canvasLocation" x="-1439.2" y="2077.5112443778112"/>
-=======
-<<<<<<< Updated upstream
-            <point key="canvasLocation" x="-1439.2" y="1360.569715142429"/>
-=======
+
             <point key="canvasLocation" x="-1463.2" y="2719.7901049475263"/>
->>>>>>> Stashed changes
+
         </scene>
         <!--Event Details View Controller-->
         <scene sceneID="QUq-US-OeN">
@@ -1168,22 +1101,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9w4-wW-5RR">
-<<<<<<< Updated upstream
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
-=======
-                                <rect key="frame" x="0.0" y="20" width="375" height="150"/>
->>>>>>> Stashed changes
+                              <rect key="frame" x="0.0" y="20" width="375" height="150"/>
+
                                 <color key="backgroundColor" red="0.87865691489361697" green="0.87865691489361697" blue="0.87865691489361697" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="z09-I6-k5m"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="90F-UN-xgs" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-<<<<<<< Updated upstream
-                                <rect key="frame" x="147.5" y="35.5" width="80" height="80"/>
-=======
+
                                 <rect key="frame" x="147.5" y="55.5" width="80" height="80"/>
->>>>>>> Stashed changes
+
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="DvP-Tl-gAi"/>
@@ -1207,11 +1135,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U0i-Ah-RhB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< Updated upstream
-            <point key="canvasLocation" x="-1439.2" y="2779.1604197901052"/>
-=======
+
             <point key="canvasLocation" x="-746" y="2720"/>
->>>>>>> Stashed changes
+
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="i9r-R7-ro0">
@@ -1235,20 +1161,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37v-ut-2EJ" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-<<<<<<< Updated upstream
-                                        <rect key="frame" x="137.5" y="283.5" width="100" height="100"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="KYY-x5-skF"/>
-                                            <constraint firstAttribute="width" constant="100" id="vS2-I4-bs2"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="37v-ut-2EJ" firstAttribute="centerX" secondItem="Uef-Qb-yCN" secondAttribute="centerX" id="nK6-q5-V3F"/>
-                                    <constraint firstItem="37v-ut-2EJ" firstAttribute="centerY" secondItem="Uef-Qb-yCN" secondAttribute="centerY" id="qlv-V3-kwW"/>
-=======
                                         <rect key="frame" x="157.5" y="363.5" width="60" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -1271,7 +1183,7 @@
                                     <constraint firstItem="1N9-YF-PSN" firstAttribute="centerX" secondItem="Uef-Qb-yCN" secondAttribute="centerX" id="hPh-BY-5hw"/>
                                     <constraint firstItem="37v-ut-2EJ" firstAttribute="centerX" secondItem="Uef-Qb-yCN" secondAttribute="centerX" id="nK6-q5-V3F"/>
                                     <constraint firstItem="37v-ut-2EJ" firstAttribute="centerY" secondItem="Uef-Qb-yCN" secondAttribute="centerY" constant="60" id="qlv-V3-kwW"/>
->>>>>>> Stashed changes
+
                                 </constraints>
                             </view>
                         </subviews>
@@ -1290,20 +1202,14 @@
                     <connections>
                         <outlet property="backgroundView" destination="Uef-Qb-yCN" id="5Mr-MK-4Z0"/>
                         <outlet property="containerView" destination="rWw-jc-iOv" id="2Yg-AR-0ue"/>
-<<<<<<< Updated upstream
-=======
                         <outlet property="dateLabel" destination="1N9-YF-PSN" id="cNK-iQ-JxM"/>
->>>>>>> Stashed changes
                         <outlet property="loadingIndicatorView" destination="37v-ut-2EJ" id="mNj-5c-LdN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azs-Vd-5Md" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-746.39999999999998" y="-842.42878560719646"/>
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

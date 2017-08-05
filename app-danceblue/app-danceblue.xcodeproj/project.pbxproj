@@ -169,9 +169,6 @@
 		CB0E9A691F23FB4400A717DC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CB0E9A791F24206200A717DC /* EventTableViewCell.swift */,
-				CB7DE1D51F25288700235145 /* AnnouncementTableViewCell.swift */,
-				CB7DE1E01F29954E00235145 /* EventsHeaderView.swift */,
 				CB8CDCF81F2FFCC100CF822A /* Blog */,
 				CB8CDCF71F2FFCB600CF822A /* Events */,
 				CB7DE1D51F25288700235145 /* AnnouncementTableViewCell.swift */,
@@ -183,8 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				CB7DE1DD1F28418D00235145 /* Splash */,
-				CB0E9A751F241C7600A717DC /* HomeViewController.swift */,
-				CB0E9A731F241C6D00A717DC /* EventsViewController.swift */,
 				CB7DE1CD1F25149900235145 /* Home */,
 				CB8CDCEE1F2FF0FC00CF822A /* Blog */,
 				CB7DE1CE1F2514A600235145 /* Events */,
@@ -210,15 +205,6 @@
 				CB0E9A711F23FEF100A717DC /* Styles.swift */,
 			);
 			name = Styles;
-			sourceTree = "<group>";
-		};
-
-		CB19AF2A1F32A61100429C18 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				CB19AF2B1F32A65E00429C18 /* NSAttributedString+HTML.swift */,
-			);
-			name = Util;
 			sourceTree = "<group>";
 		};
 		CB19AF2F1F32C7D000429C18 /* Body Chunks */ = {
@@ -248,7 +234,6 @@
 			name = "BC Cell Types";
 			sourceTree = "<group>";
 		};
-
 		CB7DE1CD1F25149900235145 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,7 +261,6 @@
 			name = Splash;
 			sourceTree = "<group>";
 		};
-
 		CB8CDCEE1F2FF0FC00CF822A /* Blog */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,7 +290,6 @@
 			name = Blog;
 			sourceTree = "<group>";
 		};
-
 		D91642E018D589A54CEF3894 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,7 +439,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				CB7DE1D21F25267200235145 /* Announcement.swift in Sources */,
 				CB7DE1D01F2514D000235145 /* EventsViewController.swift in Sources */,
 				CB19AF371F32C86100429C18 /* BCBodyImage.swift in Sources */,
@@ -501,7 +483,6 @@
 				CB7DE1D61F25288700235145 /* AnnouncementTableViewCell.swift in Sources */,
 				CB19AF331F32C84100429C18 /* BCBodyText.swift in Sources */,
 				CB19AF391F32C88500429C18 /* BCDetails.swift in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
