@@ -12,6 +12,16 @@ target 'app-danceblue' do
   pod 'Firebase/Storage'
   pod 'TwitterKit'
   pod 'XCGLogger', '~> 5.0.1'
+<<<<<<< Updated upstream
   pod 'NVActivityIndicatorView'  
 
+=======
+<<<<<<< Updated upstream
+  
+=======
+  pod 'NVActivityIndicatorView'  
+  pod 'ObjectMapper', '~> 2.2'
+
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 end

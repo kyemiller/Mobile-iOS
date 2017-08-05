@@ -62,6 +62,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigation.barTintColor = Styles.white
         navigation.titleTextAttributes = [NSForegroundColorAttributeName : Styles.mainColor]
     }
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
     
     func setupSegmentedControl() {
         segmentedControl.tintColor = Styles.segmentControllerTintColor
@@ -84,19 +89,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         firebaseReference = Database.database().reference()
         
         addHandle = firebaseReference?.child("announcements").observe(.childAdded, with: { (snapshot) in
+<<<<<<< Updated upstream
             print("here")
+=======
+>>>>>>> Stashed changes
             print(snapshot.value!)
             let announcement = Announcement(from: snapshot.value as! [String : AnyObject])
             self.announcementMap[announcement.id!] = announcement
             self.announcementData.append(announcement)
             self.announcementsTableView.reloadData()
+<<<<<<< Updated upstream
             print("HERE")
+=======
+>>>>>>> Stashed changes
             self.delegate?.tableDidLoad()
         })
         
         
         changeHandle = firebaseReference?.child("announcements").observe(.childChanged, with: { (snapshot) in
+<<<<<<< Updated upstream
             print("here1")
+=======
+>>>>>>> Stashed changes
             print(snapshot.value!)
             let announcement = Announcement(from: snapshot.value as! [String : AnyObject])
             print(announcement)
@@ -106,7 +120,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
         
         deleteHandle = firebaseReference?.child("announcements").observe(.childRemoved, with: { (snapshot) in
+<<<<<<< Updated upstream
             print("here2")
+=======
+>>>>>>> Stashed changes
             print(snapshot.value!)
             let announcement = Announcement(from: snapshot.value as! [String : AnyObject])
             print(announcement)
@@ -127,6 +144,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return announcementData.count
     }
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 }
 

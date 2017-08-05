@@ -1,0 +1,58 @@
+//
+//  BodyImageTableViewCell.swift
+//  app-danceblue
+//
+//  Created by Blake Swaidner on 8/3/17.
+//  Copyright © 2017 DanceBlue. All rights reserved.
+//
+
+import UIKit
+import NVActivityIndicatorView
+
+class BodyImageTableViewCell: UITableViewCell, BlogDetailsBodyImageDelegate {
+    
+    static let identifier = "BodyImageCell"
+    
+    private var data: BCBodyImage?
+
+    @IBOutlet weak var bodyImageView: UIImageView!
+    @IBOutlet weak var loadingIndicator: NVActivityIndicatorView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    weak var delegate: BlogHeaderImageDelegate?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        bodyImageView.clipsToBounds = true
+    }
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let adjustedHeight = 28.0 + descriptionLabel.sizeThatFits(CGSize(width: bounds.width - 80, height: size.height)).height + bodyImageView.frame.height
+        return CGSize(width: bounds.width, height: adjustedHeight)
+    }
+    
+    func configureCell(with data: BCBodyImage) {
+        self.data = data
+        data.delegate = self
+        descriptionLabel.text = data.description
+        setupViews()
+    }
+    
+    func setupViews() {
+        loadingIndicator.type = .ballScale
+        loadingIndicator.color = Styles.loadingIndicatorColor
+        if data?.image == nil {
+            loadingIndicator.startAnimating()
+        } else {
+            loadingIndicator.stopAnimating()
+            bodyImageView.image = data?.image
+        }
+    }
+
+    // MARK: - BlogDetailsBodyImageDelegate
+    
+    func bodyImage(didFinishDownloading image: UIImage?) {
+        bodyImageView.image = image
+        loadingIndicator.stopAnimating()
+    }
+}

@@ -1,4 +1,12 @@
 PODS:
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+  - Alamofire (4.4.0)
+  - AlamofireObjectMapper (4.1.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 2.0)
+>>>>>>> Stashed changes
   - Firebase/Core (4.0.0):
     - FirebaseAnalytics (= 4.0.0)
     - FirebaseCore (= 4.0.0)
@@ -6,23 +14,45 @@ PODS:
     - Firebase/Core
     - FirebaseCrash (= 2.0.0)
   - Firebase/Database (4.0.0):
+=======
+  - Firebase/Core (4.0.4):
+    - FirebaseAnalytics (= 4.0.2)
+    - FirebaseCore (= 4.0.4)
+  - Firebase/Crash (4.0.4):
+    - Firebase/Core
+    - FirebaseCrash (= 2.0.0)
+  - Firebase/Database (4.0.4):
+>>>>>>> Stashed changes
     - Firebase/Core
     - FirebaseDatabase (= 4.0.0)
-  - Firebase/Storage (4.0.0):
+  - Firebase/Storage (4.0.4):
     - Firebase/Core
     - FirebaseStorage (= 2.0.0)
-  - FirebaseAnalytics (4.0.0):
+  - FirebaseAnalytics (4.0.2):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseCore (4.0.0):
+  - FirebaseCore (4.0.4):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+<<<<<<< Updated upstream
+=======
+    - nanopb (~> 0.3)
+  - FirebaseCrash (2.0.0):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+<<<<<<< Updated upstream
   - FirebaseCrash (2.0.0):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - Protobuf (~> 3.1)
+=======
+    - Protobuf (~> 3.1)
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   - FirebaseDatabase (4.0.0):
     - FirebaseAnalytics (~> 4.0)
   - FirebaseInstanceID (2.0.0):
@@ -36,15 +66,44 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
+<<<<<<< Updated upstream
   - GTMSessionFetcher/Core (1.1.10)
   - NVActivityIndicatorView (3.6.1)
   - ObjcExceptionBridging (1.0.1):
     - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
   - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
+<<<<<<< Updated upstream
   - Protobuf (3.3.0)
   - TwitterCore (3.0.0)
   - TwitterKit (3.0.3):
     - TwitterCore (>= 3.0.0)
+=======
+  - ObjectMapper (2.2.7)
+  - Realm (2.8.0):
+    - Realm/Headers (= 2.8.0)
+  - Realm/Headers (2.8.0)
+  - RealmSwift (2.8.0):
+    - Realm (= 2.8.0)
+=======
+  - GTMSessionFetcher/Core (1.1.11)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - NVActivityIndicatorView (3.7.0):
+    - NVActivityIndicatorView/Presenter (= 3.7.0)
+  - NVActivityIndicatorView/Presenter (3.7.0)
+  - ObjcExceptionBridging (1.0.1):
+    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
+  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
+  - ObjectMapper (2.2.8)
+  - Protobuf (3.3.0)
+  - TwitterCore (3.0.0)
+  - TwitterKit (3.0.4):
+    - TwitterCore (>= 3.0.0)
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   - XCGLogger (5.0.1):
     - XCGLogger/Core (= 5.0.1)
   - XCGLogger/Core (5.0.1):
@@ -55,19 +114,41 @@ DEPENDENCIES:
   - Firebase/Crash
   - Firebase/Database
   - Firebase/Storage
+<<<<<<< Updated upstream
   - NVActivityIndicatorView
   - TwitterKit
+=======
+<<<<<<< Updated upstream
+  - ObjectMapper (~> 2.2)
+  - RealmSwift
+>>>>>>> Stashed changes
   - XCGLogger (~> 5.0.1)
 
 SPEC CHECKSUMS:
   Firebase: 284eea779b73fdff309791817da7c68bff8dd572
   FirebaseAnalytics: 6f08e746f7d66f5452931bc2e822b5df9c66b64a
   FirebaseCore: 85ad466044c2f013cdb167f85d426d15b128114a
+<<<<<<< Updated upstream
   FirebaseCrash: 600ec2cbd8e10c3064a42de2c6ee7687bd02a076
+=======
+=======
+  - NVActivityIndicatorView
+  - ObjectMapper (~> 2.2)
+  - TwitterKit
+  - XCGLogger (~> 5.0.1)
+
+SPEC CHECKSUMS:
+  Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
+  FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
+  FirebaseCore: cfc042628ef9f20debe09c0eb683135fcd404cb4
+  FirebaseCrash: 600ec2cbd8e10c3064a42de2c6ee7687bd02a076
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   FirebaseDatabase: d829b3a8c3e2ac7a16773c5df226966b0805dfc2
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   FirebaseStorage: 8110a1ed2034c8fbfd83890d2acc9cdbbd99afec
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+<<<<<<< Updated upstream
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
@@ -76,6 +157,23 @@ SPEC CHECKSUMS:
   TwitterKit: 202404be71aadd81d19f677b34579fe77d9cb67e
   XCGLogger: 0b43697155d41e4a1b15fc776f319c2141646b09
 
+<<<<<<< Updated upstream
 PODFILE CHECKSUM: 48437e318e989925570d20ca2de53419c947e546
+=======
+PODFILE CHECKSUM: 3a64aa1abf627392705e934b92cd006fcd871b77
+=======
+  GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
+  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
+  ObjectMapper: 3d571bb5af471c779e1160828cd9ad5c4ef90958
+  Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
+  TwitterCore: 8ce250be1eb34633a0e6acc89520d4165ec52c10
+  TwitterKit: 5064d99632a8d6e5f1364e6e8f7b211d196c0840
+  XCGLogger: 0b43697155d41e4a1b15fc776f319c2141646b09
+
+PODFILE CHECKSUM: e62e5dfac0aec0b9173415fe4cf5908302d9cc77
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 COCOAPODS: 1.2.1
