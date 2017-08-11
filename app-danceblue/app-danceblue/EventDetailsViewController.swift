@@ -11,7 +11,8 @@ import EventKit
 import MapKit
 import NVActivityIndicatorView
 
-class EventDetailsViewController: UIViewController, EventDelegate, CLLocationManagerDelegate {
+
+class EventDetailsViewController: UIViewController, EventDelegate {
 
     var event: Event?
     let locationManager = CLLocationManager()
@@ -23,7 +24,6 @@ class EventDetailsViewController: UIViewController, EventDelegate, CLLocationMan
         super.viewDidLoad()
         event?.delegate = self
         setupLoadingIndicator()
-     //   setupLocationManager()
         setupNavigation()
         setupHeaderImage()
     }

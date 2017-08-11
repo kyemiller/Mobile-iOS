@@ -8,47 +8,83 @@
 
 import UIKit
 import FirebaseStorage
+import NVActivityIndicatorView
 
-class EventTableViewCell: UITableViewCell {
+
+class EventTableViewCell: UITableViewCell, EventDelegate {
     
     static let identifier = "EventCell"
     
-    @IBOutlet weak var calendarBanner: UIView!
-    @IBOutlet weak var calendarBackground: UIView!
-    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var headerImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var loadingIndicatorView: NVActivityIndicatorView!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var eventTitleLabel: UILabel!
-    @IBOutlet weak var eventLocationLabel: UILabel!
-    @IBOutlet weak var eventTimeLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
+    
+    let gradient = CAGradientLayer()
 
     private var event: Event?
-    
-    // MARK: - Styling
-    
-    private var lightBackgroundColor: UIColor = Styles.eventsBackgroundColorLight
-    private var darkBackgroundColor: UIColor = Styles.eventsBackgroundColorDark
+    private var isImageDownloaded: Bool = false
     
     // MARK: - Initialization
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        calendarBanner.layer.cornerRadius = 5.0
-        calendarBackground.layer.cornerRadius = 5.0
-        
-        calendarBanner.clipsToBounds = true
-        calendarBackground.clipsToBounds = true
-    }
 
     func configureCell(with event: Event, for indexPath: IndexPath) {
+
         self.event = event
-        monthLabel.text = event.month
-        dateLabel.text = "\(event.date ?? 0)"
-        eventTitleLabel.text = event.title
-        eventLocationLabel.text = event.location
-        eventTimeLabel.text = event.time
-        self.backgroundColor = indexPath.row % 2 == 0 ? lightBackgroundColor : darkBackgroundColor
+        event.delegate = self
+        
+        setupLoadingIndicator()
+        updateWithContent()
+        layoutHeaderImage()
+        layoutContainerShadow()
     }
     
+    func updateWithContent() {
+        titleLabel.text = event?.title
+        descriptionLabel.text = event?.location
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, MMMM dd, yyyy"
+        dateLabel.text = formatter.string(from: event?.timestamp ?? Date())
+        timeLabel.text = event?.time
+    }
 
     
+    func setupLoadingIndicator() {
+        loadingIndicatorView.color = Styles.loadingIndicatorColor
+        loadingIndicatorView.type = .ballScale
+        if !isImageDownloaded {
+            loadingIndicatorView.startAnimating()
+        }
+    }
+    
+    // MARK: - Layout
+    
+    func layoutHeaderImage() {
+        headerImageView.clipsToBounds = true
+        headerImageView.backgroundColor = Styles.imageBackgroundColor
+        gradient.startPoint = CGPoint(x: 0.5, y: 0.5)
+        gradient.endPoint = CGPoint(x: 0.5, y: 1.0)
+        gradient.colors = [Styles.clear.cgColor, Styles.black.cgColor]
+        gradient.frame = headerImageView.frame
+    }
+    
+    func layoutContainerShadow() {
+        containerView.layer.shadowColor = Styles.black.cgColor
+        containerView.layer.shadowOffset = .zero
+        containerView.layer.shadowOpacity = 0.3
+        containerView.layer.shadowRadius = 5.0
+    }
+    
+    // MARK: - Event Delegate
+    
+    func event(didFinishDownloadingImage image: UIImage) {
+        headerImageView?.image = image
+        headerImageView.layer.addSublayer(gradient)
+        loadingIndicatorView.stopAnimating()
+        isImageDownloaded = true
+    }
+
 }

@@ -34,11 +34,11 @@ class EventsViewController: UIViewController, EventsTableViewDelegate {
     func setupNavigation() {
         guard let navigation = self.navigationController?.navigationBar else { return }
         
-        self.title = "Events"
-        navigation.tintColor = Styles.mainColor
+        self.title = "DanceBlue"
+        navigation.tintColor = Styles.black
+        navigation.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 24.0) ?? UIFont(), NSForegroundColorAttributeName : Styles.black]
         navigation.isTranslucent = true
         navigation.barTintColor = Styles.white
-        navigation.titleTextAttributes = [NSForegroundColorAttributeName : Styles.mainColor]
     }
 
     func tableDidLoad() {

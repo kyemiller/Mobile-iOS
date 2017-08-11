@@ -45,7 +45,7 @@ class Event {
         imageString = dictionary["image"] as? String
         downloadImageFromFirebase()
     }
-    
+
     func downloadImageFromFirebase() {
         let storage = Storage.storage()
         guard let url = self.imageString else { return }
@@ -53,12 +53,13 @@ class Event {
         
         gsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
             if let error = error {
-                // Uh-oh, an error occurred!
                 log.debug("Error: \(error.localizedDescription)")
             } else {
+                log.debug("Image downloaded.")
                 self.image = UIImage(data: data!)
                 self.delegate?.event(didFinishDownloadingImage: self.image!)
             }
         }
     }
+
 }

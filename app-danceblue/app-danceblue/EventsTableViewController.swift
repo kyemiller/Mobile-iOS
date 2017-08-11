@@ -37,18 +37,30 @@ class EventsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         setupFirebase()
     }
+    
+    func setupTableView() {
+        tableView.separatorInset = .zero
+        tableView.separatorStyle = .none
+        tableView.allowsSelection = false
+        tableView.backgroundColor = Styles.tableViewColor
+    }
+
 
     // MARK: - Tableview
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: EventTableViewCell.identifier, for: indexPath) as? EventTableViewCell {
-           print(eventData[indexPath.section][indexPath.row])
             cell.configureCell(with: eventData[indexPath.section][indexPath.row], for: indexPath)
             return cell
         }
         return EventTableViewCell()
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 400
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,16 +69,6 @@ class EventsTableViewController: UITableViewController {
         } else {
             return eventData[1].count
         }
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = EventsHeaderView(frame: CGRect(x: 0.0, y: 0.0, width: tableView.bounds.width, height: 30.0))
-        header.configureContent(title: sectionData[section])
-        return header
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30.0
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

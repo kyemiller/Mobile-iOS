@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "app-danceblue",
+  "private_key_id": "45c148209540e5050ab9aca62665dce7feffa7e2",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCi1MUwN0rbz4mZ\n1mZHdxrFw2q+Cz2pdK58gFk/q1BpC1wO1AvphLO6zm/fPVxSVJ2qg1R8EefO5jh9\nmNpqljNm1QYAquVGwP0c47o/qvwNLf7R22tH6dMWQONlneyS1MBaMtx9jRlZhx5v\nSzdhYT6+xzQ2m/+cXByEUelloZFieh5HWUV2Cm4ZHjJaKyLHM43LiQlPjd6o3yHz\ntUpCOJBfFVbCSMrOx/Poge4HtMu7OPdbkjq/Cu7fwg6B4/uQq4WWNw+bss1XB6vT\nUYmkr519SoK+KOrhoCCJwCaG+dxOtH5Iof3iM5VtCpuQJia0pNLtS44Ha9XZuUJj\n2cyD943NAgMBAAECggEAE3FnmFHJ4QRfkFx++wKYUkv6x3WNJ9pUaW5j+cvJfrmK\nBQVB5ODhGynCRvxLNVOAPhePc38p2FU6IpkpX3fO7HT8UgEV/oRV1OjGWQrgLOy0\nlDdokH41o98cqAoa8Q9xZnPTSzSZdczCEBUBqGGVve8IZ4rqEzAWgaBMR8PqmcD9\naMGfjIe7CjyVoyESDBtY+IZd1Q+lxsnKVjtPd9tjfyS3Q9XpUMW9UV9f7xIS2gcL\nWdUiEGFyNUkhCPCiB/fsElQp8jOwt2pV0Qhhby/j363/QUODJ/t2lHEQkNT1ELpr\nOV0HgdF6/3O7jtFirLtff9dURs7t0/zt7MhMDpyqAQKBgQDT54dp90ZKXN27X1yF\nZW/M+M5jRgN4tSr7XwVMTjiyjPSqubWWzu502GOU+KVCLZbV2AZliOPx3npu+9tb\n8XdVPPiGEjNLLZhsgNJ7TXAjqU1gN2QwQNW/nqRQqGm7Qwbu6GQocUC+hUpeP9tW\nuOMrcVLNGA0jGOdqy4JjoAu9AQKBgQDEtwh2dE4XJEbheMONQ8DfM65aW1dvkmUg\ngwA/idDg1FQuuPX13s6dum93rjZBoRGOqqwTUVpxnwvYT+MifTt7kLPSn6QE+t13\n1tlUhoqJAUCTdiQoN/0dg+SIbGRUOEy+7qbZOX/fqIpxFMnB9jnvN9W/DKyu1I3N\nAVxvvy00zQKBgQCkRHNg3eOLefoZao9aiYvlpWq44mmGhUrQmpSM1oZ1Q3fXcScn\nxTptMeHgdfAGITkwhMpQo5Gwyfq3Vl5yI/mSBjXSGQHSYYIreqGwHBO2UWQ+FjKA\nhYItjVlrfWKZXBhf057xCvpZtxIzheUOkTzpTGwXuXFVp9SdoS1u9X6kAQKBgBnH\nEmjTXNhTfKZXOOjuE/wrvZFBnveT64STJhktah3MNSvaOQD7LYAlyi2Yuqtm+/IC\nE4KEiqGRAfBap50BZCYRFD9phAjTBuqJUPlumADUFS49sQdELvsLKYtnCM6wgf4T\nL/IPQt6AK4QeAUJVjcn3Ox9J/eb7G4ndv8s09iuRAoGACDkSNhTL6PrzZAvGqWXu\n+TJhBSvKpxmA2ZtVSPR70xg12UH6wR9uLUNZ/OmpWo5OzH5yijR4tjs19bqOnmOJ\nQjPXcs10vaQ2naeKfEnLMC5v/davgWybjaKPsqz7lnFgna/sKMrkvKEbicFVbe/v\nFcNsVmwamGSucGqhGJ6rZVg=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-crashreporting-he9w8@app-danceblue.iam.gserviceaccount.com",
+  "client_id": "112762274455073921797",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-crashreporting-he9w8%40app-danceblue.iam.gserviceaccount.com"
+}
