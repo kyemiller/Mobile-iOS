@@ -23,22 +23,32 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
     private var featuredChangeHandle: DatabaseHandle?
     private var featuredDeleteHandle: DatabaseHandle?
     
-    private var blogData: [Blog] = []
+    private var blogData: [Blog] = [] {
+        didSet {
+            blogHeights = [CGFloat].init(repeating: 0, count: blogData.count)
+        }
+    }
     private var blogMap: [String : Blog] = [:]
     private var featuredPost: Blog?
     weak var delegate: BlogCollectionViewDelegate?
+    
+    private var featuredHeight: CGFloat = 0.0
+    private var blogHeights: [CGFloat] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate?.collectionDidLoad()
         setupFirebase()
+        collectionView?.allowsSelection = true
+        collectionView?.contentInset = .init(top: 8.0, left: 0.0, bottom: 8.0, right: 0.0)
+        collectionView?.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
-            return CGSize(width: self.view.bounds.width, height: 430.0)
+            return CGSize(width: self.view.bounds.width, height: 440.0)
         } else {
-            return CGSize(width: self.view.bounds.width / 2 - 30, height: 185.0)
+            return CGSize(width: self.view.bounds.width / 2 - 30, height: blogHeights[indexPath.row])
         }
     }
     
@@ -56,11 +66,11 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "FeaturedSegue" {
-            if let destination = segue.destination as? BlogDetailsViewController {
+            if let destination = segue.destination as? BlogDetailsTableViewController {
                 destination.post = featuredPost
             }
         } else if segue.identifier == "BlogSegue" {
-            if let destination = segue.destination as? BlogDetailsViewController, let cell = sender as? BlogCollectionViewCell, let indexPath = self.collectionView?.indexPath(for: cell) {
+            if let destination = segue.destination as? BlogDetailsTableViewController, let cell = sender as? BlogCollectionViewCell, let indexPath = self.collectionView?.indexPath(for: cell) {
                 destination.post = blogData[indexPath.row]
             }
         }
@@ -89,19 +99,20 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
             let post = Blog(JSON: data)
             self.featuredPost = post
             self.collectionView?.reloadData()
+            
         })
         
         // Recent Handles
-        
-        blogAddHandle = firebaseReference?.child("blog").child("recent").observe(.childAdded, with: { (snapshot) in
-            guard let data = snapshot.value as? [String : AnyObject]  else { return }
-            guard let post = Blog(JSON: data) else { return }
-            self.blogMap["\(post.id!)"] = post
-            self.blogData.append(post)
-            self.sortPosts()
-            self.collectionView?.reloadData()
-            self.delegate?.collectionDidLoad()
-        })
+//        
+//        blogAddHandle = firebaseReference?.child("blog").child("recent").observe(.childAdded, with: { (snapshot) in
+//            guard let data = snapshot.value as? [String : AnyObject]  else { return }
+//            guard let post = Blog(JSON: data) else { return }
+//            self.blogMap["\(post.id!)"] = post
+//            self.blogData.append(post)
+//            self.sortPosts()
+//            self.collectionView?.reloadData()
+//            self.delegate?.collectionDidLoad()
+//        })
         
         blogChangeHandle = firebaseReference?.child("blog").child("recent").observe(.childChanged, with: { (snapshot) in
             guard let data = snapshot.value as? [String : AnyObject]  else { return }
@@ -154,6 +165,12 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
             { return BlogCollectionViewCell() }
             guard let details = blogData[indexPath.row].details else { return UICollectionViewCell() }
             postCell.configureCell(with: details)
+            
+            if blogHeights[indexPath.row] == 0 {
+                blogHeights[indexPath.row] = postCell.sizeThatFits(CGSize(width: self.view.bounds.width / 2 - 30, height: .greatestFiniteMagnitude)).height
+                collectionViewLayout.invalidateLayout()
+            }
+            
             return postCell
         }
 

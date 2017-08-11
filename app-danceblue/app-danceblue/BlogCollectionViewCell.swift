@@ -21,6 +21,11 @@ class BlogCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
     private var details: BlogDetails?
     private var isImageDownloaded: Bool = false
     
+    override func awakeFromNib() {
+        blogImageView.layer.cornerRadius = 5.0
+        blogImageView.clipsToBounds = true
+    }
+    
     func configureCell(with details: BlogDetails) {
         self.details = details
         details.delegate = self

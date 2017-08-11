@@ -52,7 +52,7 @@ PODS:
   - ObjectMapper (2.2.8)
   - Protobuf (3.3.0)
   - TwitterCore (3.0.0)
-  - TwitterKit (3.0.4):
+  - TwitterKit (3.1.0):
     - TwitterCore (>= 3.0.0)
   - XCGLogger (5.0.1):
     - XCGLogger/Core (= 5.0.1)
@@ -85,7 +85,7 @@ SPEC CHECKSUMS:
   ObjectMapper: 3d571bb5af471c779e1160828cd9ad5c4ef90958
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   TwitterCore: 8ce250be1eb34633a0e6acc89520d4165ec52c10
-  TwitterKit: 5064d99632a8d6e5f1364e6e8f7b211d196c0840
+  TwitterKit: 21d0b22d67cb9a568cd8053972d0da7df2e0e9a0
   XCGLogger: 0b43697155d41e4a1b15fc776f319c2141646b09
 
 PODFILE CHECKSUM: 71f23d0168898992f04e6da181d15940d96f87ee

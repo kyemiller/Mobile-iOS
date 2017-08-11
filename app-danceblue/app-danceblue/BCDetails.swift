@@ -11,7 +11,7 @@ import ObjectMapper
 
 class BCDetails: Mappable {
     
-    var dataArray: [AnyObject]? {
+    var dataArray: [Any]? {
         didSet {
             guard let array = dataArray else { return }
             if array.count > 2 {

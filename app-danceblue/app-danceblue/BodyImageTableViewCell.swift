@@ -27,7 +27,8 @@ class BodyImageTableViewCell: UITableViewCell, BlogDetailsBodyImageDelegate {
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let adjustedHeight = 28.0 + descriptionLabel.sizeThatFits(CGSize(width: bounds.width - 80, height: size.height)).height + bodyImageView.frame.height
+        let adjustedHeight = descriptionLabel.sizeThatFits(CGSize(width: bounds.width - 40.0, height: size.height)).height + bodyImageView.frame.height + 12.0
+
         return CGSize(width: bounds.width, height: adjustedHeight)
     }
     

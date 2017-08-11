@@ -85,7 +85,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         firebaseReference = Database.database().reference()
         
         addHandle = firebaseReference?.child("announcements").observe(.childAdded, with: { (snapshot) in
-            print(snapshot.value!)
+
             let announcement = Announcement(from: snapshot.value as! [String : AnyObject])
             self.announcementMap[announcement.id!] = announcement
             self.announcementData.append(announcement)
@@ -96,7 +96,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         changeHandle = firebaseReference?.child("announcements").observe(.childChanged, with: { (snapshot) in
 
-            print(snapshot.value!)
             let announcement = Announcement(from: snapshot.value as! [String : AnyObject])
             print(announcement)
             self.announcementMap.updateValue(announcement, forKey: announcement.id!)
@@ -106,7 +105,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         deleteHandle = firebaseReference?.child("announcements").observe(.childRemoved, with: { (snapshot) in
 
-            print(snapshot.value!)
             let announcement = Announcement(from: snapshot.value as! [String : AnyObject])
             print(announcement)
             self.announcementMap.removeValue(forKey: announcement.id!)

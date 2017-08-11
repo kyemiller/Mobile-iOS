@@ -23,6 +23,7 @@ class BCHeaderImage: Mappable {
         }
     }
     var image: UIImage?
+    var description: String?
     
     weak var delegate: BlogDetailsHeaderImageDelegate?
     
@@ -31,6 +32,7 @@ class BCHeaderImage: Mappable {
     
     func mapping(map: Map) {
         imageString <- map["image"]
+        description <- map["description"]
     }
     
     func downloadImageFromFirebase() {

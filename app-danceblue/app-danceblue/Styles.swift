@@ -12,8 +12,7 @@ import UIKit
 class Styles {
     
     // MARK: - Fonts
-    static let blogBodyFont: UIFont = .systemFont(ofSize: 18.0)
-    
+    static let blogBodyFont: UIFont = UIFont(name: "Palatino-Roman", size: 18.0)!
     // MARK: - Colors
     static let white: UIColor = .white
     static let black: UIColor = .black

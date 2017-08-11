@@ -36,7 +36,7 @@ class BlogDetails: Mappable {
     func mapping(map: Map) {
         author <- map["author"]
         title <- map["title"]
-        timestamp <- map["timestamp"]
+        timestamp <- (map["timestamp"], DateTransform())
         imageString <- map["image"]
     }
  
