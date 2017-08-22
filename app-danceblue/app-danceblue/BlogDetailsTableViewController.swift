@@ -61,7 +61,7 @@ class BlogDetailsTableViewController: UITableViewController, BlogHeaderImageDele
         
         switch type {
             case .headerImage:
-                if let imageCell = tableView.dequeueReusableCell(withIdentifier: HeaderImageTableViewCell.identifier, for: indexPath) as? HeaderImageTableViewCell {
+                if let imageCell = tableView.dequeueReusableCell(withIdentifier: HeaderImageTableViewCell.identifier) as? HeaderImageTableViewCell {
                     guard let data = bodyChunk.headerData else { return UITableViewCell() }
                     shareImage = data.image
                     imageCell.configureCell(with: data)
@@ -71,7 +71,7 @@ class BlogDetailsTableViewController: UITableViewController, BlogHeaderImageDele
                 }
             
             case .details:
-                if let detailsCell = tableView.dequeueReusableCell(withIdentifier: DetailsTableViewCell.identifier, for: indexPath) as? DetailsTableViewCell {
+                if let detailsCell = tableView.dequeueReusableCell(withIdentifier: DetailsTableViewCell.identifier) as? DetailsTableViewCell {
                     guard let data = bodyChunk.detailsData else { return UITableViewCell() }
                     detailsCell.configureCell(with: data)
                     if cellHeights[indexPath.row] == 0 {
@@ -82,7 +82,7 @@ class BlogDetailsTableViewController: UITableViewController, BlogHeaderImageDele
                 }
             
             case .quote:
-                if let quoteCell = tableView.dequeueReusableCell(withIdentifier: QuoteTableViewCell.identifier, for: indexPath) as? QuoteTableViewCell {
+                if let quoteCell = tableView.dequeueReusableCell(withIdentifier: QuoteTableViewCell.identifier) as? QuoteTableViewCell {
                     guard let data = bodyChunk.quoteData else { return UITableViewCell() }
                     quoteCell.configureCell(with: data)
                     if cellHeights[indexPath.row] == 0 {
@@ -92,7 +92,7 @@ class BlogDetailsTableViewController: UITableViewController, BlogHeaderImageDele
                 }
             
             case .bodyImage:
-                if let bodyImageCell = tableView.dequeueReusableCell(withIdentifier: BodyImageTableViewCell.identifier, for: indexPath) as? BodyImageTableViewCell {
+                if let bodyImageCell = tableView.dequeueReusableCell(withIdentifier: BodyImageTableViewCell.identifier) as? BodyImageTableViewCell {
                     guard let data = bodyChunk.bodyImageData else { return UITableViewCell() }
                     bodyImageCell.configureCell(with: data)
                     if cellHeights[indexPath.row] == 0 {
@@ -102,7 +102,7 @@ class BlogDetailsTableViewController: UITableViewController, BlogHeaderImageDele
                 }
             
             case .bodyText:
-                if let bodyTextCell = tableView.dequeueReusableCell(withIdentifier: BodyTextTableViewCell.identifier, for: indexPath) as? BodyTextTableViewCell {
+                if let bodyTextCell = tableView.dequeueReusableCell(withIdentifier: BodyTextTableViewCell.identifier) as? BodyTextTableViewCell {
                     guard let data = bodyChunk.bodyTextData else { return UITableViewCell() }
                     bodyTextCell.configureCell(with: data)
                     if cellHeights[indexPath.row] == 0 {
@@ -111,7 +111,7 @@ class BlogDetailsTableViewController: UITableViewController, BlogHeaderImageDele
                     return bodyTextCell
                 }
             case .sectionTitle:
-                if let sectionTitleCell = tableView.dequeueReusableCell(withIdentifier: SectionTitleTableViewCell.identifier, for: indexPath) as? SectionTitleTableViewCell {
+                if let sectionTitleCell = tableView.dequeueReusableCell(withIdentifier: SectionTitleTableViewCell.identifier) as? SectionTitleTableViewCell {
                     guard let data = bodyChunk.sectionTitleData else { return UITableViewCell() }
                     sectionTitleCell.configureCell(with: data)
                     if cellHeights[indexPath.row] == 0 {

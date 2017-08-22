@@ -9,7 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 
-class SplashViewController: UIViewController, AnnouncementsTableViewDelegate {
+class SplashViewController: UIViewController, AnnouncementCollectionViewDelegate {
     
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var containerView: UIView!
@@ -46,7 +46,7 @@ class SplashViewController: UIViewController, AnnouncementsTableViewDelegate {
         loadingIndicatorView.startAnimating()
     }
     
-    func tableDidLoad() {
+    func collectionViewDidLoad() {
         transition()
     }
 

@@ -10,11 +10,12 @@ import UIKit
 import SafariServices
 
 class DonateViewController: UIViewController {
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         setUpNavigation()
     }
     
@@ -22,10 +23,10 @@ class DonateViewController: UIViewController {
         guard let navigation = self.navigationController?.navigationBar else { return }
         
         self.title = "Donate"
-        navigation.tintColor = Styles.mainColor
+        navigation.tintColor = Styles.black
+        navigation.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 24.0) ?? UIFont(), NSForegroundColorAttributeName : Styles.black]
         navigation.isTranslucent = true
         navigation.barTintColor = Styles.white
-        navigation.titleTextAttributes = [NSForegroundColorAttributeName : Styles.mainColor]
     }
 
     @IBAction func didTapDonate(_ sender: Any) {

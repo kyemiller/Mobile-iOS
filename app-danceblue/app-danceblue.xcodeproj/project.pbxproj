@@ -13,7 +13,6 @@
 		CB0E9A611F23F8A400A717DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB0E9A5F1F23F8A400A717DC /* LaunchScreen.storyboard */; };
 		CB0E9A6E1F23FBE600A717DC /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A6D1F23FBE600A717DC /* AboutUsViewController.swift */; };
 		CB0E9A721F23FEF100A717DC /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A711F23FEF100A717DC /* Styles.swift */; };
-		CB0E9A781F241C8200A717DC /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A771F241C8200A717DC /* MoreViewController.swift */; };
 		CB0E9A7A1F24206200A717DC /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A791F24206200A717DC /* EventTableViewCell.swift */; };
 		CB0E9A7C1F24280200A717DC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A7B1F24280200A717DC /* Event.swift */; };
 		CB19AF2E1F32AE3700429C18 /* BCData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19AF2D1F32AE3700429C18 /* BCData.swift */; };
@@ -33,18 +32,15 @@
 		CB2AE8F01F3163AA00571243 /* BodyTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2AE8EF1F3163AA00571243 /* BodyTextTableViewCell.swift */; };
 		CB6843871F3894ED000720F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB6843851F3894ED000720F2 /* Main.storyboard */; };
 		CB7DE1CA1F24439A00235145 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7DE1C91F24439A00235145 /* GoogleService-Info.plist */; };
-		CB7DE1D01F2514D000235145 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1CF1F2514D000235145 /* EventsViewController.swift */; };
 		CB7DE1D21F25267200235145 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1D11F25267200235145 /* Announcement.swift */; };
 		CB7DE1DA1F2597FF00235145 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1D91F2597FF00235145 /* EventDetailsViewController.swift */; };
 		CB8798751F3636B60091CA38 /* NSAttributedString+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8798741F3636B60091CA38 /* NSAttributedString+HTML.swift */; };
 		CB8798761F3637940091CA38 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A731F241C6D00A717DC /* EventsTableViewController.swift */; };
 		CB8798771F363E4A0091CA38 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1DB1F28418700235145 /* SplashViewController.swift */; };
-		CB8798781F363EA60091CA38 /* EventsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1E01F29954E00235145 /* EventsHeaderView.swift */; };
-		CB8798791F363EA60091CA38 /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1D51F25288700235145 /* AnnouncementTableViewCell.swift */; };
+		CB8798791F363EA60091CA38 /* AnnouncementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1D51F25288700235145 /* AnnouncementCollectionViewCell.swift */; };
 		CB87987A1F363EA60091CA38 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A751F241C7600A717DC /* HomeViewController.swift */; };
 		CB87987B1F363EA60091CA38 /* TwitterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1CB1F25034A00235145 /* TwitterTableViewController.swift */; };
 		CB87987C1F363EA60091CA38 /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A6B1F23FBC800A717DC /* DonateViewController.swift */; };
-		CB8CDCF01F2FF1C600CF822A /* BlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CDCEF1F2FF1C600CF822A /* BlogViewController.swift */; };
 		CB8CDCF21F2FF1F000CF822A /* BlogCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CDCF11F2FF1F000CF822A /* BlogCollectionViewController.swift */; };
 		CB8CDCF41F2FFC9200CF822A /* BlogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CDCF31F2FFC9200CF822A /* BlogCollectionViewCell.swift */; };
 		CB8CDCF61F2FFCA000CF822A /* FeaturedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8CDCF51F2FFCA000CF822A /* FeaturedCollectionViewCell.swift */; };
@@ -65,7 +61,6 @@
 		CB0E9A711F23FEF100A717DC /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		CB0E9A731F241C6D00A717DC /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		CB0E9A751F241C7600A717DC /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		CB0E9A771F241C8200A717DC /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		CB0E9A791F24206200A717DC /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		CB0E9A7B1F24280200A717DC /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		CB19AF2D1F32AE3700429C18 /* BCData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCData.swift; sourceTree = "<group>"; };
@@ -86,14 +81,11 @@
 		CB6843861F3894ED000720F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "app-danceblue/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		CB7DE1C91F24439A00235145 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB7DE1CB1F25034A00235145 /* TwitterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterTableViewController.swift; sourceTree = "<group>"; };
-		CB7DE1CF1F2514D000235145 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		CB7DE1D11F25267200235145 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
-		CB7DE1D51F25288700235145 /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
+		CB7DE1D51F25288700235145 /* AnnouncementCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB7DE1D91F2597FF00235145 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		CB7DE1DB1F28418700235145 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		CB7DE1E01F29954E00235145 /* EventsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsHeaderView.swift; sourceTree = "<group>"; };
 		CB8798741F3636B60091CA38 /* NSAttributedString+HTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+HTML.swift"; sourceTree = "<group>"; };
-		CB8CDCEF1F2FF1C600CF822A /* BlogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogViewController.swift; sourceTree = "<group>"; };
 		CB8CDCF11F2FF1F000CF822A /* BlogCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogCollectionViewController.swift; sourceTree = "<group>"; };
 		CB8CDCF31F2FFC9200CF822A /* BlogCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB8CDCF51F2FFCA000CF822A /* FeaturedCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -172,7 +164,7 @@
 			children = (
 				CB8CDCF81F2FFCC100CF822A /* Blog */,
 				CB8CDCF71F2FFCB600CF822A /* Events */,
-				CB7DE1D51F25288700235145 /* AnnouncementTableViewCell.swift */,
+				CB7DE1D51F25288700235145 /* AnnouncementCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -186,7 +178,6 @@
 				CB7DE1CE1F2514A600235145 /* Events */,
 				CB0E9A6B1F23FBC800A717DC /* DonateViewController.swift */,
 				CB0E9A6D1F23FBE600A717DC /* AboutUsViewController.swift */,
-				CB0E9A771F241C8200A717DC /* MoreViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -247,7 +238,6 @@
 		CB7DE1CE1F2514A600235145 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				CB7DE1CF1F2514D000235145 /* EventsViewController.swift */,
 				CB0E9A731F241C6D00A717DC /* EventsTableViewController.swift */,
 				CB7DE1D91F2597FF00235145 /* EventDetailsViewController.swift */,
 			);
@@ -275,7 +265,6 @@
 			children = (
 				CB8CDCF11F2FF1F000CF822A /* BlogCollectionViewController.swift */,
 				CB2AE8E61F31380000571243 /* BlogDetailsTableViewController.swift */,
-				CB8CDCEF1F2FF1C600CF822A /* BlogViewController.swift */,
 			);
 			name = Blog;
 			sourceTree = "<group>";
@@ -284,7 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				CB0E9A791F24206200A717DC /* EventTableViewCell.swift */,
-				CB7DE1E01F29954E00235145 /* EventsHeaderView.swift */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -388,13 +376,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-app-danceblue-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AB26EDD5F06149C641412C1E /* [CP] Embed Pods Frameworks */ = {
@@ -403,9 +394,28 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-app-danceblue/Pods-app-danceblue-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -432,9 +442,13 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-app-danceblue/Pods-app-danceblue-resources.sh",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -448,25 +462,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB8798781F363EA60091CA38 /* EventsHeaderView.swift in Sources */,
-				CB8798791F363EA60091CA38 /* AnnouncementTableViewCell.swift in Sources */,
+				CB8798791F363EA60091CA38 /* AnnouncementCollectionViewCell.swift in Sources */,
 				CB87987A1F363EA60091CA38 /* HomeViewController.swift in Sources */,
 				CB87987B1F363EA60091CA38 /* TwitterTableViewController.swift in Sources */,
 				CB87987C1F363EA60091CA38 /* DonateViewController.swift in Sources */,
 				CB8798771F363E4A0091CA38 /* SplashViewController.swift in Sources */,
 				CB8798761F3637940091CA38 /* EventsTableViewController.swift in Sources */,
 				CB7DE1D21F25267200235145 /* Announcement.swift in Sources */,
-				CB7DE1D01F2514D000235145 /* EventsViewController.swift in Sources */,
 				CB19AF371F32C86100429C18 /* BCBodyImage.swift in Sources */,
 				CB0E9A7A1F24206200A717DC /* EventTableViewCell.swift in Sources */,
 				CB0E9A7C1F24280200A717DC /* Event.swift in Sources */,
-				CB0E9A781F241C8200A717DC /* MoreViewController.swift in Sources */,
 				CB0E9A6E1F23FBE600A717DC /* AboutUsViewController.swift in Sources */,
 				CB2AE8EC1F31638400571243 /* DetailsTableViewCell.swift in Sources */,
 				CB0E9A551F23F8A400A717DC /* AppDelegate.swift in Sources */,
 				CB8CDCF41F2FFC9200CF822A /* BlogCollectionViewCell.swift in Sources */,
 				CB8798751F3636B60091CA38 /* NSAttributedString+HTML.swift in Sources */,
-				CB8CDCF01F2FF1C600CF822A /* BlogViewController.swift in Sources */,
 				CB2AE8E71F31380000571243 /* BlogDetailsTableViewController.swift in Sources */,
 				CB2AE8EE1F31639100571243 /* HeaderImageTableViewCell.swift in Sources */,
 				CB2AE8F01F3163AA00571243 /* BodyTextTableViewCell.swift in Sources */,
@@ -618,6 +628,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -635,6 +646,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

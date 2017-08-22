@@ -10,17 +10,14 @@ import UIKit
 import TwitterKit
 import Firebase
 import FirebaseDatabase
+import ObjectMapper
 
-protocol AnnouncementsTableViewDelegate: class {
-    func tableDidLoad()
+protocol AnnouncementCollectionViewDelegate: class {
+    func collectionViewDidLoad()
 }
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var twitterContainerView: UIView!
-    @IBOutlet weak var announcementsTableView: UITableView!
-    @IBOutlet weak var headerView: UIView!
     
     private var firebaseReference: DatabaseReference?
     private var addHandle: DatabaseHandle?
@@ -30,99 +27,101 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var announcementData: [Announcement] = []
     private var announcementMap: [String : Announcement] = [:]
     
-    weak var delegate: AnnouncementsTableViewDelegate?
+    weak var delegate: AnnouncementCollectionViewDelegate?
+    
+    @IBOutlet weak var announcementsCollectionView: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        announcementsTableView.delegate = self
-        announcementsTableView.dataSource = self
-        setupViews()
         setupFirebase()
+        setupCollectionView()
         
     }
     
-    
-    func setupViews() {
-        setUpNavigation()
-        setupSegmentedControl()
-        twitterContainerView.isHidden = true
-        announcementsTableView.isHidden = false
-        headerView.isHidden = false
+    func setupCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .horizontal
+        announcementsCollectionView.collectionViewLayout = layout
         
+        announcementsCollectionView.delegate = self
+        announcementsCollectionView.dataSource = self
+        announcementsCollectionView.isPagingEnabled = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setUpNavigation()
     }
     
     func setUpNavigation() {
         guard let navigation = self.navigationController?.navigationBar else { return }
         
         self.title = "Home"
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        navigation.tintColor = Styles.mainColor
-        navigation.shadowImage = UIImage()
-        navigation.setBackgroundImage(UIImage(), for: .default)
+        navigation.tintColor = Styles.black
+        navigation.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 24.0) ?? UIFont(), NSForegroundColorAttributeName : Styles.black]
         navigation.isTranslucent = true
         navigation.barTintColor = Styles.white
-        navigation.titleTextAttributes = [NSForegroundColorAttributeName : Styles.mainColor]
     }
     
-    func setupSegmentedControl() {
-        segmentedControl.tintColor = Styles.segmentControllerTintColor
-        segmentedControl.setTitleTextAttributes([NSForegroundColorAttributeName:Styles.mainColor], for: .selected)
-    }
-    
-    @IBAction func didChangeSegmentedControl(_ sender: UISegmentedControl) {
-        if segmentedControl.selectedSegmentIndex == 0 {
-            twitterContainerView.isHidden = true
-            announcementsTableView.isHidden = false
-            headerView.isHidden = false
-        } else {
-            twitterContainerView.isHidden = false
-            announcementsTableView.isHidden = true
-            headerView.isHidden = true
-        }
-    }
+
+
     
     func setupFirebase() {
         firebaseReference = Database.database().reference()
         
         addHandle = firebaseReference?.child("announcements").observe(.childAdded, with: { (snapshot) in
-
-            let announcement = Announcement(from: snapshot.value as! [String : AnyObject])
-            self.announcementMap[announcement.id!] = announcement
-            self.announcementData.append(announcement)
-            self.announcementsTableView.reloadData()
-            self.delegate?.tableDidLoad()
+            guard let data = snapshot.value as? [String : AnyObject] else { return }
+            let announcement = Announcement(JSON: data)
+            
+            if let id = announcement?.id, let announcement = announcement {
+                self.announcementMap[id] = announcement
+                self.announcementData.append(announcement)
+            }
+            self.announcementsCollectionView.reloadData()
+            self.delegate?.collectionViewDidLoad()
         })
         
         
         changeHandle = firebaseReference?.child("announcements").observe(.childChanged, with: { (snapshot) in
-
-            let announcement = Announcement(from: snapshot.value as! [String : AnyObject])
-            print(announcement)
-            self.announcementMap.updateValue(announcement, forKey: announcement.id!)
-            self.announcementData = Array(self.announcementMap.values)
-            self.announcementsTableView.reloadData()
+            guard let data = snapshot.value as? [String : AnyObject] else { return }
+            let announcement = Announcement(JSON: data)
+            
+            if let id = announcement?.id, let announcement = announcement {
+                self.announcementMap.updateValue(announcement, forKey: id)
+                self.announcementData = Array(self.announcementMap.values)
+            }
         })
         
         deleteHandle = firebaseReference?.child("announcements").observe(.childRemoved, with: { (snapshot) in
-
-            let announcement = Announcement(from: snapshot.value as! [String : AnyObject])
-            print(announcement)
-            self.announcementMap.removeValue(forKey: announcement.id!)
-            self.announcementData = Array(self.announcementMap.values)
-            self.announcementsTableView.reloadData()
+            guard let data = snapshot.value as? [String : AnyObject] else { return }
+            let announcement = Announcement(JSON: data)
+            
+            if let id = announcement?.id {
+                self.announcementMap.removeValue(forKey: id)
+                self.announcementData = Array(self.announcementMap.values)
+            }
         })
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: AnnouncementTableViewCell.identifier, for: indexPath) as? AnnouncementTableViewCell {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return announcementData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AnnouncementCollectionViewCell.identifier, for: indexPath) as? AnnouncementCollectionViewCell {
             cell.configureCell(with: announcementData[indexPath.row], for: indexPath)
             return cell
         }
-        return AnnouncementTableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return announcementData.count
+        return UICollectionViewCell()
     }
 
 }

@@ -9,10 +9,6 @@
 import UIKit
 import FirebaseDatabase
 
-protocol BlogCollectionViewDelegate: class {
-    func collectionDidLoad()
-}
-
 class BlogCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     private var firebaseReference: DatabaseReference?
@@ -29,19 +25,35 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
         }
     }
     private var blogMap: [String : Blog] = [:]
-    private var featuredPost: Blog?
-    weak var delegate: BlogCollectionViewDelegate?
+    private var featuredPost: Blog? {
+        didSet {
+            collectionView?.reloadData()
+        }
+    }
     
     private var featuredHeight: CGFloat = 0.0
     private var blogHeights: [CGFloat] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate?.collectionDidLoad()
+        collectionView?.delegate = self
         setupFirebase()
         collectionView?.allowsSelection = true
         collectionView?.contentInset = .init(top: 8.0, left: 0.0, bottom: 8.0, right: 0.0)
-        collectionView?.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setUpNavigation()
+    }
+    
+    func setUpNavigation() {
+        guard let navigation = self.navigationController?.navigationBar else { return }
+        
+        self.title = "Blog"
+        navigation.tintColor = Styles.black
+        navigation.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 24.0) ?? UIFont(), NSForegroundColorAttributeName : Styles.black]
+        navigation.isTranslucent = true
+        navigation.barTintColor = Styles.white
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -91,7 +103,6 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
             let post = Blog(JSON: data)
             self.featuredPost = post
             self.collectionView?.reloadData()
-            self.delegate?.collectionDidLoad()
         })
         
         featuredChangeHandle = firebaseReference?.child("blog").child("featured").observe(.childChanged, with: { (snapshot) in
@@ -103,16 +114,15 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
         })
         
         // Recent Handles
-//        
-//        blogAddHandle = firebaseReference?.child("blog").child("recent").observe(.childAdded, with: { (snapshot) in
-//            guard let data = snapshot.value as? [String : AnyObject]  else { return }
-//            guard let post = Blog(JSON: data) else { return }
-//            self.blogMap["\(post.id!)"] = post
-//            self.blogData.append(post)
-//            self.sortPosts()
-//            self.collectionView?.reloadData()
-//            self.delegate?.collectionDidLoad()
-//        })
+        
+        blogAddHandle = firebaseReference?.child("blog").child("recent").observe(.childAdded, with: { (snapshot) in
+            guard let data = snapshot.value as? [String : AnyObject]  else { return }
+            guard let post = Blog(JSON: data) else { return }
+            self.blogMap["\(post.id!)"] = post
+            self.blogData.append(post)
+            self.sortPosts()
+           // self.collectionView?.reloadData()
+        })
         
         blogChangeHandle = firebaseReference?.child("blog").child("recent").observe(.childChanged, with: { (snapshot) in
             guard let data = snapshot.value as? [String : AnyObject]  else { return }
@@ -150,7 +160,6 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         if indexPath.section == 0 {
             guard let featuredCell = collectionView.dequeueReusableCell(withReuseIdentifier: FeaturedCollectionViewCell.identifier, for: indexPath) as? FeaturedCollectionViewCell else
             { return FeaturedCollectionViewCell() }
@@ -181,6 +190,5 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
     func sortPosts() {
         blogData.sort(by: {$0.details?.timestamp ?? Date() < $1.details?.timestamp ?? Date()})
     }
-
-
+    
 }
