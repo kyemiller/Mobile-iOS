@@ -13,6 +13,9 @@ class AboutUsViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         setUpNavigation()
     }
     
@@ -20,10 +23,10 @@ class AboutUsViewController: UIViewController {
         guard let navigation = self.navigationController?.navigationBar else { return }
         
         self.title = "About Us"
-        navigation.tintColor = Styles.mainColor
+        navigation.tintColor = Styles.black
+        navigation.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 24.0) ?? UIFont(), NSForegroundColorAttributeName : Styles.black]
         navigation.isTranslucent = true
         navigation.barTintColor = Styles.white
-        navigation.titleTextAttributes = [NSForegroundColorAttributeName : Styles.mainColor]
     }
 
 }

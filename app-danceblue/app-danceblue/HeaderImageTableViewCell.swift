@@ -38,7 +38,6 @@ class HeaderImageTableViewCell: UITableViewCell, BlogDetailsHeaderImageDelegate 
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         guard let header = headerImageView else { return CGSize() }
         let height: CGFloat = descriptionLabel.sizeThatFits(CGSize(width: bounds.width - 40.0, height: .greatestFiniteMagnitude)).height + header.frame.height + 8.0 + 8.0
-        print(header.frame.height)
         return CGSize(width: bounds.width, height: height)
         
     }

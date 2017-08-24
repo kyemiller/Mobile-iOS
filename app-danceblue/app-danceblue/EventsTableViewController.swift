@@ -41,6 +41,20 @@ class EventsTableViewController: UITableViewController {
         setupFirebase()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        setUpNavigation()
+    }
+    
+    func setUpNavigation() {
+        guard let navigation = self.navigationController?.navigationBar else { return }
+        
+        self.title = "Events"
+        navigation.tintColor = Styles.black
+        navigation.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 24.0) ?? UIFont(), NSForegroundColorAttributeName : Styles.black]
+        navigation.isTranslucent = true
+        navigation.barTintColor = Styles.white
+    }
+    
     func setupTableView() {
         tableView.separatorInset = .zero
         tableView.separatorStyle = .none
@@ -100,7 +114,6 @@ class EventsTableViewController: UITableViewController {
         
         thisWeekAddHandle = firebaseReference?.child("events").child("thisWeek").observe(.childAdded, with: { (snapshot) in
             let event = Event(from: snapshot.value as! [String : AnyObject])
-            print(snapshot.value!)
             self.thisWeekMap[event.id!] = event
             self.eventData[0].append(event)
             self.sortEvents(section: 0)
