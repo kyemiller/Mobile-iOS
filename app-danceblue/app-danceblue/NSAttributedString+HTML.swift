@@ -13,8 +13,8 @@ extension NSAttributedString {
     class func stringFromHtml(_ message: String) -> NSMutableAttributedString? {
         do {
             if let data = message.data(using: String.Encoding.utf16, allowLossyConversion: true) {
-                let str = try NSMutableAttributedString(data: data,options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSForegroundColorAttributeName: Styles.black],documentAttributes: nil)
-                str.addAttribute(NSFontAttributeName, value: Styles.blogBodyFont, range: NSMakeRange(0, str.length))
+                let str = try NSMutableAttributedString(data: data,options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSForegroundColorAttributeName: Theme.Color.black],documentAttributes: nil)
+                str.addAttribute(NSFontAttributeName, value: Theme.Font.blog, range: NSMakeRange(0, str.length))
                 
                 let paragraphStyle = NSMutableParagraphStyle()
                 paragraphStyle.alignment = .left

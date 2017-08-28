@@ -43,17 +43,8 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        setUpNavigation()
-    }
-    
-    func setUpNavigation() {
-        guard let navigation = self.navigationController?.navigationBar else { return }
-        
+        setUpNavigation(controller: navigationController)
         self.title = "Blog"
-        navigation.tintColor = Styles.black
-        navigation.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 24.0) ?? UIFont(), NSForegroundColorAttributeName : Styles.black]
-        navigation.isTranslucent = true
-        navigation.barTintColor = Styles.white
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -121,7 +112,6 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
             self.blogMap["\(post.id!)"] = post
             self.blogData.append(post)
             self.sortPosts()
-           // self.collectionView?.reloadData()
         })
         
         blogChangeHandle = firebaseReference?.child("blog").child("recent").observe(.childChanged, with: { (snapshot) in

@@ -29,7 +29,6 @@ class BlogCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
     func configureCell(with details: BlogDetails) {
         self.details = details
         details.delegate = self
-        blogImageView.clipsToBounds = true
         updateWithContent()
         setupViews()
     }
@@ -40,7 +39,7 @@ class BlogCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
     }
     
     func setupViews() {
-        loadingIndicator.color = Styles.loadingIndicatorColor
+        loadingIndicator.color = Theme.Color.loader
         loadingIndicator.type = .ballScale
         if details?.image == nil {
             loadingIndicator.startAnimating()

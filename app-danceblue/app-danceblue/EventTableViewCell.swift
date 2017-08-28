@@ -11,7 +11,7 @@ import FirebaseStorage
 import NVActivityIndicatorView
 
 
-class EventTableViewCell: UITableViewCell, EventDelegate {
+class EventTableViewCell: UITableViewCell {
     
     static let identifier = "EventCell"
     
@@ -26,19 +26,27 @@ class EventTableViewCell: UITableViewCell, EventDelegate {
     let gradient = CAGradientLayer()
 
     private var event: Event?
-    private var isImageDownloaded: Bool = false
+    private var indexPath: IndexPath?
+    fileprivate var isImageDownloaded: Bool = false
     
     // MARK: - Initialization
+    
+    override func awakeFromNib() {
+        headerImageView.layer.cornerRadius = 10.0
+        headerImageView.clipsToBounds = true
+        headerImageView.backgroundColor = Theme.Color.background
+    }
 
+    // MARK: - Configuration
+    
     func configureCell(with event: Event, for indexPath: IndexPath) {
-
         self.event = event
+        self.indexPath = indexPath
         event.delegate = self
         
         setupLoadingIndicator()
         updateWithContent()
         layoutHeaderImage()
-        layoutContainerShadow()
     }
     
     func updateWithContent() {
@@ -53,7 +61,7 @@ class EventTableViewCell: UITableViewCell, EventDelegate {
 
     
     func setupLoadingIndicator() {
-        loadingIndicatorView.color = Styles.loadingIndicatorColor
+        loadingIndicatorView.color = Theme.Color.loader
         loadingIndicatorView.type = .ballScale
         if !isImageDownloaded {
             loadingIndicatorView.startAnimating()
@@ -62,23 +70,26 @@ class EventTableViewCell: UITableViewCell, EventDelegate {
     
     // MARK: - Layout
     
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        
+        let x = headerImageView.sizeThatFits(CGSize(width: size.width - 40.0, height: .greatestFiniteMagnitude)).height + dateLabel.sizeThatFits(CGSize(width: size.width - 40.0, height: .greatestFiniteMagnitude)).height
+        
+        return CGSize(width: size.width, height: x)
+    }
+    
     func layoutHeaderImage() {
-        headerImageView.clipsToBounds = true
-        headerImageView.backgroundColor = Styles.imageBackgroundColor
         gradient.startPoint = CGPoint(x: 0.5, y: 0.5)
         gradient.endPoint = CGPoint(x: 0.5, y: 1.0)
-        gradient.colors = [Styles.clear.cgColor, Styles.black.cgColor]
+        gradient.colors = [Theme.Color.clear.cgColor, Theme.Color.black.cgColor]
         gradient.frame = headerImageView.frame
+        gradient.cornerRadius = 10.0
     }
     
-    func layoutContainerShadow() {
-        containerView.layer.shadowColor = Styles.black.cgColor
-        containerView.layer.shadowOffset = .zero
-        containerView.layer.shadowOpacity = 0.3
-        containerView.layer.shadowRadius = 5.0
-    }
-    
-    // MARK: - Event Delegate
+}
+
+// MARK: - Event Delegate
+
+extension EventTableViewCell: EventDelegate {
     
     func event(didFinishDownloadingImage image: UIImage) {
         headerImageView?.image = image
@@ -86,5 +97,5 @@ class EventTableViewCell: UITableViewCell, EventDelegate {
         loadingIndicatorView.stopAnimating()
         isImageDownloaded = true
     }
-
+    
 }

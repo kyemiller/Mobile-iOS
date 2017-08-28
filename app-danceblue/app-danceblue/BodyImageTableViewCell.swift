@@ -41,7 +41,7 @@ class BodyImageTableViewCell: UITableViewCell, BlogDetailsBodyImageDelegate {
     
     func setupViews() {
         loadingIndicator.type = .ballScale
-        loadingIndicator.color = Styles.loadingIndicatorColor
+        loadingIndicator.color = Theme.Color.loader
         if data?.image == nil {
             loadingIndicator.startAnimating()
         } else {

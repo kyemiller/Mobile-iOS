@@ -42,24 +42,15 @@ class EventsTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        setUpNavigation()
-    }
-    
-    func setUpNavigation() {
-        guard let navigation = self.navigationController?.navigationBar else { return }
-        
+        setUpNavigation(controller: navigationController)
         self.title = "Events"
-        navigation.tintColor = Styles.black
-        navigation.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 24.0) ?? UIFont(), NSForegroundColorAttributeName : Styles.black]
-        navigation.isTranslucent = true
-        navigation.barTintColor = Styles.white
     }
     
     func setupTableView() {
         tableView.separatorInset = .zero
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
-        tableView.backgroundColor = Styles.tableViewColor
+        tableView.backgroundColor = Theme.Color.background
     }
 
 
@@ -74,7 +65,7 @@ class EventsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return 365
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

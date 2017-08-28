@@ -47,7 +47,7 @@ class EventDetailsViewController: UIViewController, EventDelegate {
     func setupNavigation() {
         guard let navigation = self.navigationController?.navigationBar else { return }
         navigation.isTranslucent = true
-        navigation.tintColor = Styles.mainColor
+        navigation.tintColor = Theme.Color.main
 
     }
     

@@ -36,7 +36,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         super.viewDidLoad()
         setupFirebase()
         setupCollectionView()
-        
     }
     
     func setupCollectionView() {
@@ -51,21 +50,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        setUpNavigation()
+        setUpNavigation(controller: navigationController)
+        self.title = "Announcements"
     }
-    
-    func setUpNavigation() {
-        guard let navigation = self.navigationController?.navigationBar else { return }
-        
-        self.title = "Home"
-        navigation.tintColor = Styles.black
-        navigation.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 24.0) ?? UIFont(), NSForegroundColorAttributeName : Styles.black]
-        navigation.isTranslucent = true
-        navigation.barTintColor = Styles.white
-    }
-    
-
-
     
     func setupFirebase() {
         firebaseReference = Database.database().reference()

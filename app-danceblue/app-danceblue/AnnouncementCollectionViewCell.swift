@@ -25,7 +25,7 @@ class AnnouncementCollectionViewCell: UICollectionViewCell, AnnouncementDelegate
         
         shadowView.layer.cornerRadius = 10.0
         shadowView.layer.shadowRadius = 10.0
-        shadowView.layer.shadowColor = Styles.black.cgColor
+        shadowView.layer.shadowColor = Theme.Color.black.cgColor
         shadowView.layer.shadowOpacity = 0.1
         
         background.layer.cornerRadius = 10.0

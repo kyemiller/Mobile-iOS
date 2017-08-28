@@ -40,7 +40,7 @@ class FeaturedCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
     }
     
     func setupViews() {
-        loadingIndicator.color = Styles.loadingIndicatorColor
+        loadingIndicator.color = Theme.Color.loader
         loadingIndicator.type = .ballScale
         if details?.image == nil {
             loadingIndicator.startAnimating()
