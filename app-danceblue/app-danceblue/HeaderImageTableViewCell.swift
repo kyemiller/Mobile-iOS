@@ -27,6 +27,7 @@ class HeaderImageTableViewCell: UITableViewCell, BlogDetailsHeaderImageDelegate 
     override func awakeFromNib() {
         super.awakeFromNib()
         headerImageView.clipsToBounds = true
+        headerImageView.backgroundColor = Theme.Color.background
     }
     
     func configureCell(with data: BCHeaderImage) {
@@ -43,7 +44,7 @@ class HeaderImageTableViewCell: UITableViewCell, BlogDetailsHeaderImageDelegate 
     }
     
     func setupViews() {
-        loadingIndicator.color = Styles.loadingIndicatorColor
+        loadingIndicator.color = Theme.Color.loader
         loadingIndicator.type = .ballScale
         descriptionLabel.text = data?.description
         if data?.image == nil {

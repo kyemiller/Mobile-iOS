@@ -16,23 +16,14 @@ class DonateViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        setUpNavigation()
-    }
-    
-    func setUpNavigation() {
-        guard let navigation = self.navigationController?.navigationBar else { return }
-        
+        setUpNavigation(controller: navigationController, hidesBar: false)
         self.title = "Donate"
-        navigation.tintColor = Styles.black
-        navigation.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 24.0) ?? UIFont(), NSForegroundColorAttributeName : Styles.black]
-        navigation.isTranslucent = true
-        navigation.barTintColor = Styles.white
     }
 
     @IBAction func didTapDonate(_ sender: Any) {
         if let url = URL(string: "https://danceblue.networkforgood.com") {
             let svc = SFSafariViewController(url: url)
-            svc.preferredControlTintColor = Styles.mainColor
+            svc.preferredControlTintColor = Theme.Color.main
             self.present(svc, animated: true, completion: nil)
         }
     }

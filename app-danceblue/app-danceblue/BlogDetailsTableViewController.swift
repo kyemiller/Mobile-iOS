@@ -22,24 +22,20 @@ class BlogDetailsTableViewController: UITableViewController, BlogHeaderImageDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         chunks = post?.chunks
-        UIApplication.shared.isStatusBarHidden = true
-        self.tableView.bounces = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavigation()
-        
+        if navigationController?.isNavigationBarHidden ?? false {
+            navigationController?.setNavigationBarHidden(false, animated: false)
+        }
+        setUpNavigation(controller: navigationController, hidesBar: false)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
     }
     
-    func setupNavigation() {
-        guard let navigation = self.navigationController?.navigationBar else { return }
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
-        self.navigationController?.hidesBarsOnSwipe = true
-        navigation.topItem?.title = ""
-        navigation.tintColor = Styles.mainColor
+    func setupTableView() {
         
     }
     

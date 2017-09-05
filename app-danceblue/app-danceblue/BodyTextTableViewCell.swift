@@ -22,7 +22,7 @@ class BodyTextTableViewCell: UITableViewCell {
     }
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let adjustedHeight = 8.0 + bodyTextLabel.sizeThatFits(CGSize(width: bounds.width - 40, height: size.height)).height
+        let adjustedHeight = 24.0 + bodyTextLabel.sizeThatFits(CGSize(width: size.width - 40, height: size.height)).height
         return CGSize(width: bounds.width, height: adjustedHeight)
     }
     

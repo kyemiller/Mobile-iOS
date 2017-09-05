@@ -46,7 +46,7 @@ class Announcement: Mappable {
         guard let url = self.imageString else { return }
         let gsReference = storage.reference(forURL: url)
         
-        gsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+        gsReference.getData(maxSize: 2 * 1024 * 1024) { data, error in
             if let error = error {
                 log.debug("Error: \(error.localizedDescription)")
             } else {

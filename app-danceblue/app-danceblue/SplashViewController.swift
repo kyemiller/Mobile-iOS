@@ -40,7 +40,7 @@ class SplashViewController: UIViewController, AnnouncementCollectionViewDelegate
     }
     
     func setupLoadingIndicator() {
-        loadingIndicatorView.color = Styles.white
+        loadingIndicatorView.color = Theme.Color.white
         loadingIndicatorView.type = .ballScale
         loadingIndicatorView.alpha = 0.8
         loadingIndicatorView.startAnimating()

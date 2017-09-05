@@ -1,17 +1,17 @@
 //
-//  BlogCollectionViewCell.swift
+//  BlogVerticalCollectionViewCell.swift
 //  app-danceblue
 //
-//  Created by Blake Swaidner on 7/31/17.
+//  Created by Blake Swaidner on 08/30/17.
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
 import UIKit
 import NVActivityIndicatorView
 
-class BlogCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
+class BlogHorizontalCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
     
-    static let identifier = "BlogCell"
+    static let identifier = "BlogHorizontalCell"
     
     @IBOutlet weak var blogImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -24,6 +24,7 @@ class BlogCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
     override func awakeFromNib() {
         blogImageView.layer.cornerRadius = 5.0
         blogImageView.clipsToBounds = true
+        blogImageView.backgroundColor = Theme.Color.background
     }
     
     func configureCell(with details: BlogDetails) {
@@ -40,7 +41,7 @@ class BlogCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
     }
     
     func setupViews() {
-        loadingIndicator.color = Styles.loadingIndicatorColor
+        loadingIndicator.color = Theme.Color.loader
         loadingIndicator.type = .ballScale
         if details?.image == nil {
             loadingIndicator.startAnimating()

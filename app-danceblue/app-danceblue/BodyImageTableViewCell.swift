@@ -24,6 +24,7 @@ class BodyImageTableViewCell: UITableViewCell, BlogDetailsBodyImageDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         bodyImageView.clipsToBounds = true
+        bodyImageView.backgroundColor = Theme.Color.background
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -41,7 +42,7 @@ class BodyImageTableViewCell: UITableViewCell, BlogDetailsBodyImageDelegate {
     
     func setupViews() {
         loadingIndicator.type = .ballScale
-        loadingIndicator.color = Styles.loadingIndicatorColor
+        loadingIndicator.color = Theme.Color.loader
         if data?.image == nil {
             loadingIndicator.startAnimating()
         } else {

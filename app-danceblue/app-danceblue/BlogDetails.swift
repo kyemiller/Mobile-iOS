@@ -36,7 +36,12 @@ class BlogDetails: Mappable {
     func mapping(map: Map) {
         author <- map["author"]
         title <- map["title"]
-        timestamp <- (map["timestamp"], DateTransform())
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        if let dateString = map["timestamp"].currentValue as? String, let date = dateFormatter.date(from: dateString) {
+            timestamp = date
+        }
         imageString <- map["image"]
     }
  
@@ -45,7 +50,7 @@ class BlogDetails: Mappable {
         guard let url = self.imageString else { return }
         let gsReference = storage.reference(forURL: url)
         
-        gsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+        gsReference.getData(maxSize: 2 * 1024 * 1024) { data, error in
             if let error = error {
                 log.debug("Error: \(error.localizedDescription)")
             } else {

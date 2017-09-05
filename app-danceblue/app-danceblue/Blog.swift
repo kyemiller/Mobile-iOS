@@ -26,4 +26,5 @@ class Blog: Mappable {
         id <- map["id"]
         details <- map["details"]
     }
+    
 }

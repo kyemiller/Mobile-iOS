@@ -31,7 +31,6 @@ class BCData: Mappable {
     var type: BCType
     
     required init?(map: Map) {
-        
         guard let chunkType = map.JSON["type"] as? String else {
             type = .details
             return
@@ -53,7 +52,6 @@ class BCData: Mappable {
         default:
             type = .bodyText
         }
-    
     }
     
     func mapping(map: Map) {
@@ -78,6 +76,6 @@ class BCData: Mappable {
         case .sectionTitle:
             sectionTitleData <- map["data"]
         }
-        
     }
+    
 }
