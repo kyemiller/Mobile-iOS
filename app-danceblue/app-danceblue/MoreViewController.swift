@@ -18,7 +18,7 @@ class MoreViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setUpNavigation(controller: navigationController)
+        setUpNavigation(controller: navigationController, hidesBar: false)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Get Gear Icon", style: .plain, target: self, action: #selector(settingsTapped))
         self.title = "More"
     }

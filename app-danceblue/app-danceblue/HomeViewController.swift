@@ -50,7 +50,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        setUpNavigation(controller: navigationController)
+        setUpNavigation(controller: navigationController, hidesBar: false)
         self.title = "Announcements"
     }
     

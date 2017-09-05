@@ -33,7 +33,7 @@ class QuoteTableViewCell: UITableViewCell {
     }
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {        
-        let adjustedHeight = 12.0 + quoteIcon.frame.height + quoteLabel.sizeThatFits(CGSize(width: bounds.width - 40, height: size.height)).height
+        let adjustedHeight = 28.0 + quoteIcon.frame.height + quoteLabel.sizeThatFits(CGSize(width: bounds.width - 40, height: size.height)).height
         return CGSize(width: size.width, height: adjustedHeight)
     }
 

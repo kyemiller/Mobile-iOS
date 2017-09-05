@@ -35,6 +35,6 @@
 	<key>GOOGLE_APP_ID</key>
 	<string>1:4521399615:ios:77c45223ef47bf99</string>
 	<key>DATABASE_URL</key>
-	<string>https://app-danceblue.firebaseio.com</string>
+	<string>https://app-danceblue.firebaseio.com/</string>
 </dict>
 </plist>

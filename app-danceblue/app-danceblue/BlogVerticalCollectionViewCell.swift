@@ -1,5 +1,5 @@
 //
-//  FeaturedCollectionViewCell.swift
+//  BlogVerticalCollectionViewCell.swift
 //  app-danceblue
 //
 //  Created by Blake Swaidner on 7/31/17.
@@ -9,11 +9,11 @@
 import UIKit
 import NVActivityIndicatorView
 
-class FeaturedCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
+class BlogVerticalCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
     
-    static let identifier = "FeaturedCell"
+    static let identifier = "BlogVerticalCell"
     
-    @IBOutlet weak var featuredImageView: UIImageView!
+    @IBOutlet weak var blogImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var loadingIndicator: NVActivityIndicatorView!
@@ -22,15 +22,15 @@ class FeaturedCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
     private var isImageDownloaded: Bool = false
     
     override func awakeFromNib() {
-        featuredImageView.layer.cornerRadius = 5.0
-        featuredImageView.clipsToBounds = true
-        featuredImageView.backgroundColor = Theme.Color.background
+        blogImageView.layer.cornerRadius = 5.0
+        blogImageView.clipsToBounds = true
+        blogImageView.backgroundColor = Theme.Color.background
     }
     
     func configureCell(with details: BlogDetails) {
         self.details = details
         details.delegate = self
-        
+        blogImageView.clipsToBounds = true
         updateWithContent()
         setupViews()
     }
@@ -47,15 +47,14 @@ class FeaturedCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
             loadingIndicator.startAnimating()
         } else {
             loadingIndicator.stopAnimating()
-            featuredImageView.image = details?.image
+            blogImageView.image = details?.image
         }
     }
     
     func blog(didFinishDownloading image: UIImage) {
-        print("here")
-        featuredImageView?.image = image
+        blogImageView?.image = image
         loadingIndicator.stopAnimating()
         isImageDownloaded = true
     }
-
+    
 }

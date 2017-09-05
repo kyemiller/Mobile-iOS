@@ -16,7 +16,12 @@ class BCDetails: Mappable {
             guard let array = dataArray else { return }
             if array.count > 2 {
                 title = array[0] as? String
-                timestamp = array[1] as? Date
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                
+                if let dateString = array[1] as? String, let date = dateFormatter.date(from: dateString) {
+                    timestamp = date
+                }
                 author = array[2] as? String
             }
         }

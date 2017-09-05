@@ -24,6 +24,7 @@ class BodyImageTableViewCell: UITableViewCell, BlogDetailsBodyImageDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         bodyImageView.clipsToBounds = true
+        bodyImageView.backgroundColor = Theme.Color.background
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {

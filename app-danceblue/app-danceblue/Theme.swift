@@ -24,7 +24,7 @@ struct Theme {
         static let white: UIColor = .white
         static let black: UIColor = .black
         static let clear: UIColor = UIColor(colorLiteralRed: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
-        static let background: UIColor = UIColor(colorLiteralRed: 190.0/255.0, green: 190.0/255.0, blue: 190.0/255.0, alpha: 1.0)
+        static let background: UIColor = UIColor(colorLiteralRed: 225.0/255.0, green: 225.0/255.0, blue: 225.0/255.0, alpha: 1.0)
         static let loader: UIColor = UIColor(colorLiteralRed: 56.0/255.0, green: 56.0/255.0, blue: 56.0/255.0, alpha: 0.7)
         static let main: UIColor = UIColor(colorLiteralRed: 9.0/255.0, green: 61/255.0, blue: 161/255.0, alpha: 1.0)
     }

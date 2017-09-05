@@ -25,19 +25,19 @@ class DetailsTableViewCell: UITableViewCell {
 
     func configureCell(with data: BCDetails) {
         self.data = data
-
+        guard let date = data.timestamp else { return }
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM d, yyyy"
         
         titleLabel.text = data.title
         authorLabel.text = data.author
-        guard let date = data.timestamp else { return }
-        dateLabel.text = formatter.string(from: date)
+        dateLabel.text = "• \(formatter.string(from: date))"
         
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let adjustedHeight = 16.0 + dateLabel.frame.height + authorLabel.frame.height + titleLabel.sizeThatFits(CGSize(width: bounds.width - 40, height: size.height)).height
+        let adjustedHeight = 24.0 + dateLabel.frame.height + authorLabel.frame.height + titleLabel.sizeThatFits(CGSize(width: bounds.width - 40, height: size.height)).height
         return CGSize(width: bounds.width, height: adjustedHeight)
     }
     

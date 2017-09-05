@@ -42,7 +42,7 @@ class EventsTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        setUpNavigation(controller: navigationController)
+        setUpNavigation(controller: navigationController, hidesBar: false)
         self.title = "Events"
     }
     

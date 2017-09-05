@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-func setUpNavigation(controller: UINavigationController?) {
+func setUpNavigation(controller: UINavigationController?, hidesBar: Bool) {
     guard let navigation = controller?.navigationBar else { return }
-    controller?.hidesBarsOnTap = true
-    controller?.hidesBarsOnSwipe = true
+    controller?.hidesBarsOnTap = hidesBar
+    controller?.hidesBarsOnSwipe = hidesBar
     navigation.tintColor = Theme.Color.black
     navigation.titleTextAttributes = [NSFontAttributeName : UIFont.systemFont(ofSize: 18, weight: UIFontWeightHeavy), NSForegroundColorAttributeName : Theme.Color.black]
     navigation.isTranslucent = true

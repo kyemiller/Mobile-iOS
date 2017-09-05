@@ -11,8 +11,6 @@
 	<string>&quot;We want your money&quot;</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>“Allow us to access your current location for directions!”</string>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>

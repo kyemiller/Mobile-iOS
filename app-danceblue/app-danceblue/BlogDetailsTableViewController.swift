@@ -22,15 +22,21 @@ class BlogDetailsTableViewController: UITableViewController, BlogHeaderImageDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         chunks = post?.chunks
-        UIApplication.shared.isStatusBarHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setUpNavigation(controller: navigationController)
+        if navigationController?.isNavigationBarHidden ?? false {
+            navigationController?.setNavigationBarHidden(false, animated: false)
+        }
+        setUpNavigation(controller: navigationController, hidesBar: false)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
-        self.navigationController?.navigationBar.topItem?.title = ""
+    }
+    
+    func setupTableView() {
+        
     }
     
     func share() {

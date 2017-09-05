@@ -81,7 +81,7 @@ class EventTableViewCell: UITableViewCell {
         gradient.startPoint = CGPoint(x: 0.5, y: 0.5)
         gradient.endPoint = CGPoint(x: 0.5, y: 1.0)
         gradient.colors = [Theme.Color.clear.cgColor, Theme.Color.black.cgColor]
-        gradient.frame = headerImageView.frame
+        gradient.frame = headerImageView.bounds
         gradient.cornerRadius = 10.0
     }
     

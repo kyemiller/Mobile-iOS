@@ -27,6 +27,7 @@ class HeaderImageTableViewCell: UITableViewCell, BlogDetailsHeaderImageDelegate 
     override func awakeFromNib() {
         super.awakeFromNib()
         headerImageView.clipsToBounds = true
+        headerImageView.backgroundColor = Theme.Color.background
     }
     
     func configureCell(with data: BCHeaderImage) {
