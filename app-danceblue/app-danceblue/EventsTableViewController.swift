@@ -31,7 +31,6 @@ class EventsTableViewController: UITableViewController {
     private var comingUpMap: [String : Event] = [:]
     private var eventData: [[Event]] = [[],[]]
     private var sectionData: [String] = ["This Week", "Coming Up"]
-    let eventDetailsSegueIdentifier = "EventDetailsSegue"
     
     // MARK: - Initialization
     
@@ -49,9 +48,11 @@ class EventsTableViewController: UITableViewController {
     func setupTableView() {
         tableView.separatorInset = .zero
         tableView.separatorStyle = .none
-        tableView.allowsSelection = false
+        tableView.allowsSelection = true
         tableView.backgroundColor = Theme.Color.background
     }
+    
+    
 
 
     // MARK: - Tableview
@@ -83,10 +84,11 @@ class EventsTableViewController: UITableViewController {
     // MARK: - Storyboard
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let eventDetailsViewController = segue.destination as? EventDetailsViewController, segue.identifier == eventDetailsSegueIdentifier, let section = tableView.indexPathForSelectedRow?.section, let row = tableView.indexPathForSelectedRow?.row {
+        print("HERe")
+        if let eventDetailsViewController = segue.destination as? EventDetailsViewController, segue.identifier == "EventSegue", let section = tableView.indexPathForSelectedRow?.section, let row = tableView.indexPathForSelectedRow?.row {
+            print("HEEE")
             eventDetailsViewController.event = eventData[section][row]
         }
-        
     }
     
     // MARK: - Utility 
@@ -155,4 +157,5 @@ class EventsTableViewController: UITableViewController {
             self.tableView.reloadData()
         })
     }
+    
 }

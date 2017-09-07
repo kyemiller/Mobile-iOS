@@ -8,6 +8,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import Gifu
 
 class BodyImageTableViewCell: UITableViewCell, BlogDetailsBodyImageDelegate {
     
@@ -15,16 +16,20 @@ class BodyImageTableViewCell: UITableViewCell, BlogDetailsBodyImageDelegate {
     
     private var data: BCBodyImage?
 
-    @IBOutlet weak var bodyImageView: UIImageView!
+    @IBOutlet weak var bodyImageView: GIFImageView!
     @IBOutlet weak var loadingIndicator: NVActivityIndicatorView!
     @IBOutlet weak var descriptionLabel: UILabel!
-    
-    weak var delegate: BlogHeaderImageDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         bodyImageView.clipsToBounds = true
         bodyImageView.backgroundColor = Theme.Color.background
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        bodyImageView.prepareForReuse()
+        bodyImageView.image = nil
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -41,20 +46,30 @@ class BodyImageTableViewCell: UITableViewCell, BlogDetailsBodyImageDelegate {
     }
     
     func setupViews() {
+        guard let data = data else { return }
         loadingIndicator.type = .ballScale
         loadingIndicator.color = Theme.Color.loader
-        if data?.image == nil {
+        if data.image == nil {
             loadingIndicator.startAnimating()
         } else {
+            if data.isGif ?? false {
+                bodyImageView.animate(withGIFData: data.data ?? Data())
+            } else {
+                bodyImageView.image = data.image
+        }
             loadingIndicator.stopAnimating()
-            bodyImageView.image = data?.image
         }
     }
 
     // MARK: - BlogDetailsBodyImageDelegate
     
     func bodyImage(didFinishDownloading image: UIImage?) {
-        bodyImageView.image = image
+        guard let data = data else { return }
+        if data.isGif ?? false {
+            bodyImageView.animate(withGIFData: data.data ?? Data())
+        } else {
+            bodyImageView.image = image
+        }
         loadingIndicator.stopAnimating()
     }
 }

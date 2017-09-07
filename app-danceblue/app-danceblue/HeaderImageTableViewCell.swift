@@ -9,10 +9,6 @@
 import UIKit
 import NVActivityIndicatorView
 
-protocol BlogHeaderImageDelegate: class {
-    func didTapBackButton()
-}
-
 class HeaderImageTableViewCell: UITableViewCell, BlogDetailsHeaderImageDelegate {
 
     static let identifier = "HeaderImageCell"
@@ -21,8 +17,6 @@ class HeaderImageTableViewCell: UITableViewCell, BlogDetailsHeaderImageDelegate 
     @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var loadingIndicator: NVActivityIndicatorView!
     @IBOutlet weak var descriptionLabel: UILabel!
-    
-    weak var delegate: BlogHeaderImageDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -8,21 +8,25 @@
 
 import UIKit
 
+protocol BodyTextTableViewDelegate: class {
+    func textView(didPresentSafariViewController url: URL)
+}
+
 class BodyTextTableViewCell: UITableViewCell {
 
     static let identifier = "BodyTextCell"
 
-    @IBOutlet weak var bodyTextLabel: UILabel!
+    @IBOutlet weak var bodyTextView: UITextView!
     
     private var data: BCBodyText?
+    weak var delegate: BodyTextTableViewDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let adjustedHeight = 24.0 + bodyTextLabel.sizeThatFits(CGSize(width: size.width - 40, height: size.height)).height
+        let adjustedHeight = 24.0 + bodyTextView.sizeThatFits(CGSize(width: size.width - 40, height: size.height)).height
         return CGSize(width: bounds.width, height: adjustedHeight)
     }
     
@@ -33,7 +37,29 @@ class BodyTextTableViewCell: UITableViewCell {
     
     func setupViews() {
         guard let text = data?.bodyText else { return }
-        bodyTextLabel.attributedText = NSAttributedString.stringFromHtml(text)
+        bodyTextView.delegate = self
+        bodyTextView.dataDetectorTypes = [.link]
+        bodyTextView.attributedText = NSAttributedString.stringFromHtml(text)
+        bodyTextView.linkTextAttributes = [NSForegroundColorAttributeName: Theme.Color.main]
+        bodyTextView.isSelectable = true
+        bodyTextView.isEditable = false
+        bodyTextView.tintColor = Theme.Color.main
+        bodyTextView.textContainerInset = .zero
+        bodyTextView.contentInset = .zero
+        bodyTextView.textContainer.lineFragmentPadding = 0.0
     }
     
+}
+
+extension BodyTextTableViewCell: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        
+        if URL.absoluteString.contains("mailto:") {
+            return true
+        }
+        
+        delegate?.textView(didPresentSafariViewController: URL)
+        return false
+    }
 }

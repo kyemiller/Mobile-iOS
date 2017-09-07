@@ -25,6 +25,9 @@ class BlogHorizontalCollectionViewCell: UICollectionViewCell, BlogDetailsDelegat
         blogImageView.layer.cornerRadius = 5.0
         blogImageView.clipsToBounds = true
         blogImageView.backgroundColor = Theme.Color.background
+        loadingIndicator.color = Theme.Color.loader
+        loadingIndicator.type = .ballScale
+        loadingIndicator.startAnimating()
     }
     
     func configureCell(with details: BlogDetails) {
@@ -41,8 +44,6 @@ class BlogHorizontalCollectionViewCell: UICollectionViewCell, BlogDetailsDelegat
     }
     
     func setupViews() {
-        loadingIndicator.color = Theme.Color.loader
-        loadingIndicator.type = .ballScale
         if details?.image == nil {
             loadingIndicator.startAnimating()
         } else {

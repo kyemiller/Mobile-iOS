@@ -156,11 +156,9 @@
 		CB0E9A681F23FB3F00A717DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CB19AF2F1F32C7D000429C18 /* Body Chunks */,
+				CB6604FE1F61999D00FBC1CA /* Blog */,
 				CB0E9A7B1F24280200A717DC /* Event.swift */,
 				CB7DE1D11F25267200235145 /* Announcement.swift */,
-				CB8CDCF91F2FFD3500CF822A /* Blog.swift */,
-				CB19AF3A1F32C94800429C18 /* BlogDetails.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -247,6 +245,16 @@
 				CB19AF401F3499A600429C18 /* SectionTitleTableViewCell.swift */,
 			);
 			name = "BC Cell Types";
+			sourceTree = "<group>";
+		};
+		CB6604FE1F61999D00FBC1CA /* Blog */ = {
+			isa = PBXGroup;
+			children = (
+				CB8CDCF91F2FFD3500CF822A /* Blog.swift */,
+				CB19AF3A1F32C94800429C18 /* BlogDetails.swift */,
+				CB19AF2F1F32C7D000429C18 /* Body Chunks */,
+			);
+			name = Blog;
 			sourceTree = "<group>";
 		};
 		CB7DE1CD1F25149900235145 /* Home */ = {
@@ -421,6 +429,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-app-danceblue/Pods-app-danceblue-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/Gifu/Gifu.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
@@ -433,6 +442,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gifu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",

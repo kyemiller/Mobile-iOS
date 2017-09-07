@@ -24,9 +24,9 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
         blogCollectionView.delegate = self
-        setupFirebase()
         blogCollectionView.allowsSelection = true
         blogCollectionView.contentInset = .init(top: 8.0, left: 0.0, bottom: 8.0, right: 0.0)
+        setupFirebase()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -173,7 +173,7 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
     // MARK: - Utility
     
     func sortPosts() {
-        blogData.sort(by: {$0.details?.timestamp ?? Date() < $1.details?.timestamp ?? Date()})
+        blogData.sort(by: {$0.details?.timestamp ?? Date() > $1.details?.timestamp ?? Date()})
     }
     
 }

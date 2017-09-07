@@ -24,8 +24,20 @@ class EventDetailsViewController: UIViewController, EventDelegate {
         super.viewDidLoad()
         event?.delegate = self
         setupLoadingIndicator()
-        setupNavigation()
         setupHeaderImage()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if navigationController?.isNavigationBarHidden ?? false {
+            navigationController?.setNavigationBarHidden(false, animated: false)
+        }
+        setUpNavigation(controller: navigationController, hidesBar: false)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
+    }
+    
+    func share() {
+        
     }
     
     func setupHeaderImage() {
@@ -42,13 +54,6 @@ class EventDetailsViewController: UIViewController, EventDelegate {
     func setupLoadingIndicator() {
         loadingIndicator.color = .darkGray
         loadingIndicator.type = .ballScale
-    }
-    
-    func setupNavigation() {
-        guard let navigation = self.navigationController?.navigationBar else { return }
-        navigation.isTranslucent = true
-        navigation.tintColor = Theme.Color.main
-
     }
     
     // MARK: - EventDelegate
