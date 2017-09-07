@@ -8,8 +8,9 @@
 
 import UIKit
 import NVActivityIndicatorView
+import SafariServices
 
-class BlogDetailsTableViewController: UITableViewController, BlogHeaderImageDelegate {
+class BlogDetailsTableViewController: UITableViewController {
 
     var post: Blog?
     var chunks: [BCData]? {
@@ -62,7 +63,6 @@ class BlogDetailsTableViewController: UITableViewController, BlogHeaderImageDele
                     shareImage = data.image
                     imageCell.configureCell(with: data)
                     cellHeights[indexPath.row] = imageCell.sizeThatFits(CGSize(width: view.bounds.width, height: .greatestFiniteMagnitude)).height
-                    imageCell.delegate = self
                     return imageCell
                 }
             
@@ -101,6 +101,7 @@ class BlogDetailsTableViewController: UITableViewController, BlogHeaderImageDele
                 if let bodyTextCell = tableView.dequeueReusableCell(withIdentifier: BodyTextTableViewCell.identifier) as? BodyTextTableViewCell {
                     guard let data = bodyChunk.bodyTextData else { return UITableViewCell() }
                     bodyTextCell.configureCell(with: data)
+                    bodyTextCell.delegate = self
                     if cellHeights[indexPath.row] == 0 {
                         cellHeights[indexPath.row] = bodyTextCell.sizeThatFits(CGSize(width: view.bounds.width, height: .greatestFiniteMagnitude)).height
                     }
@@ -131,11 +132,16 @@ class BlogDetailsTableViewController: UITableViewController, BlogHeaderImageDele
         return cellHeights[indexPath.row]
     }
 
-    
-    // MARK: - HeaderImageDelegate 
-    
-    func didTapBackButton() {
-        self.navigationController?.popViewController(animated: true)
-    }
+}
 
+// MARK: - BodyTextTableViewDelegate
+
+extension BlogDetailsTableViewController: BodyTextTableViewDelegate {
+    
+    func textView(didPresentSafariViewController url: URL) {
+        let svc = SFSafariViewController(url: url)
+        svc.preferredControlTintColor = Theme.Color.main
+        self.present(svc, animated: true, completion: nil)
+    }
+    
 }

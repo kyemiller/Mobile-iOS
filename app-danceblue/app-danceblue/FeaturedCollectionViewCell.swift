@@ -25,6 +25,9 @@ class FeaturedCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
         featuredImageView.layer.cornerRadius = 5.0
         featuredImageView.clipsToBounds = true
         featuredImageView.backgroundColor = Theme.Color.background
+        loadingIndicator.color = Theme.Color.loader
+        loadingIndicator.type = .ballScale
+        loadingIndicator.startAnimating()
     }
     
     func configureCell(with details: BlogDetails) {
@@ -41,8 +44,6 @@ class FeaturedCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
     }
     
     func setupViews() {
-        loadingIndicator.color = Theme.Color.loader
-        loadingIndicator.type = .ballScale
         if details?.image == nil {
             loadingIndicator.startAnimating()
         } else {
@@ -52,7 +53,6 @@ class FeaturedCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
     }
     
     func blog(didFinishDownloading image: UIImage) {
-        print("here")
         featuredImageView?.image = image
         loadingIndicator.stopAnimating()
         isImageDownloaded = true

@@ -24,6 +24,8 @@ class BCBodyImage: BCData {
     }
     var image: UIImage?
     var description: String?
+    var isGif: Bool? = false
+    var data: Data?
     
     weak var delegate: BlogDetailsBodyImageDelegate?
     
@@ -34,6 +36,7 @@ class BCBodyImage: BCData {
     override func mapping(map: Map) {
         super.mapping(map: map)
         imageString <- map["image"]
+        isGif <- map["isGif"]
         description <- map ["description"]
     }
     
@@ -42,11 +45,12 @@ class BCBodyImage: BCData {
         guard let url = self.imageString else { return }
         let gsReference = storage.reference(forURL: url)
         
-        gsReference.getData(maxSize: 2 * 1024 * 1024) { data, error in
+        gsReference.getData(maxSize: 3 * 1024 * 1024) { data, error in
             if let error = error {
                 log.debug("Error: \(error.localizedDescription)")
             } else {
                 log.debug("Image downloaded.")
+                self.data = data
                 self.image = UIImage(data: data!)
                 self.delegate?.bodyImage(didFinishDownloading: self.image!)
             }

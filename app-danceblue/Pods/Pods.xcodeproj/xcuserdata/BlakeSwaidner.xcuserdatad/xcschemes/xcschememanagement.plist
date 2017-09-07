@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Gifu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,12 +62,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2164EC3228692A2154C978574D5A055E</key>
+		<key>266AE1506DAD13D34C0725E909C0C476</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>266AE1506DAD13D34C0725E909C0C476</key>
+		<key>3B520FCA52D03EB4E7F1F51442719517</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,12 +77,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>478D6F76F1C06B5D893487E38E786341</key>
+		<key>5B0B5B8A1476F8AA333AA7B53F47E96B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5B0B5B8A1476F8AA333AA7B53F47E96B</key>
+		<key>5B9888C33DE4EBFB8177CEA845DEEA74</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>80B12BE358633784BFDE1AB68179C017</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8203B3640635E74DBDFE10B94ACE50E4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -98,11 +113,6 @@
 			<true/>
 		</dict>
 		<key>E4DD95323C54A78F879DAB0F1508B8E7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EDD010514B5B3261662735BF2F37E33C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
