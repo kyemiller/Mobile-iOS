@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AnnouncementCollectionViewCell: UICollectionViewCell, AnnouncementDelegate {
+class AnnouncementCollectionViewCell: UICollectionViewCell {
 
     static let identifier = "AnnouncementCell"
     
@@ -22,7 +22,6 @@ class AnnouncementCollectionViewCell: UICollectionViewCell, AnnouncementDelegate
     // MARK: - Initialization
     
     override func awakeFromNib() {
-        
         shadowView.layer.cornerRadius = 10.0
         shadowView.layer.shadowRadius = 10.0
         shadowView.layer.shadowColor = Theme.Color.black.cgColor
@@ -37,10 +36,14 @@ class AnnouncementCollectionViewCell: UICollectionViewCell, AnnouncementDelegate
         announcement.delegate = self
     }
     
+}
+
+// MARK: - Announcement Delegate
+
+extension AnnouncementCollectionViewCell: AnnouncementDelegate {
+    
     func announcement(didFinishDownloadingImage image: UIImage) {
         announcementImageView.image = image
     }
-    
-    
     
 }

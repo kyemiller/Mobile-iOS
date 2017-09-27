@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension NSAttributedString {
+    
     class func stringFromHtml(_ message: String) -> NSMutableAttributedString? {
         do {
             if let data = message.data(using: String.Encoding.utf16, allowLossyConversion: true) {
@@ -30,4 +31,5 @@ extension NSAttributedString {
         }
         return nil
     }
+    
 }

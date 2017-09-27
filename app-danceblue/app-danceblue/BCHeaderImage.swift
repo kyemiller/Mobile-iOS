@@ -17,17 +17,18 @@ protocol BlogDetailsHeaderImageDelegate: class {
 
 class BCHeaderImage: Mappable {
     
+    var image: UIImage?
+    var description: String?
     var imageString: String? {
         didSet {
             downloadImageFromFirebase()
         }
     }
-    var image: UIImage?
-    var description: String?
     
     weak var delegate: BlogDetailsHeaderImageDelegate?
     
     required init?(map: Map) {
+        
     }
     
     func mapping(map: Map) {

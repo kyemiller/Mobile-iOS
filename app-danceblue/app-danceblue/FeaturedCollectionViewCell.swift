@@ -9,7 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 
-class FeaturedCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
+class FeaturedCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "FeaturedCell"
     
@@ -18,13 +18,27 @@ class FeaturedCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var loadingIndicator: NVActivityIndicatorView!
     
-    private var details: BlogDetails?
-    private var isImageDownloaded: Bool = false
+    @IBOutlet weak var featuredLabel: UILabel!
+    @IBOutlet weak var featuredUnderlineView: UIView!
+    @IBOutlet weak var recentLabel: UILabel!
+    @IBOutlet weak var recentUnderlineView: UIView!
+    
+    fileprivate var details: BlogDetails?
+    fileprivate var isImageDownloaded: Bool = false
     
     override func awakeFromNib() {
         featuredImageView.layer.cornerRadius = 5.0
         featuredImageView.clipsToBounds = true
         featuredImageView.backgroundColor = Theme.Color.background
+        
+        featuredLabel.font = Theme.Font.header
+        featuredLabel.textColor = Theme.Color.black
+        featuredUnderlineView.backgroundColor = Theme.Color.main
+        
+        recentLabel.font = Theme.Font.header
+        recentLabel.textColor = Theme.Color.black
+        recentUnderlineView.backgroundColor = Theme.Color.main
+        
         loadingIndicator.color = Theme.Color.loader
         loadingIndicator.type = .ballScale
         loadingIndicator.startAnimating()
@@ -33,7 +47,6 @@ class FeaturedCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
     func configureCell(with details: BlogDetails) {
         self.details = details
         details.delegate = self
-        
         updateWithContent()
         setupViews()
     }
@@ -52,10 +65,18 @@ class FeaturedCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
         }
     }
     
-    func blog(didFinishDownloading image: UIImage) {
-        featuredImageView?.image = image
-        loadingIndicator.stopAnimating()
-        isImageDownloaded = true
-    }
+}
 
+// MARK: - BlogDetailsDelegate
+
+extension FeaturedCollectionViewCell: BlogDetailsDelegate {
+    
+    func blog(didFinishDownloading image: UIImage) {
+        if details?.image == image {
+            featuredImageView?.image = image
+            loadingIndicator.stopAnimating()
+            isImageDownloaded = true
+        }
+    }
+    
 }

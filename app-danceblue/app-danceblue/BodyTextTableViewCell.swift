@@ -19,12 +19,9 @@ class BodyTextTableViewCell: UITableViewCell {
     @IBOutlet weak var bodyTextView: UITextView!
     
     private var data: BCBodyText?
+    
     weak var delegate: BodyTextTableViewDelegate?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         let adjustedHeight = 24.0 + bodyTextView.sizeThatFits(CGSize(width: size.width - 40, height: size.height)).height
         return CGSize(width: bounds.width, height: adjustedHeight)
@@ -50,6 +47,8 @@ class BodyTextTableViewCell: UITableViewCell {
     }
     
 }
+
+// MARK: - UITextViewDelegate
 
 extension BodyTextTableViewCell: UITextViewDelegate {
     

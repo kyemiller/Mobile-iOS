@@ -15,8 +15,6 @@ protocol EventsTableViewDelegate: class {
 }
 
 class EventsTableViewController: UITableViewController {
-
-    // TODO: Fix all force unwraps and make code safer!
     
     private var firebaseReference: DatabaseReference?
     private var thisWeekAddHandle: DatabaseHandle?
@@ -29,8 +27,14 @@ class EventsTableViewController: UITableViewController {
     weak var delegate: EventsTableViewDelegate?
     private var thisWeekMap: [String : Event] = [:]
     private var comingUpMap: [String : Event] = [:]
-    private var eventData: [[Event]] = [[],[]]
-    private var sectionData: [String] = ["This Week", "Coming Up"]
+    private var cellHeights: [[CGFloat]] = [[],[]]
+    private var eventData: [[Event]] = [[],[]] {
+        didSet {
+            cellHeights[0] = [CGFloat].init(repeating: 0, count: eventData[0].count)
+            cellHeights[1] = [CGFloat].init(repeating: 0, count: eventData[1].count)
+        }
+    }
+    private var sectionData: [String] = ["THIS WEEK", "COMING UP"]
     
     // MARK: - Initialization
     
@@ -49,24 +53,40 @@ class EventsTableViewController: UITableViewController {
         tableView.separatorInset = .zero
         tableView.separatorStyle = .none
         tableView.allowsSelection = true
-        tableView.backgroundColor = Theme.Color.background
+        tableView.backgroundColor = Theme.Color.white
+        setupRefreshControl()
     }
     
+    func setupRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = Theme.Color.black
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+
+    func refreshTable() {
+        refreshControl?.beginRefreshing()
+        tableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.tableView.refreshControl?.endRefreshing()
+        })
+    }
     
-
-
     // MARK: - Tableview
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: EventTableViewCell.identifier, for: indexPath) as? EventTableViewCell {
-            cell.configureCell(with: eventData[indexPath.section][indexPath.row], for: indexPath)
+            cell.configureCell(with: eventData[indexPath.section][indexPath.row])
+            if cellHeights[indexPath.section][indexPath.row] == 0 {
+               cellHeights[indexPath.section][indexPath.row] = cell.sizeThatFits(CGSize(width: tableView.bounds.width, height: .greatestFiniteMagnitude)).height
+            }
             return cell
         }
         return EventTableViewCell()
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 365
+        return cellHeights[indexPath.section][indexPath.row]
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,13 +100,22 @@ class EventsTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return sectionData.count
     }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 46.0
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = EventsTableViewHeader(frame: CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: 46.0))
+        header.configure(with: sectionData[section])
+        return header
+        
+    }
 
     // MARK: - Storyboard
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("HERe")
         if let eventDetailsViewController = segue.destination as? EventDetailsViewController, segue.identifier == "EventSegue", let section = tableView.indexPathForSelectedRow?.section, let row = tableView.indexPathForSelectedRow?.row {
-            print("HEEE")
             eventDetailsViewController.event = eventData[section][row]
         }
     }
@@ -106,8 +135,9 @@ class EventsTableViewController: UITableViewController {
         // This Week Handles
         
         thisWeekAddHandle = firebaseReference?.child("events").child("thisWeek").observe(.childAdded, with: { (snapshot) in
-            let event = Event(from: snapshot.value as! [String : AnyObject])
-            self.thisWeekMap[event.id!] = event
+            guard let data = snapshot.value as? [String : AnyObject]  else { return }
+            guard let event = Event(JSON: data) else { return }
+            self.thisWeekMap[event.id ?? ""] = event
             self.eventData[0].append(event)
             self.sortEvents(section: 0)
             self.tableView.reloadData()
@@ -115,16 +145,18 @@ class EventsTableViewController: UITableViewController {
         })
         
         thisWeekchangeHandle = firebaseReference?.child("events").child("thisWeek").observe(.childChanged, with: { (snapshot) in
-            let event = Event(from: snapshot.value as! [String : AnyObject])
-            self.thisWeekMap.updateValue(event, forKey: event.id!)
+            guard let data = snapshot.value as? [String : AnyObject]  else { return }
+            guard let event = Event(JSON: data) else { return }
+            self.thisWeekMap.updateValue(event, forKey: event.id ?? "")
             self.eventData[0] = Array(self.thisWeekMap.values)
             self.sortEvents(section: 0)
             self.tableView.reloadData()
         })
         
         thisWeekDeleteHandle = firebaseReference?.child("events").child("thisWeek").observe(.childRemoved, with: { (snapshot) in
-            let event = Event(from: snapshot.value as! [String : AnyObject])
-            self.thisWeekMap.removeValue(forKey: event.id!)
+            guard let data = snapshot.value as? [String : AnyObject]  else { return }
+            guard let event = Event(JSON: data) else { return }
+            self.thisWeekMap.removeValue(forKey: event.id ?? "")
             self.eventData[0] = Array(self.thisWeekMap.values)
             self.sortEvents(section: 0)
             self.tableView.reloadData()
@@ -133,8 +165,9 @@ class EventsTableViewController: UITableViewController {
         // Coming Up Handles
         
         comingUpAddHandle = firebaseReference?.child("events").child("comingUp").observe(.childAdded, with: { (snapshot) in
-            let event = Event(from: snapshot.value as! [String : AnyObject])
-            self.comingUpMap[event.id!] = event
+            guard let data = snapshot.value as? [String : AnyObject]  else { return }
+            guard let event = Event(JSON: data) else { return }
+            self.comingUpMap[event.id ?? ""] = event
             self.eventData[1].append(event)
             self.sortEvents(section: 1)
             self.tableView.reloadData()
@@ -142,16 +175,18 @@ class EventsTableViewController: UITableViewController {
         })
         
         comingUpChangeHandle = firebaseReference?.child("events").child("comingUp").observe(.childChanged, with: { (snapshot) in
-            let event = Event(from: snapshot.value as! [String : AnyObject])
-            self.comingUpMap.updateValue(event, forKey: event.id!)
+            guard let data = snapshot.value as? [String : AnyObject]  else { return }
+            guard let event = Event(JSON: data) else { return }
+            self.comingUpMap.updateValue(event, forKey: event.id ?? "")
             self.eventData[1] = Array(self.comingUpMap.values)
             self.sortEvents(section: 1)
             self.tableView.reloadData()
         })
         
         comingUpDeleteHandle = firebaseReference?.child("events").child("comingUp").observe(.childRemoved, with: { (snapshot) in
-            let event = Event(from: snapshot.value as! [String : AnyObject])
-            self.comingUpMap.removeValue(forKey: event.id!)
+            guard let data = snapshot.value as? [String : AnyObject]  else { return }
+            guard let event = Event(JSON: data) else { return }
+            self.comingUpMap.removeValue(forKey: event.id ?? "")
             self.eventData[1] = Array(self.comingUpMap.values)
             self.sortEvents(section: 1)
             self.tableView.reloadData()

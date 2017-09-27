@@ -9,7 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 
-class BlogHorizontalCollectionViewCell: UICollectionViewCell, BlogDetailsDelegate {
+class BlogHorizontalCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "BlogHorizontalCell"
     
@@ -18,8 +18,8 @@ class BlogHorizontalCollectionViewCell: UICollectionViewCell, BlogDetailsDelegat
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var loadingIndicator: NVActivityIndicatorView!
     
-    private var details: BlogDetails?
-    private var isImageDownloaded: Bool = false
+    fileprivate var details: BlogDetails?
+    fileprivate var isImageDownloaded: Bool = false
     
     override func awakeFromNib() {
         blogImageView.layer.cornerRadius = 5.0
@@ -46,16 +46,25 @@ class BlogHorizontalCollectionViewCell: UICollectionViewCell, BlogDetailsDelegat
     func setupViews() {
         if details?.image == nil {
             loadingIndicator.startAnimating()
+            blogImageView.image = nil
         } else {
             loadingIndicator.stopAnimating()
             blogImageView.image = details?.image
         }
     }
     
+}
+
+// MARK: - BlogDetailsDelegate
+
+extension BlogHorizontalCollectionViewCell: BlogDetailsDelegate {
+    
     func blog(didFinishDownloading image: UIImage) {
-        blogImageView?.image = image
-        loadingIndicator.stopAnimating()
-        isImageDownloaded = true
+        if details?.image == image {
+            blogImageView?.image = image
+            loadingIndicator.stopAnimating()
+            isImageDownloaded = true
+        }
     }
     
 }

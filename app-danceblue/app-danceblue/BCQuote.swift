@@ -14,6 +14,7 @@ class BCQuote: Mappable {
     var quote: String?
     
     required init?(map: Map) {
+
     }
     
     func mapping(map: Map) {

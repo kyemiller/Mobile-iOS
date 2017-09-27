@@ -9,24 +9,43 @@
 import UIKit
 import FirebaseDatabase
 
-class BlogCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class BlogCollectionViewController: UICollectionViewController {
 
     private var firebaseReference: DatabaseReference?
     private var blogAddHandle: DatabaseHandle?
     private var blogChangeHandle: DatabaseHandle?
     private var blogDeleteHandle: DatabaseHandle?
-    
+        
     @IBOutlet var blogCollectionView: UICollectionView!
     
     private var blogData: [Blog] = []
     private var blogMap: [String : Blog] = [:]
+    
+    // MARK: - Initialization
     
     override func viewDidLoad() {
         super.viewDidLoad()
         blogCollectionView.delegate = self
         blogCollectionView.allowsSelection = true
         blogCollectionView.contentInset = .init(top: 8.0, left: 0.0, bottom: 8.0, right: 0.0)
+        blogCollectionView.alwaysBounceVertical = true
+        setupRefreshControl()
         setupFirebase()
+    }
+    
+    func setupRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = Theme.Color.black
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+        blogCollectionView.refreshControl = refreshControl
+    }
+    
+    func refreshTable() {
+        blogCollectionView.refreshControl?.beginRefreshing()
+        blogCollectionView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.blogCollectionView.refreshControl?.endRefreshing()
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,32 +54,9 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
         blogCollectionView.reloadData()
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        print("size")
-        if indexPath.section == 0 {
-            return CGSize(width: self.view.bounds.width, height: 448.0)
-        } else {
-            if indexPath.row > 3 {
-                return CGSize(width: self.view.bounds.width - 40, height: 96.0)
-            } else {
-                return CGSize(width: self.view.bounds.width / 2 - 30, height: 216.0)
-            }
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if section == 0 {
-            return .zero
-        } else {
-            return UIEdgeInsets(top: 8, left: 20, bottom: 20, right: 20)
-        }
-    }
-
-    
     // MARK: - Storyboard
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "FeaturedSegue" {
             if let destination = segue.destination as? BlogDetailsTableViewController,!blogData.isEmpty {
                 destination.post = blogData[0]
@@ -78,7 +74,6 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
                 }
             }
         }
-        
     }
 
     // MARK: - Firebase
@@ -89,7 +84,7 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
         blogAddHandle = firebaseReference?.child("blog").observe(.childAdded, with: { (snapshot) in
             guard let data = snapshot.value as? [String : AnyObject]  else { return }
             guard let post = Blog(JSON: data) else { return }
-            self.blogMap["\(post.id!)"] = post
+            self.blogMap[post.id ?? ""] = post
             self.blogData.append(post)
             self.sortPosts()
             self.blogCollectionView.reloadData()
@@ -174,6 +169,32 @@ class BlogCollectionViewController: UICollectionViewController, UICollectionView
     
     func sortPosts() {
         blogData.sort(by: {$0.details?.timestamp ?? Date() > $1.details?.timestamp ?? Date()})
+    }
+    
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension BlogCollectionViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == 0 {
+            return CGSize(width: self.view.bounds.width, height: 448.0)
+        } else {
+            if indexPath.row > 3 {
+                return CGSize(width: self.view.bounds.width - 40, height: 96.0)
+            } else {
+                return CGSize(width: self.view.bounds.width / 2 - 30, height: 216.0)
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if section == 0 {
+            return .zero
+        } else {
+            return UIEdgeInsets(top: 8, left: 20, bottom: 20, right: 20)
+        }
     }
     
 }

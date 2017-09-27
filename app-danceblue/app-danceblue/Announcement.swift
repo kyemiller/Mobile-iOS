@@ -19,14 +19,13 @@ class Announcement: Mappable {
     
     public var text: String?
     public var id: String?
+    public var image: UIImage?
+    public var timestamp: Date?
     public var imageString: String? {
         didSet {
             downloadImageFromFirebase()
         }
     }
-    
-    public var image: UIImage?
-    public var timestamp: Date?
     
     weak var delegate: AnnouncementDelegate?
     

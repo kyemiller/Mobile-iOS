@@ -11,8 +11,20 @@ import SafariServices
 
 class DonateViewController: UIViewController {
     
+    @IBOutlet weak var donateTextView: UITextView!
+    @IBOutlet weak var donateImageView: UIImageView!
+    
+    // MARK: - Initialization
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        donateImageView.clipsToBounds = true
+        donateImageView.layer.cornerRadius = 5.0
+        
+        donateTextView.showsVerticalScrollIndicator = true
+        donateTextView.tintColor = Theme.Color.main
+        donateTextView.backgroundColor = Theme.Color.clear
+    
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -27,4 +39,5 @@ class DonateViewController: UIViewController {
             self.present(svc, animated: true, completion: nil)
         }
     }
+    
 }

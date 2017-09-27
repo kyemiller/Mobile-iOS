@@ -9,18 +9,18 @@
 import UIKit
 import NVActivityIndicatorView
 
-class SplashViewController: UIViewController, AnnouncementCollectionViewDelegate {
+class SplashViewController: UIViewController {
     
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var loadingIndicatorView: NVActivityIndicatorView!
-    @IBOutlet weak var dateLabel: UILabel!
-    
 
     private var homeViewController: HomeViewController?
+    let networkController = UIAlertController(title: "Network Error", message: "We can't find an internet connection. Would you like to try again?", preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNetworkContoller()
         setupViews()
     }
 
@@ -28,36 +28,14 @@ class SplashViewController: UIViewController, AnnouncementCollectionViewDelegate
         backgroundView.alpha = 1.0
         backgroundView.isHidden = false
         containerView.isHidden = true
-        setupLoadingIndicator()
-        setupLabel()
-    }
-    
-    func setupLabel() {
-        let date = Date()
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "EEEE, MMMM d, yyyy"
-        dateLabel.text = dateformatter.string(from: date)
-    }
-    
-    func setupLoadingIndicator() {
-        loadingIndicatorView.color = Theme.Color.white
-        loadingIndicatorView.type = .ballScale
-        loadingIndicatorView.alpha = 0.8
-        loadingIndicatorView.startAnimating()
-    }
-    
-    func collectionViewDidLoad() {
-        transition()
+        logoImageView.layer.allowsEdgeAntialiasing = true
     }
 
     func transition() {
         containerView.isHidden = false
-        UIView.animate(withDuration: 2.0) {
+        UIView.animate(withDuration: 1.5) {
             self.backgroundView.alpha = 0.0
-            self.loadingIndicatorView.alpha = 0.0
         }
-        loadingIndicatorView.stopAnimating()
-        backgroundView.isHidden = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -66,6 +44,37 @@ class SplashViewController: UIViewController, AnnouncementCollectionViewDelegate
             homeViewController = homeNavigationController.viewControllers[0] as? HomeViewController
             homeViewController?.delegate = self
         }
+    }
+    
+    // MARK: - Network Utilities
+    
+    func setupNetworkContoller() {
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let tryAgain = UIAlertAction(title: "Try Again", style: .default, handler: { (action) in
+            self.checkNetwork()
+        })
+        networkController.addAction(tryAgain)
+        networkController.addAction(cancel)
+        checkNetwork()
+    }
+    
+    func checkNetwork() {
+        if currentReachabilityStatus == .notReachable {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(0)) {
+                self.present(self.networkController, animated: true, completion: {})
+            }
+        }
+    }
+    
+}
+
+// MARK: - AnnouncementCollectionViewDelegate
+
+extension SplashViewController: AnnouncementCollectionViewDelegate {
+    
+    func collectionViewDidLoad() {
+        networkController.dismiss(animated: true, completion: nil)
+        transition()
     }
     
 }

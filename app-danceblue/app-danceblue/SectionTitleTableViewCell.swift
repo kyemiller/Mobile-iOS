@@ -15,19 +15,14 @@ class SectionTitleTableViewCell: UITableViewCell {
     @IBOutlet weak var sectionTitleLabel: UILabel!
     
     private var data: BCSectionTitle?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-    }
-    
+        
     func configureCell(with data: BCSectionTitle) {
         self.data = data
         setupViews()
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let adjustedHeight = 16.0 + sectionTitleLabel.sizeThatFits(CGSize(width: bounds.width - 40, height: size.height)).height
+        let adjustedHeight = 16.0 + sectionTitleLabel.sizeThatFits(CGSize(width: size.width - 40, height: size.height)).height
         return CGSize(width: bounds.width, height: adjustedHeight)
     }
     

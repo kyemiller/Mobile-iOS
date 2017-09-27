@@ -9,7 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 
-class HeaderImageTableViewCell: UITableViewCell, BlogDetailsHeaderImageDelegate {
+class HeaderImageTableViewCell: UITableViewCell {
 
     static let identifier = "HeaderImageCell"
     
@@ -32,7 +32,7 @@ class HeaderImageTableViewCell: UITableViewCell, BlogDetailsHeaderImageDelegate 
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         guard let header = headerImageView else { return CGSize() }
-        let height: CGFloat = descriptionLabel.sizeThatFits(CGSize(width: bounds.width - 40.0, height: .greatestFiniteMagnitude)).height + header.frame.height + 8.0 + 8.0
+        let height: CGFloat = descriptionLabel.sizeThatFits(CGSize(width: size.width - 40.0, height: .greatestFiniteMagnitude)).height + header.frame.height + 8.0 + 8.0 + 8.0
         return CGSize(width: bounds.width, height: height)
         
     }
@@ -49,9 +49,15 @@ class HeaderImageTableViewCell: UITableViewCell, BlogDetailsHeaderImageDelegate 
         }
     }
     
+}
+
+// MARK: - BlogDetailsHeaderImageDelegate
+
+extension HeaderImageTableViewCell: BlogDetailsHeaderImageDelegate {
+    
     func headerImage(didFinishDownloading image: UIImage?) {
         loadingIndicator.stopAnimating()
         headerImageView.image = image
     }
-
+    
 }
