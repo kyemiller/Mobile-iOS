@@ -17,16 +17,12 @@ class EventTableViewCell: UITableViewCell {
     
     @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var loadingIndicatorView: NVActivityIndicatorView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
-    
-    let gradient = CAGradientLayer()
 
-    private var event: Event?
-    private var indexPath: IndexPath?
+    fileprivate var event: Event?
     fileprivate var isImageDownloaded: Bool = false
     
     // MARK: - Initialization
@@ -35,36 +31,38 @@ class EventTableViewCell: UITableViewCell {
         headerImageView.layer.cornerRadius = 10.0
         headerImageView.clipsToBounds = true
         headerImageView.backgroundColor = Theme.Color.background
+        loadingIndicatorView.color = Theme.Color.loader
+        loadingIndicatorView.type = .ballScale
+        self.backgroundColor = Theme.Color.white
+        self.selectionStyle = .none
     }
 
     // MARK: - Configuration
     
-    func configureCell(with event: Event, for indexPath: IndexPath) {
+    func configureCell(with event: Event) {
         self.event = event
-        self.indexPath = indexPath
         event.delegate = self
         
-        setupLoadingIndicator()
         updateWithContent()
-        layoutHeaderImage()
+        setupViews()
+    }
+    
+    func setupViews() {
+        if event?.image == nil {
+            loadingIndicatorView.startAnimating()
+        } else {
+            loadingIndicatorView.stopAnimating()
+            headerImageView.image = event?.image
+        }
     }
     
     func updateWithContent() {
-        titleLabel.text = event?.title
-        descriptionLabel.text = event?.location
-        
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE, MMMM dd, yyyy"
+        titleLabel.text = event?.title
         dateLabel.text = formatter.string(from: event?.timestamp ?? Date())
-        timeLabel.text = event?.time
-    }
-
-    
-    func setupLoadingIndicator() {
-        loadingIndicatorView.color = Theme.Color.loader
-        loadingIndicatorView.type = .ballScale
-        if !isImageDownloaded {
-            loadingIndicatorView.startAnimating()
+        if let time = event?.time {
+            timeLabel.text = "• \(time)"
         }
     }
     
@@ -72,17 +70,9 @@ class EventTableViewCell: UITableViewCell {
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         
-        let x = headerImageView.sizeThatFits(CGSize(width: size.width - 40.0, height: .greatestFiniteMagnitude)).height + dateLabel.sizeThatFits(CGSize(width: size.width - 40.0, height: .greatestFiniteMagnitude)).height
+        let x = 40.0 + headerImageView.frame.height + titleLabel.sizeThatFits(CGSize(width: size.width - 40.0, height: .greatestFiniteMagnitude)).height + dateLabel.sizeThatFits(CGSize(width: size.width - 40.0, height: .greatestFiniteMagnitude)).height
         
         return CGSize(width: size.width, height: x)
-    }
-    
-    func layoutHeaderImage() {
-        gradient.startPoint = CGPoint(x: 0.5, y: 0.5)
-        gradient.endPoint = CGPoint(x: 0.5, y: 1.0)
-        gradient.colors = [Theme.Color.clear.cgColor, Theme.Color.black.cgColor]
-        gradient.frame = headerImageView.bounds
-        gradient.cornerRadius = 10.0
     }
     
 }
@@ -92,10 +82,13 @@ class EventTableViewCell: UITableViewCell {
 extension EventTableViewCell: EventDelegate {
     
     func event(didFinishDownloadingImage image: UIImage) {
-        headerImageView?.image = image
-        headerImageView.layer.addSublayer(gradient)
-        loadingIndicatorView.stopAnimating()
-        isImageDownloaded = true
+        if image == event?.image {
+            headerImageView?.image = image
+            loadingIndicatorView.stopAnimating()
+            isImageDownloaded = true
+        }
     }
+    
+    func event(didFinishDownloadingMap map: UIImage) {}
     
 }

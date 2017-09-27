@@ -36,13 +36,13 @@ class BlogDetails: Mappable {
     func mapping(map: Map) {
         author <- map["author"]
         title <- map["title"]
+        imageString <- map["image"]
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        
         if let dateString = map["timestamp"].currentValue as? String, let date = dateFormatter.date(from: dateString) {
             timestamp = date
         }
-        imageString <- map["image"]
     }
  
     func downloadImageFromFirebase() {

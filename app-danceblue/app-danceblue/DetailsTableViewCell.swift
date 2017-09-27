@@ -18,11 +18,6 @@ class DetailsTableViewCell: UITableViewCell {
     
     private var data: BCDetails?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
     func configureCell(with data: BCDetails) {
         self.data = data
         guard let date = data.timestamp else { return }
@@ -37,7 +32,7 @@ class DetailsTableViewCell: UITableViewCell {
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let adjustedHeight = 24.0 + dateLabel.frame.height + authorLabel.frame.height + titleLabel.sizeThatFits(CGSize(width: bounds.width - 40, height: size.height)).height
+        let adjustedHeight = 24.0 + dateLabel.frame.height + authorLabel.frame.height + titleLabel.sizeThatFits(CGSize(width: size.width - 40, height: size.height)).height
         return CGSize(width: bounds.width, height: adjustedHeight)
     }
     

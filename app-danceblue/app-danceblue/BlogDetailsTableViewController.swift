@@ -21,6 +21,8 @@ class BlogDetailsTableViewController: UITableViewController {
     var shareImage: UIImage?
     var cellHeights: [CGFloat] = []
 
+    // MARK: - Initialization
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -37,11 +39,10 @@ class BlogDetailsTableViewController: UITableViewController {
     }
     
     func setupTableView() {
-        
+        tableView.backgroundColor = Theme.Color.white
     }
     
     func share() {
-        
         // TODO: Dynamic Links and sharing capability
         // Right now just an image
         

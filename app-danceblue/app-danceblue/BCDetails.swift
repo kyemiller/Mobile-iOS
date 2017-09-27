@@ -11,6 +11,9 @@ import ObjectMapper
 
 class BCDetails: Mappable {
     
+    var title: String?
+    var timestamp: Date?
+    var author: String?
     var dataArray: [Any]? {
         didSet {
             guard let array = dataArray else { return }
@@ -26,10 +29,6 @@ class BCDetails: Mappable {
             }
         }
     }
-    
-    var title: String?
-    var timestamp: Date?
-    var author: String?
     
     required init?(map: Map) {
         

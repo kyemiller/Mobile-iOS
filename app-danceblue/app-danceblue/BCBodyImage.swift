@@ -15,7 +15,7 @@ protocol BlogDetailsBodyImageDelegate: class {
     func bodyImage(didFinishDownloading image: UIImage?)
 }
 
-class BCBodyImage: BCData {
+class BCBodyImage: Mappable {
     
     var imageString: String? {
         didSet {
@@ -30,11 +30,10 @@ class BCBodyImage: BCData {
     weak var delegate: BlogDetailsBodyImageDelegate?
     
     required init?(map: Map) {
-        super.init(map: map)
+
     }
     
-    override func mapping(map: Map) {
-        super.mapping(map: map)
+    func mapping(map: Map) {
         imageString <- map["image"]
         isGif <- map["isGif"]
         description <- map ["description"]

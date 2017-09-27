@@ -27,7 +27,7 @@
 	<key>IS_ANALYTICS_ENABLED</key>
 	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false/>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
 	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
@@ -35,6 +35,6 @@
 	<key>GOOGLE_APP_ID</key>
 	<string>1:4521399615:ios:77c45223ef47bf99</string>
 	<key>DATABASE_URL</key>
-	<string>https://app-danceblue.firebaseio.com/</string>
+	<string>https://app-danceblue.firebaseio.com</string>
 </dict>
 </plist>

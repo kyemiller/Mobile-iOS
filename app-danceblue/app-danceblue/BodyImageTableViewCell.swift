@@ -10,11 +10,11 @@ import UIKit
 import NVActivityIndicatorView
 import Gifu
 
-class BodyImageTableViewCell: UITableViewCell, BlogDetailsBodyImageDelegate {
+class BodyImageTableViewCell: UITableViewCell {
     
     static let identifier = "BodyImageCell"
     
-    private var data: BCBodyImage?
+    fileprivate var data: BCBodyImage?
 
     @IBOutlet weak var bodyImageView: GIFImageView!
     @IBOutlet weak var loadingIndicator: NVActivityIndicatorView!
@@ -30,12 +30,6 @@ class BodyImageTableViewCell: UITableViewCell, BlogDetailsBodyImageDelegate {
         super.prepareForReuse()
         bodyImageView.prepareForReuse()
         bodyImageView.image = nil
-    }
-    
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let adjustedHeight = descriptionLabel.sizeThatFits(CGSize(width: bounds.width - 40.0, height: size.height)).height + bodyImageView.frame.height + 12.0
-
-        return CGSize(width: bounds.width, height: adjustedHeight)
     }
     
     func configureCell(with data: BCBodyImage) {
@@ -61,7 +55,17 @@ class BodyImageTableViewCell: UITableViewCell, BlogDetailsBodyImageDelegate {
         }
     }
 
-    // MARK: - BlogDetailsBodyImageDelegate
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let adjustedHeight = descriptionLabel.sizeThatFits(CGSize(width: size.width - 40.0, height: size.height)).height + bodyImageView.frame.height + 12.0
+        
+        return CGSize(width: bounds.width, height: adjustedHeight)
+    }
+    
+}
+
+// MARK: - BlogDetailsBodyImageDelegate
+
+extension BodyImageTableViewCell: BlogDetailsBodyImageDelegate {
     
     func bodyImage(didFinishDownloading image: UIImage?) {
         guard let data = data else { return }
@@ -72,4 +76,5 @@ class BodyImageTableViewCell: UITableViewCell, BlogDetailsBodyImageDelegate {
         }
         loadingIndicator.stopAnimating()
     }
+    
 }

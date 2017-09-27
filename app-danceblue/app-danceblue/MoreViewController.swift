@@ -36,7 +36,7 @@ class MoreViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

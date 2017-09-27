@@ -9,18 +9,16 @@
 import Foundation
 import ObjectMapper
 
-class BCBodyText: BCData {
+class BCBodyText: Mappable {
     
     var bodyText: String?
     
     required init?(map: Map) {
-        super.init(map: map)
+        
     }
     
-    override func mapping(map: Map) {
-        super.mapping(map: map)
+    func mapping(map: Map) {
         bodyText <- map["text"]
     }
-    
     
 }
