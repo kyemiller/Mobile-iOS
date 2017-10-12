@@ -19,7 +19,7 @@ extension NSAttributedString {
                 
                 let paragraphStyle = NSMutableParagraphStyle()
                 paragraphStyle.alignment = .left
-                paragraphStyle.lineSpacing = 14.0
+                paragraphStyle.lineSpacing = 6.0
                 
                 str.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, str.length))
                 

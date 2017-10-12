@@ -37,6 +37,7 @@
 		CB2C70EF1F571285004EF068 /* BlogHorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2C70ED1F571285004EF068 /* BlogHorizontalCollectionViewCell.swift */; };
 		CB60C3EE1F7AD58B00DDC39D /* EventsTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB60C3ED1F7AD58B00DDC39D /* EventsTableViewHeader.swift */; };
 		CB6605011F630D0A00FBC1CA /* DispatchQueue+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6605001F630D0A00FBC1CA /* DispatchQueue+Sync.swift */; };
+		CB667CAB1F87D717004D892F /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB667CAA1F87D717004D892F /* DateHelper.swift */; };
 		CB6843871F3894ED000720F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB6843851F3894ED000720F2 /* Main.storyboard */; };
 		CB7DE1D21F25267200235145 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1D11F25267200235145 /* Announcement.swift */; };
 		CB7DE1DA1F2597FF00235145 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1D91F2597FF00235145 /* EventDetailsViewController.swift */; };
@@ -97,6 +98,7 @@
 		CB2C70ED1F571285004EF068 /* BlogHorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogHorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB60C3ED1F7AD58B00DDC39D /* EventsTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewHeader.swift; sourceTree = "<group>"; };
 		CB6605001F630D0A00FBC1CA /* DispatchQueue+Sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Sync.swift"; sourceTree = "<group>"; };
+		CB667CAA1F87D717004D892F /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		CB6843861F3894ED000720F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "app-danceblue/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		CB7DE1CB1F25034A00235145 /* TwitterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterTableViewController.swift; sourceTree = "<group>"; };
 		CB7DE1D11F25267200235145 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				CB6605001F630D0A00FBC1CA /* DispatchQueue+Sync.swift */,
 				CBC6A9411F6984140045B9B9 /* Router.swift */,
 				CBF637451F73FA0A00270724 /* NetworkHelper.swift */,
+				CB667CAA1F87D717004D892F /* DateHelper.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -476,10 +479,12 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/Gifu/Gifu.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -489,10 +494,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gifu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -557,6 +564,7 @@
 				CB0E9A6E1F23FBE600A717DC /* MoreViewController.swift in Sources */,
 				CB2AE8EC1F31638400571243 /* DetailsTableViewCell.swift in Sources */,
 				CB0E9A551F23F8A400A717DC /* AppDelegate.swift in Sources */,
+				CB667CAB1F87D717004D892F /* DateHelper.swift in Sources */,
 				CB6605011F630D0A00FBC1CA /* DispatchQueue+Sync.swift in Sources */,
 				CB143A3B1F507AD200295D9A /* NavigationHelper.swift in Sources */,
 				CB143A3F1F5089AE00295D9A /* MoreCollectionViewCell.swift in Sources */,

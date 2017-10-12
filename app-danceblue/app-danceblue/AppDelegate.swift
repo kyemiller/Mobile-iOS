@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import FirebaseMessaging
-import FirebaseInstanceID
 import UserNotifications
 import TwitterKit
 import XCGLogger
@@ -17,15 +16,13 @@ import XCGLogger
 let log = XCGLogger.default
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-    let gcmMessageIDKey = "gcm.message_id"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseApp.configure()
-        setupFirebaseMessaging(for: application)
+        registerForRemoteNotifications(for: application)
         log.setup(level: .debug, showThreadName: true, showLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: "path/to/file", fileLevel: .debug)
         
         return true
@@ -47,7 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -55,12 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - Firebase Cloud Messaging and Notification Handling
-
-    // SETUP
     
-    func setupFirebaseMessaging(for application: UIApplication) {
+    func registerForRemoteNotifications(for application: UIApplication) {
         UNUserNotificationCenter.current().delegate = self
-        Messaging.messaging().delegate = self
         
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(
@@ -68,93 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             completionHandler: {_, _ in })
         
         application.registerForRemoteNotifications()
-    }
-    
-    // RECEIVE NOTIFICATION
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        // If you are receiving a notification message while your app is in the background,
-        // this callback will not be fired till the user taps on the notification launching the application.
-        // TODO: Handle data of notification
-        
-        // With swizzling disabled you must let Messaging know about the message, for Analytics
-        Messaging.messaging().appDidReceiveMessage(userInfo)
-        
-        // Print message ID.
-        if let messageID = userInfo[gcmMessageIDKey] {
-            log.debug("Message ID: \(messageID)")
-        }
-        
-        // Print full message.
-        log.debug(userInfo)
+        FirebaseApp.configure()
     }
     
 }
-
-// MARK: - UNUserNotificationCenterDelegate
-
-extension AppDelegate: UNUserNotificationCenterDelegate {
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        let userInfo = notification.request.content.userInfo
-        
-        // With swizzling disabled you must let Messaging know about the message, for Analytics
-        Messaging.messaging().appDidReceiveMessage(userInfo)
-        
-        // Print message ID.
-        log.debug("Message ID: \(userInfo[gcmMessageIDKey] ?? "")")
-        
-        // Print full message.
-        log.debug(userInfo)
-        
-        completionHandler([.alert, .badge, .sound])
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        let userInfo = response.notification.request.content.userInfo
-        // Print message ID.
-        if let messageID = userInfo[gcmMessageIDKey] {
-            log.debug("Message ID: \(messageID)")
-        }
-        
-        // Print full message.
-        print(userInfo)
-        
-        completionHandler()
-    }
-   
-}
-
-// MARK: - MessagingDelegate
-
-extension AppDelegate: MessagingDelegate {
-    
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        // Let FCM know about the message for analytics etc.
-        Messaging.messaging().appDidReceiveMessage(userInfo)
-        // handle your message
-        log.debug(userInfo)
-    }
-    
-    private func application(application: UIApplication,
-                             didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        Messaging.messaging().apnsToken = deviceToken as Data
-    }
-    
-    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
-        log.debug("Firebase registration token: \(fcmToken)")
-    }
-    
-    func application(received remoteMessage: MessagingRemoteMessage) {
-        log.debug(remoteMessage.appData)
-    }
-    
-}
-
-
-
-
-
-
-
-

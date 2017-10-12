@@ -37,8 +37,6 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>3</string>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-	<false/>
 	<key>LSAppliationQueriesSchemes</key>
 	<array>
 		<string>twitter</string>
@@ -51,7 +49,7 @@
 		<true/>
 	</dict>
 	<key>NSCalendarsUsageDescription</key>
-	<string>"We want your money"</string>
+	<string>&quot;We want your money&quot;</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>“Allow us to access your current location for directions!”</string>
 	<key>UIBackgroundModes</key>
