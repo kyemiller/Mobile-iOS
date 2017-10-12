@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 import NVActivityIndicatorView
 
 class SplashViewController: UIViewController {
