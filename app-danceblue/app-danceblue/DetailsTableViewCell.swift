@@ -28,7 +28,6 @@ class DetailsTableViewCell: UITableViewCell {
         titleLabel.text = data.title
         authorLabel.text = data.author
         dateLabel.text = "• \(formatter.string(from: date))"
-        
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {

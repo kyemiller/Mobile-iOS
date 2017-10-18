@@ -182,7 +182,7 @@ extension BlogCollectionViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: self.view.bounds.width, height: 448.0)
         } else {
             if indexPath.row > 3 {
-                return CGSize(width: self.view.bounds.width - 40, height: 96.0)
+                return CGSize(width: self.view.bounds.width - 40, height: 112.0)
             } else {
                 return CGSize(width: self.view.bounds.width / 2 - 30, height: 216.0)
             }

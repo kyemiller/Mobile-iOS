@@ -12,11 +12,21 @@ class EventDetailsTableViewCell: UITableViewCell {
     
     static let identifier = "EventDetailsCell"
     
+    @IBOutlet weak var underlineView: UIView!
+    @IBOutlet weak var spiritPointsView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var pointsLabel: UILabel!
     
     private var event: Event?
+    
+    override func awakeFromNib() {
+        underlineView.backgroundColor = Theme.Color.background
+        spiritPointsView.backgroundColor = Theme.Color.lightGray
+        spiritPointsView.layer.cornerRadius = spiritPointsView.frame.size.width / 2
+        spiritPointsView.clipsToBounds = true
+    }
     
     func configureCell(with event: Event) {
         self.event = event
@@ -29,10 +39,15 @@ class EventDetailsTableViewCell: UITableViewCell {
         titleLabel.text = event.title
         timeLabel.text = "• \(event.time ?? "")"
         
+        pointsLabel.text = event.points ?? ""
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let adjustedHeight = 24.0 + dateLabel.frame.height + titleLabel.sizeThatFits(CGSize(width: size.width - 40, height: size.height)).height
+        var adjustedHeight = 24.0 + dateLabel.frame.height + titleLabel.sizeThatFits(CGSize(width: size.width - 28 - spiritPointsView.frame.width, height: size.height)).height
+        if adjustedHeight < (spiritPointsView.frame.height + 20) {
+            adjustedHeight = spiritPointsView.frame.height + 20
+            
+        }
         return CGSize(width: bounds.width, height: adjustedHeight)
     }
     

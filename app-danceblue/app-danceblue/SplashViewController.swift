@@ -71,9 +71,9 @@ class SplashViewController: UIViewController {
 
 // MARK: - AnnouncementCollectionViewDelegate
 
-extension SplashViewController: AnnouncementCollectionViewDelegate {
+extension SplashViewController: HomeDelegate {
     
-    func collectionViewDidLoad() {
+    func tableDidLoad() {
         networkController.dismiss(animated: true, completion: nil)
         transition()
     }

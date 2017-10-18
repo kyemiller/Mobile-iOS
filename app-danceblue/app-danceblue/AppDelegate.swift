@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 import FirebaseMessaging
 import UserNotifications
-import TwitterKit
 import XCGLogger
 
 let log = XCGLogger.default
