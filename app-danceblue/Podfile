@@ -17,4 +17,5 @@ target 'app-danceblue' do
   pod 'ObjectMapper', '~> 2.2'
   pod 'Gifu', '2.0'
   pod 'Kingfisher', '~> 4.0'
+
 end

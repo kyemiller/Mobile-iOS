@@ -34,11 +34,10 @@ class EventDetailsTableViewCell: UITableViewCell {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM d, yyyy"
-        dateLabel.text = formatter.string(from: date)
         
+        dateLabel.text = "• \(formatter.string(from: date))"
         titleLabel.text = event.title
         timeLabel.text = "• \(event.time ?? "")"
-        
         pointsLabel.text = event.points ?? ""
     }
     

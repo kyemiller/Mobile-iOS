@@ -168,7 +168,10 @@ class BlogCollectionViewController: UICollectionViewController {
     // MARK: - Utility
     
     func sortPosts() {
-        blogData.sort(by: {$0.details?.timestamp ?? Date() > $1.details?.timestamp ?? Date()})
+        blogData.sort(by: {
+            guard let details1 = $0.details, let details2 = $1.details else { return true }
+            return details1.timestamp ?? Date() > details2.timestamp ?? Date()
+            })
     }
     
 }

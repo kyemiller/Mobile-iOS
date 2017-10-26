@@ -31,10 +31,12 @@ class BlogDetailsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        UIApplication.shared.statusBarStyle = .lightContent
         if navigationController?.isNavigationBarHidden ?? false {
             navigationController?.setNavigationBarHidden(false, animated: false)
         }
-        setUpNavigation(controller: navigationController, hidesBar: false)
+        setUpNavigation(controller: navigationController, hidesBar: true)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
     }
     
@@ -133,6 +135,8 @@ class BlogDetailsTableViewController: UITableViewController {
         return cellHeights[indexPath.row]
     }
 
+    
+    
 }
 
 // MARK: - BodyTextTableViewDelegate

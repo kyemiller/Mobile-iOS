@@ -17,8 +17,6 @@ protocol HomeDelegate: class {
 
 class HomeViewController: UITableViewController {
     
-//    private var cellHeights: [CGFloat] = [75.0, 240.0, 75.0, 56.0, 120.0]
-    
     private var cellHeights: [CGFloat] = [75.0, 56.0, 120.0, 75.0, 240.0]
     
     private var announcementData: [Announcement] = []
@@ -183,9 +181,6 @@ class HomeViewController: UITableViewController {
             guard let data = snapshot.value as? String else { return }
             guard let url = URL(string: data) else { return }
             self.galleryData.append(url)
-            print ("\n\n\n")
-            log.debug(self.galleryData)
-            print ("\n\n\n")
             self.tableView.reloadData()
         })
     }
