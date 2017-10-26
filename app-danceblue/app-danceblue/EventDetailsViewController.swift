@@ -10,6 +10,7 @@ import UIKit
 import EventKit
 import MapKit
 import NVActivityIndicatorView
+import FirebaseAnalytics
 
 
 class EventDetailsViewController: UITableViewController {
@@ -36,6 +37,8 @@ class EventDetailsViewController: UITableViewController {
         }
         setUpNavigation(controller: navigationController, hidesBar: false)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
+        Analytics.logEvent("Event Did Appear", parameters: ["Title" : event?.title ?? ""])
+
     }
     
     // MARK: - Tableview

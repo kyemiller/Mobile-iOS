@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAnalytics
 import FirebaseDatabase
 
 protocol EventsTableViewDelegate: class {
@@ -47,6 +48,7 @@ class EventsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         setUpNavigation(controller: navigationController, hidesBar: false)
         self.title = "Events"
+        Analytics.logEvent("Events View Controller Did Appear", parameters: nil)
     }
     
     func setupTableView() {

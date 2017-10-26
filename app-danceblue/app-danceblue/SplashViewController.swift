@@ -9,6 +9,7 @@
 import UIKit
 import UserNotifications
 import NVActivityIndicatorView
+import FirebaseAnalytics
 
 class SplashViewController: UIViewController {
     
@@ -23,6 +24,7 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         setupNetworkContoller()
         setupViews()
+        Analytics.logEvent("App Launched.", parameters: nil)
     }
 
     func setupViews() {

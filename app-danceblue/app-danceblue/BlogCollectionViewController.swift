@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAnalytics
 
 class BlogCollectionViewController: UICollectionViewController {
 
@@ -52,6 +53,7 @@ class BlogCollectionViewController: UICollectionViewController {
         setUpNavigation(controller: navigationController, hidesBar: false)
         self.title = "Blog"
         blogCollectionView.reloadData()
+        Analytics.logEvent("Blog View Controller Did Appear.", parameters: nil)
     }
     
     // MARK: - Storyboard
