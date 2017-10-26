@@ -10,7 +10,6 @@ import UIKit
 import FirebaseStorage
 import NVActivityIndicatorView
 
-
 class EventTableViewCell: UITableViewCell {
     
     static let identifier = "EventCell"

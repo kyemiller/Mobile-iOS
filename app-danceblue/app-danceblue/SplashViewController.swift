@@ -34,7 +34,7 @@ class SplashViewController: UIViewController {
 
     func transition() {
         containerView.isHidden = false
-        UIView.animate(withDuration: 1.5) {
+        UIView.animate(withDuration: 0.5) {
             self.backgroundView.alpha = 0.0
         }
     }
@@ -71,9 +71,9 @@ class SplashViewController: UIViewController {
 
 // MARK: - AnnouncementCollectionViewDelegate
 
-extension SplashViewController: AnnouncementCollectionViewDelegate {
+extension SplashViewController: HomeDelegate {
     
-    func collectionViewDidLoad() {
+    func tableDidLoad() {
         networkController.dismiss(animated: true, completion: nil)
         transition()
     }

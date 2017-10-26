@@ -2,24 +2,32 @@
 //  HomeViewController.swift
 //  app-danceblue
 //
-//  Created by Blake Swaidner on 7/22/17.
+//  Created by Blake Swaidner on 10/13/17.
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import UIKit
-import TwitterKit
 import Firebase
 import FirebaseDatabase
-import ObjectMapper
+import Foundation
+import UIKit
 
-protocol AnnouncementCollectionViewDelegate: class {
-    func collectionViewDidLoad()
+protocol HomeDelegate: class {
+    func tableDidLoad()
 }
 
-class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class HomeViewController: UITableViewController {
     
-    @IBOutlet weak var timeLeftLabel: UILabel!
-    @IBOutlet weak var countdownLabel: UILabel!
+    private var cellHeights: [CGFloat] = [75.0, 56.0, 120.0, 75.0, 240.0]
+    
+    private var announcementData: [Announcement] = []
+    private var announcementMap: [String : Announcement] = [:]
+    
+    private var countdownDate: Date?
+    private var countdownTitle: String?
+    
+    private var galleryData: [URL] = []
+    
+    weak var delegate: HomeDelegate?
     
     private var firebaseReference: DatabaseReference?
     private var addHandle: DatabaseHandle?
@@ -28,62 +36,73 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     private var countdownAddHandle: DatabaseHandle?
     private var countdownChangeHandle: DatabaseHandle?
     private var countdownDeleteHandle: DatabaseHandle?
-    
-    private var announcementData: [Announcement] = []
-    private var announcementMap: [String : Announcement] = [:]
-    
-    private var countdownTimer: Timer?
-    private var countdownDate: Date? {
-        didSet {
-            setupCountdown()
-        }
-    }
-    
-    weak var delegate: AnnouncementCollectionViewDelegate?
-    
-    @IBOutlet weak var announcementsCollectionView: UICollectionView!
+    private var galleryAddHandle: DatabaseHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         setupFirebase()
-        setupCollectionView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setUpNavigation(controller: navigationController, hidesBar: false)
-        self.title = "Announcements"
+        self.title = "Home"
+        setUpNavigation(controller: self.navigationController, hidesBar: false)
     }
     
-    func setupCountdown() {
-        countdownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
+    func setupTableView() {
+        tableView.allowsSelection = false
+        tableView.backgroundColor = Theme.Color.white
+        tableView.separatorStyle = .none
     }
     
-    func updateCountdown() {
-        guard let countdownDate = countdownDate else { return }
-        let components = Calendar.current.dateComponents([.day, .hour,.minute,.second], from: Date(), to: countdownDate)
+    // MARK: - TableView DataSource
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let days = components.day ?? 0
-        let hours = components.hour ?? 0
-        let minutes = components.minute ?? 0
-        let seconds = components.second ?? 0
-        
-        if days <= 0, hours <= 0, minutes <= 0, seconds <= 0 {
-            countdownTimer?.invalidate()
-        } else {
-            timeLeftLabel.text = "\(days) Days | \(hours) Hours | \(minutes) Minutes | \(seconds) Seconds"
+        switch indexPath.section {
+        case 0:
+            if let countdownCell = tableView.dequeueReusableCell(withIdentifier: CountdownTableViewCell.identifier, for: indexPath) as? CountdownTableViewCell {
+                countdownCell.configureCell(with: countdownDate, title: countdownTitle)
+                return countdownCell
+            }
+        case 4:
+            if let galleryCell = tableView.dequeueReusableCell(withIdentifier: GalleryTableViewCell.identifier, for: indexPath) as? GalleryTableViewCell {
+                galleryCell.configureCell(with: galleryData)
+                return galleryCell
+            }
+        case 3:
+            if let factsCell = tableView.dequeueReusableCell(withIdentifier: FactsTableViewCell.identifier, for: indexPath) as? FactsTableViewCell {
+                return factsCell
+            }
+        case 1:
+            if let announcementsTitleCell = tableView.dequeueReusableCell(withIdentifier: AnnouncementsTitleTableViewCell.identifier, for: indexPath) as? AnnouncementsTitleTableViewCell {
+                return announcementsTitleCell
+            }
+        case 2:
+            if let announcementCell = tableView.dequeueReusableCell(withIdentifier: AnnouncementTableViewCell.identifier, for: indexPath) as? AnnouncementTableViewCell {
+                announcementCell.configureCell(with: announcementData[indexPath.row])
+                return announcementCell
+            }
+        default:
+            return UITableViewCell()
         }
+        return UITableViewCell()
     }
     
-    func setupCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 0
-        layout.scrollDirection = .horizontal
-        announcementsCollectionView.collectionViewLayout = layout
-        
-        announcementsCollectionView.delegate = self
-        announcementsCollectionView.dataSource = self
-        announcementsCollectionView.isPagingEnabled = true
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeights[indexPath.section]
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 5
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 2 {
+            return announcementData.count
+        } else {
+            return 1
+        }
     }
     
     // MARK: - Firebase
@@ -91,6 +110,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     func setupFirebase() {
         setupAnnouncementsReference()
         setupCountdownReference()
+        setupGalleryReference()
     }
     
     func setupAnnouncementsReference() {
@@ -103,10 +123,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.announcementMap[id] = announcement
                 self.announcementData.append(announcement)
             }
-            self.announcementsCollectionView.reloadData()
-            self.delegate?.collectionViewDidLoad()
+            self.tableView.reloadData()
+            self.delegate?.tableDidLoad()
         })
-        
         
         changeHandle = firebaseReference?.child("announcements").observe(.childChanged, with: { (snapshot) in
             guard let data = snapshot.value as? [String : AnyObject] else { return }
@@ -116,6 +135,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.announcementMap.updateValue(announcement, forKey: id)
                 self.announcementData = Array(self.announcementMap.values)
             }
+            self.tableView.reloadData()
         })
         
         deleteHandle = firebaseReference?.child("announcements").observe(.childRemoved, with: { (snapshot) in
@@ -126,54 +146,43 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.announcementMap.removeValue(forKey: id)
                 self.announcementData = Array(self.announcementMap.values)
             }
+            self.tableView.reloadData()
         })
     }
     
     func setupCountdownReference() {
         firebaseReference = Database.database().reference()
         countdownAddHandle = firebaseReference?.child("countdown").observe(.childAdded, with: { (snapshot) in
-            log.debug(snapshot.value)
             guard let data = snapshot.value as? [String : String] else { return }
-            self.countdownLabel.text = data["title"]
+            self.countdownTitle = data["title"]
             let dateString = data["date"]
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
             self.countdownDate = dateFormatter.date(from: dateString ?? "")
+            self.tableView.reloadData()
+            self.delegate?.tableDidLoad()
         })
-        
-        
+
         countdownChangeHandle = firebaseReference?.child("countdown").observe(.childChanged, with: { (snapshot) in
             guard let data = snapshot.value as? [String : String] else { return }
-            self.countdownLabel.text = data["title"]
+            self.countdownTitle = data["title"]
             let dateString = data["date"]
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
             self.countdownDate = dateFormatter.date(from: dateString ?? "")
-            
+            self.tableView.reloadData()
+
         })
-    
     }
     
-    // MARK: - CollectionViewFlowLayout
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return announcementData.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AnnouncementCollectionViewCell.identifier, for: indexPath) as? AnnouncementCollectionViewCell {
-            cell.configureCell(with: announcementData[indexPath.row], for: indexPath)
-            return cell
-        }
-        return UICollectionViewCell()
+    func setupGalleryReference() {
+        firebaseReference = Database.database().reference()
+        galleryAddHandle = firebaseReference?.child("gallery").observe(.childAdded, with: { (snapshot) in
+            guard let data = snapshot.value as? String else { return }
+            guard let url = URL(string: data) else { return }
+            self.galleryData.append(url)
+            self.tableView.reloadData()
+        })
     }
 
 }

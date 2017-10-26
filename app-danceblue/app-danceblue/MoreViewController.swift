@@ -2,48 +2,89 @@
 //  MoreViewController.swift
 //  app-danceblue
 //
-//  Created by Blake Swaidner on 7/22/17.
+//  Created by Blake Swaidner on 10/20/17.
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
 import UIKit
+import SafariServices
 
-class MoreViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class MoreViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.allowsSelection = true
-        collectionView?.contentInset = .init(top: 8.0, left: 0.0, bottom: 8.0, right: 0.0)
+        setupTableView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
         setUpNavigation(controller: navigationController, hidesBar: false)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Get Gear Icon", style: .plain, target: self, action: #selector(settingsTapped))
         self.title = "More"
     }
+
+    func setupTableView() {
+        tableView.allowsSelection = true
+        tableView.separatorStyle = .none
+    }
     
-    func settingsTapped() {
-        
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoreCollectionViewCell.identifier, for: indexPath) as? MoreCollectionViewCell {
-            cell.configureCell(with: UIImage(named: "DanceBlueReveal.jpg")!, title: "Title")
-            return cell
-        }
-        return MoreCollectionViewCell()
-    }
-    
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 0
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width / 2 - 60, height: collectionView.bounds.height / 2 - 60)
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.height / 4
     }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:
+            if let donateCell = tableView.dequeueReusableCell(withIdentifier: DonateTableViewCell.identifier, for: indexPath) as? DonateTableViewCell {
+                return donateCell
+            }
+        case 1:
+            if let faqCell = tableView.dequeueReusableCell(withIdentifier: FAQsTableViewCell.identifier, for: indexPath) as? FAQsTableViewCell {
+                return faqCell
+            }
+        case 2:
+            if let donateCell = tableView.dequeueReusableCell(withIdentifier: DonateTableViewCell.identifier, for: indexPath) as? DonateTableViewCell {
+                return donateCell
+            }
+        case 3:
+            if let donateCell = tableView.dequeueReusableCell(withIdentifier: DonateTableViewCell.identifier, for: indexPath) as? DonateTableViewCell {
+                return donateCell
+            }
+        default:
+            return UITableViewCell()
+        }
+        
+        return UITableViewCell()
+    }
+
+    // MARK: - Navigation
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.reloadData()
+        switch indexPath.row {
+        case 0:
+            if let url = URL(string: "https://danceblue.networkforgood.com") {
+                let svc = SFSafariViewController(url: url)
+                svc.preferredControlTintColor = Theme.Color.main
+                self.present(svc, animated: true, completion: nil)
+            }
+        case 1:
+            self.performSegue(withIdentifier: "FAQSegue", sender: self)
+        case 2:
+            self.performSegue(withIdentifier: "ContactSegue", sender: self)
+        case 3:
+            print("")
+        default:
+            print("")
+        }
+    }
+
 }

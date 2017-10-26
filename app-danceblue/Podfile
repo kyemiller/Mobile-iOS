@@ -12,10 +12,10 @@ target 'app-danceblue' do
   pod 'Firebase/DynamicLinks'
   pod 'Firebase/Messaging'
   pod 'Firebase/Storage'
-  pod 'TwitterKit'
   pod 'XCGLogger', '~> 5.0.1'
   pod 'NVActivityIndicatorView' 
   pod 'ObjectMapper', '~> 2.2'
   pod 'Gifu', '2.0'
   pod 'Kingfisher', '~> 4.0'
+
 end

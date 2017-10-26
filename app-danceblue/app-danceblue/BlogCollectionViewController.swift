@@ -168,7 +168,10 @@ class BlogCollectionViewController: UICollectionViewController {
     // MARK: - Utility
     
     func sortPosts() {
-        blogData.sort(by: {$0.details?.timestamp ?? Date() > $1.details?.timestamp ?? Date()})
+        blogData.sort(by: {
+            guard let details1 = $0.details, let details2 = $1.details else { return true }
+            return details1.timestamp ?? Date() > details2.timestamp ?? Date()
+            })
     }
     
 }
@@ -182,7 +185,7 @@ extension BlogCollectionViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: self.view.bounds.width, height: 448.0)
         } else {
             if indexPath.row > 3 {
-                return CGSize(width: self.view.bounds.width - 40, height: 96.0)
+                return CGSize(width: self.view.bounds.width - 40, height: 112.0)
             } else {
                 return CGSize(width: self.view.bounds.width / 2 - 30, height: 216.0)
             }
