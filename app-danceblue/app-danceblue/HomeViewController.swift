@@ -10,6 +10,7 @@ import Firebase
 import FirebaseDatabase
 import Foundation
 import UIKit
+import FirebaseAnalytics
 
 protocol HomeDelegate: class {
     func tableDidLoad()
@@ -47,6 +48,7 @@ class HomeViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         self.title = "Home"
         setUpNavigation(controller: self.navigationController, hidesBar: false)
+        Analytics.logEvent("Home View Controller Did Appear.", parameters: nil)
     }
     
     func setupTableView() {

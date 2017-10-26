@@ -9,6 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 import SafariServices
+import FirebaseAnalytics
 
 class BlogDetailsTableViewController: UITableViewController {
 
@@ -38,6 +39,8 @@ class BlogDetailsTableViewController: UITableViewController {
         }
         setUpNavigation(controller: navigationController, hidesBar: true)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
+        
+        Analytics.logEvent("Blog Post Did Appear", parameters: ["Title" : post?.details?.title ?? ""])
     }
     
     func setupTableView() {

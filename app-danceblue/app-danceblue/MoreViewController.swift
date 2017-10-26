@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import FirebaseAnalytics
 
 class MoreViewController: UITableViewController {
 
@@ -19,6 +20,7 @@ class MoreViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         setUpNavigation(controller: navigationController, hidesBar: false)
         self.title = "More"
+        Analytics.logEvent("More View Controller Did Appear", parameters: nil)
     }
 
     func setupTableView() {
