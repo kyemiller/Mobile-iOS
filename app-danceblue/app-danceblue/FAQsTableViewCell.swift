@@ -20,8 +20,9 @@ class FAQsTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         faqImageView.layer.cornerRadius = 5.0
         faqImageView.clipsToBounds = true
-        faqImageView.image = #imageLiteral(resourceName: "DanceBlueReveal.jpg")
+        faqImageView.image = #imageLiteral(resourceName: "FAQs")
         titleLabel.text = "FAQs"
+        titleLabel.font = Theme.Font.header
     }
     
 }

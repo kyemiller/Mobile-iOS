@@ -30,13 +30,6 @@ struct Theme {
         static let loader: UIColor = UIColor(displayP3Red: 56.0/255.0, green: 56.0/255.0, blue: 56.0/255.0, alpha: 0.7)
         static let main: UIColor = UIColor(displayP3Red: 16.0/255.0, green: 125.0/255.0, blue: 254.0/255.0, alpha: 1.0)
         static let body: UIColor = UIColor(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 0.7)
-        
-        // Mark: - Gradient
-        
-        struct Gradient {
-            static let lightBlue: UIColor = UIColor(displayP3Red: 41.0/255.0, green: 106.0/255.0, blue: 250.0/255.0, alpha: 1.0)
-            static let darkBlue: UIColor = UIColor(displayP3Red: 0.0/255.0, green: 51.0/255.0, blue: 159.0/255.0, alpha: 1.0)
-        }
     }
     
 }

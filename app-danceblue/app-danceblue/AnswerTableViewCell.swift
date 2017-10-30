@@ -25,7 +25,7 @@ class AnswerTableViewCell: UITableViewCell {
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        return CGSize(width: size.width, height: 20.0 + answerLabel.frame.size.height)
+        return CGSize(width: size.width, height: 20.0 + answerLabel.sizeThatFits(CGSize(width: size.width, height: .greatestFiniteMagnitude)).height)
     }
     
 }

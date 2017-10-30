@@ -1,8 +1,8 @@
 //
-//  Blog.swift
+//  Sponsor.swift
 //  app-danceblue
 //
-//  Created by Blake Swaidner on 7/31/17.
+//  Created by Blake Swaidner on 10/29/17.
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
@@ -10,18 +10,18 @@ import Foundation
 import ObjectMapper
 import UIKit
 
-class Blog: Mappable {
+class Sponsor: Mappable {
     
     public var id: String?
-    public var details: BlogDetails?
-    public var chunks: [BCData]? 
+    public var image: String?
+    public var link: String?
     
     required init?(map: Map) {}
     
     func mapping(map: Map) {
-        chunks <- map["chunks"]
+        image <- map["image"]
         id <- map["id"]
-        details <- map["details"]
+        link <- map["link"]
     }
     
 }

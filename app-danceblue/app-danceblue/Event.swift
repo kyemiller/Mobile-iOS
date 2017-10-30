@@ -44,9 +44,7 @@ class Event: Mappable {
 
     weak var delegate: EventDelegate?
     
-    required init?(map: Map) {
-        
-    }
+    required init?(map: Map) {}
     
     func mapping(map: Map) {
         month <- map["month"]

@@ -29,9 +29,7 @@ class BlogDetails: Mappable {
     }
     var image: UIImage?
     
-    required init?(map: Map) {
-        
-    }
+    required init?(map: Map) {}
     
     func mapping(map: Map) {
         author <- map["author"]

@@ -13,9 +13,7 @@ class BCSectionTitle: Mappable {
     
     var title: String?
     
-    required init?(map: Map) {
-        
-    }
+    required init?(map: Map) {}
     
     func mapping(map: Map) {
         title <- map["title"]

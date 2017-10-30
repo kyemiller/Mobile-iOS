@@ -26,7 +26,7 @@ class QuestionTableViewCell: UITableViewCell {
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        return CGSize(width: size.width, height: 20.0 + questionLabel.frame.size.height)
+        return CGSize(width: size.width, height: 20.0 + questionLabel.sizeThatFits(CGSize(width: size.width, height: .greatestFiniteMagnitude)).height)
     }
 
 }

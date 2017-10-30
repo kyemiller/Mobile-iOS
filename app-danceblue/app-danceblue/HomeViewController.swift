@@ -11,6 +11,7 @@ import FirebaseDatabase
 import Foundation
 import UIKit
 import FirebaseAnalytics
+import SafariServices
 
 protocol HomeDelegate: class {
     func tableDidLoad()
@@ -18,7 +19,7 @@ protocol HomeDelegate: class {
 
 class HomeViewController: UITableViewController {
     
-    private var cellHeights: [CGFloat] = [75.0, 56.0, 120.0, 75.0, 240.0]
+    private var cellHeights: [CGFloat] = [0.0, 56.0, 120.0, 240.0]
     
     private var announcementData: [Announcement] = []
     private var announcementMap: [String : Announcement] = [:]
@@ -26,7 +27,7 @@ class HomeViewController: UITableViewController {
     private var countdownDate: Date?
     private var countdownTitle: String?
     
-    private var galleryData: [URL] = []
+    private var sponsorsData: [Sponsor] = []
     
     weak var delegate: HomeDelegate?
     
@@ -37,7 +38,7 @@ class HomeViewController: UITableViewController {
     private var countdownAddHandle: DatabaseHandle?
     private var countdownChangeHandle: DatabaseHandle?
     private var countdownDeleteHandle: DatabaseHandle?
-    private var galleryAddHandle: DatabaseHandle?
+    private var sponsorsAddHandle: DatabaseHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,16 +66,10 @@ class HomeViewController: UITableViewController {
         case 0:
             if let countdownCell = tableView.dequeueReusableCell(withIdentifier: CountdownTableViewCell.identifier, for: indexPath) as? CountdownTableViewCell {
                 countdownCell.configureCell(with: countdownDate, title: countdownTitle)
+                if cellHeights[indexPath.row] == 0 {
+                    cellHeights[indexPath.row] = countdownCell.sizeThatFits(CGSize(width: tableView.bounds.width - 40.0, height: .greatestFiniteMagnitude)).height
+                }
                 return countdownCell
-            }
-        case 4:
-            if let galleryCell = tableView.dequeueReusableCell(withIdentifier: GalleryTableViewCell.identifier, for: indexPath) as? GalleryTableViewCell {
-                galleryCell.configureCell(with: galleryData)
-                return galleryCell
-            }
-        case 3:
-            if let factsCell = tableView.dequeueReusableCell(withIdentifier: FactsTableViewCell.identifier, for: indexPath) as? FactsTableViewCell {
-                return factsCell
             }
         case 1:
             if let announcementsTitleCell = tableView.dequeueReusableCell(withIdentifier: AnnouncementsTitleTableViewCell.identifier, for: indexPath) as? AnnouncementsTitleTableViewCell {
@@ -84,6 +79,12 @@ class HomeViewController: UITableViewController {
             if let announcementCell = tableView.dequeueReusableCell(withIdentifier: AnnouncementTableViewCell.identifier, for: indexPath) as? AnnouncementTableViewCell {
                 announcementCell.configureCell(with: announcementData[indexPath.row])
                 return announcementCell
+            }
+        case 3:
+            if let sponsorsCell = tableView.dequeueReusableCell(withIdentifier: SponsorsTableViewCell.identifier, for: indexPath) as? SponsorsTableViewCell {
+                sponsorsCell.configureCell(with: sponsorsData)
+                sponsorsCell.delegate = self
+                return sponsorsCell
             }
         default:
             return UITableViewCell()
@@ -96,7 +97,7 @@ class HomeViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,7 +113,7 @@ class HomeViewController: UITableViewController {
     func setupFirebase() {
         setupAnnouncementsReference()
         setupCountdownReference()
-        setupGalleryReference()
+        setupSponsorsReference()
     }
     
     func setupAnnouncementsReference() {
@@ -177,14 +178,28 @@ class HomeViewController: UITableViewController {
         })
     }
     
-    func setupGalleryReference() {
+    func setupSponsorsReference() {
         firebaseReference = Database.database().reference()
-        galleryAddHandle = firebaseReference?.child("gallery").observe(.childAdded, with: { (snapshot) in
-            guard let data = snapshot.value as? String else { return }
-            guard let url = URL(string: data) else { return }
-            self.galleryData.append(url)
+        sponsorsAddHandle = firebaseReference?.child("sponsors").observe(.childAdded, with: { (snapshot) in
+            guard let data = snapshot.value as? [String : AnyObject] else { return }
+            guard let sponsor = Sponsor(JSON: data) else { return }
+            self.sponsorsData.append(sponsor)
             self.tableView.reloadData()
+            self.delegate?.tableDidLoad()
         })
     }
 
+}
+
+// MARK: - SponsorDelegate
+
+extension HomeViewController: SponsorDelegate {
+    
+    func didSelectSponsor(item: Sponsor) {
+        guard let url = URL(string: item.link ?? "") else { return }
+        let svc = SFSafariViewController(url: url)
+        svc.preferredControlTintColor = Theme.Color.main
+        self.present(svc, animated: true, completion: nil)
+    }
+    
 }
