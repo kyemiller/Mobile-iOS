@@ -27,9 +27,7 @@ class BCHeaderImage: Mappable {
     
     weak var delegate: BlogDetailsHeaderImageDelegate?
     
-    required init?(map: Map) {
-        
-    }
+    required init?(map: Map) {}
     
     func mapping(map: Map) {
         imageString <- map["image"]

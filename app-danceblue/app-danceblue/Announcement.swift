@@ -29,9 +29,7 @@ class Announcement: Mappable {
     
     weak var delegate: AnnouncementDelegate?
     
-    required init?(map: Map) {
-        
-    }
+    required init?(map: Map) {}
     
     func mapping(map: Map) {
         text <- map["text"]

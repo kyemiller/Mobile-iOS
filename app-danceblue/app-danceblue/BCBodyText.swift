@@ -13,9 +13,7 @@ class BCBodyText: Mappable {
     
     var bodyText: String?
     
-    required init?(map: Map) {
-        
-    }
+    required init?(map: Map) {}
     
     func mapping(map: Map) {
         bodyText <- map["text"]

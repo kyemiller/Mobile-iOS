@@ -38,7 +38,7 @@ class BlogDetailsTableViewController: UITableViewController {
             navigationController?.setNavigationBarHidden(false, animated: false)
         }
         setUpNavigation(controller: navigationController, hidesBar: true)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
+        //self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
         
         Analytics.logEvent("Blog Post Did Appear", parameters: ["Title" : post?.details?.title ?? ""])
     }

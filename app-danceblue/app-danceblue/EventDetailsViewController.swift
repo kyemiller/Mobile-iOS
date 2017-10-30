@@ -35,10 +35,10 @@ class EventDetailsViewController: UITableViewController {
         if navigationController?.isNavigationBarHidden ?? false {
             navigationController?.setNavigationBarHidden(false, animated: false)
         }
-        setUpNavigation(controller: navigationController, hidesBar: false)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
         Analytics.logEvent("Event Did Appear", parameters: ["Title" : event?.title ?? ""])
-
+        setUpNavigation(controller: navigationController, hidesBar: false)
+        //self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addEvent))
+        
     }
     
     // MARK: - Tableview
@@ -101,9 +101,6 @@ class EventDetailsViewController: UITableViewController {
         return UITableViewCell()
     }
     
-    
-    func share() {
-        
-    }
-    
 }
+    
+

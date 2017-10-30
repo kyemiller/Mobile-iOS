@@ -12,6 +12,7 @@ class EventDetailsTableViewCell: UITableViewCell {
     
     static let identifier = "EventDetailsCell"
     
+    @IBOutlet weak var spiritPointWordsLabel: UILabel!
     @IBOutlet weak var underlineView: UIView!
     @IBOutlet weak var spiritPointsView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -35,10 +36,11 @@ class EventDetailsTableViewCell: UITableViewCell {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM d, yyyy"
         
-        dateLabel.text = "• \(formatter.string(from: date))"
+        dateLabel.text = formatter.string(from: date)
         titleLabel.text = event.title
         timeLabel.text = "• \(event.time ?? "")"
         pointsLabel.text = event.points ?? ""
+        spiritPointWordsLabel.text = event.points == "1" ? "Spirit Point" : "Spirit Points"
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {

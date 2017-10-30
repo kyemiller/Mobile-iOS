@@ -35,7 +35,7 @@ class MoreViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -53,8 +53,8 @@ class MoreViewController: UITableViewController {
                 return faqCell
             }
         case 2:
-            if let donateCell = tableView.dequeueReusableCell(withIdentifier: DonateTableViewCell.identifier, for: indexPath) as? DonateTableViewCell {
-                return donateCell
+            if let contactCell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.identifier, for: indexPath) as? ContactTableViewCell {
+                return contactCell
             }
         case 3:
             if let donateCell = tableView.dequeueReusableCell(withIdentifier: DonateTableViewCell.identifier, for: indexPath) as? DonateTableViewCell {
@@ -71,22 +71,14 @@ class MoreViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.reloadData()
-        switch indexPath.row {
-        case 0:
+        if indexPath.row == 0 {
             if let url = URL(string: "https://danceblue.networkforgood.com") {
                 let svc = SFSafariViewController(url: url)
                 svc.preferredControlTintColor = Theme.Color.main
                 self.present(svc, animated: true, completion: nil)
             }
-        case 1:
-            self.performSegue(withIdentifier: "FAQSegue", sender: self)
-        case 2:
-            self.performSegue(withIdentifier: "ContactSegue", sender: self)
-        case 3:
-            print("")
-        default:
-            print("")
         }
+        
     }
 
 }

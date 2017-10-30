@@ -30,9 +30,7 @@ class BCDetails: Mappable {
         }
     }
     
-    required init?(map: Map) {
-        
-    }
+    required init?(map: Map) {}
     
     func mapping(map: Map) {
         dataArray <- map["details"]

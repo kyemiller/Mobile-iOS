@@ -13,7 +13,21 @@ class CountdownTableViewCell: UITableViewCell {
     static let identifier = "CountdownCell"
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var countdownLabel: UILabel!
+    
+    @IBOutlet weak var daysNumberLabel: UILabel!
+    @IBOutlet weak var hoursNumberLabel: UILabel!
+    @IBOutlet weak var minutesNumberLabel: UILabel!
+    @IBOutlet weak var secondsNumberLabel: UILabel!
+    
+    @IBOutlet weak var daysTextLabel: UILabel!
+    @IBOutlet weak var hoursTextLabel: UILabel!
+    @IBOutlet weak var minutesTextLabel: UILabel!
+    @IBOutlet weak var secondsTextLabel: UILabel!
+
+    @IBOutlet weak var daysRoundedView: UIView!
+    @IBOutlet weak var hoursRoundedView: UIView!
+    @IBOutlet weak var minutesRoundedView: UIView!
+    @IBOutlet weak var secondsRoundedView: UIView!
     
     private var countdownTimer: Timer?
     private var countdownDate: Date? {
@@ -25,12 +39,25 @@ class CountdownTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        daysRoundedView.layer.cornerRadius = 5.0
+        hoursRoundedView.layer.cornerRadius = 5.0
+        minutesRoundedView.layer.cornerRadius = 5.0
+        secondsRoundedView.layer.cornerRadius = 5.0
+        
+        daysRoundedView.clipsToBounds = true
+        hoursRoundedView.clipsToBounds = true
+        minutesRoundedView.clipsToBounds = true
+        secondsRoundedView.clipsToBounds = true
     }
     
     func configureCell(with date: Date?, title: String?) {
         countdownDate = date
         titleLabel.text = title
+    }
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let adjustedHeight = 10.0 + titleLabel.frame.height + 15.0 + daysRoundedView.frame.height + daysTextLabel.frame.height + 20.0
+        return CGSize(width: size.width, height: adjustedHeight)
     }
     
     func setupCountdown() {
@@ -49,7 +76,15 @@ class CountdownTableViewCell: UITableViewCell {
         if days <= 0, hours <= 0, minutes <= 0, seconds <= 0 {
             countdownTimer?.invalidate()
         } else {
-            countdownLabel.text = "\(days) Days | \(hours) Hours | \(minutes) Minutes | \(seconds) Seconds"
+            daysTextLabel.text = days != 1 ? "Days" : "Day"
+            hoursTextLabel.text = hours != 1 ? "Hours" : "Hour"
+            minutesTextLabel.text = minutes != 1 ? "Minutes" : "Minute"
+            secondsTextLabel.text = seconds != 1 ? "Seconds" : "Second"
+            
+            daysNumberLabel.text = "\(days)"
+            hoursNumberLabel.text = "\(hours)"
+            minutesNumberLabel.text = "\(minutes)"
+            secondsNumberLabel.text = "\(seconds)"
         }
     }
     

@@ -24,7 +24,20 @@ class FAQsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         setupFirebase()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setUpNavigation(controller: navigationController, hidesBar: false)
+        self.title = "FAQs"
+        Analytics.logEvent("FAQs View Controller Did Appear", parameters: nil)
+    }
+    
+    func setupTableView() {
+        tableView.allowsSelection = false
+        tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = tableView.rowHeight
     }
 
     // MARK: - Table view data source
@@ -42,22 +55,21 @@ class FAQsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("INDEX PATH: \(indexPath.row)")
         if indexPath.row == 0 || indexPath.row % 2 == 0 {
-            print("ENTER QUESTION")
             if let questionCell = tableView.dequeueReusableCell(withIdentifier: QuestionTableViewCell.identifier, for: indexPath) as? QuestionTableViewCell {
                 questionCell.configureCell(with: FAQData[indexPath.row / 2])
-                if cellHeights[indexPath.row / 2] == 0 {
-                    cellHeights[indexPath.row / 2] = questionCell.sizeThatFits(CGSize(width: tableView.bounds.width - 40, height: .greatestFiniteMagnitude)).height
+                if cellHeights[indexPath.row] == 0 {
+                    cellHeights[indexPath.row] = questionCell.sizeThatFits(CGSize(width: tableView.bounds.width - 40, height: .greatestFiniteMagnitude)).height
+                    print(cellHeights[indexPath.row])
                 }
                 return questionCell
             }
         } else {
             if let answerCell = tableView.dequeueReusableCell(withIdentifier: AnswerTableViewCell.identifier, for: indexPath) as? AnswerTableViewCell {
-                print("ENTER Answer")
                 answerCell.configureCell(with: FAQData[indexPath.row / 2])
-                if cellHeights[indexPath.row / 2 + 1] == 0 {
-                    cellHeights[indexPath.row / 2 + 1] = answerCell.sizeThatFits(CGSize(width: tableView.bounds.width - 40, height: .greatestFiniteMagnitude)).height
+                if cellHeights[indexPath.row] == 0 {
+                    cellHeights[indexPath.row] = answerCell.sizeThatFits(CGSize(width: tableView.bounds.width - 40, height: .greatestFiniteMagnitude)).height
+                    print(cellHeights[indexPath.row])
                 }
                 return answerCell
             }
@@ -74,7 +86,6 @@ class FAQsTableViewController: UITableViewController {
         // This Week Handles
         
         FAQsAddHandle = firebaseReference?.child("FAQs").observe(.childAdded, with: { (snapshot) in
-            print(snapshot.value)
             guard let data = snapshot.value as? [String : String]  else { return }
             self.FAQData.append(data)
             self.tableView.reloadData()

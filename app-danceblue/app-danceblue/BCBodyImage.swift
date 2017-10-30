@@ -29,9 +29,7 @@ class BCBodyImage: Mappable {
     
     weak var delegate: BlogDetailsBodyImageDelegate?
     
-    required init?(map: Map) {
-
-    }
+    required init?(map: Map) {}
     
     func mapping(map: Map) {
         imageString <- map["image"]
