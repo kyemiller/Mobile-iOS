@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import FirebaseStorage
-import NVActivityIndicatorView
+import Kingfisher
 
 class EventTableViewCell: UITableViewCell {
     
@@ -16,22 +15,18 @@ class EventTableViewCell: UITableViewCell {
     
     @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var loadingIndicatorView: NVActivityIndicatorView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
 
     fileprivate var event: Event?
-    fileprivate var isImageDownloaded: Bool = false
-    
+
     // MARK: - Initialization
     
     override func awakeFromNib() {
         headerImageView.layer.cornerRadius = 10.0
         headerImageView.clipsToBounds = true
         headerImageView.backgroundColor = Theme.Color.background
-        loadingIndicatorView.color = Theme.Color.loader
-        loadingIndicatorView.type = .ballScale
         self.backgroundColor = Theme.Color.white
         self.selectionStyle = .none
     }
@@ -40,21 +35,9 @@ class EventTableViewCell: UITableViewCell {
     
     func configureCell(with event: Event) {
         self.event = event
-        event.delegate = self
-        
         updateWithContent()
-        setupViews()
     }
-    
-    func setupViews() {
-        if event?.image == nil {
-            loadingIndicatorView.startAnimating()
-        } else {
-            loadingIndicatorView.stopAnimating()
-            headerImageView.image = event?.image
-        }
-    }
-    
+
     func updateWithContent() {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE, MMMM dd, yyyy"
@@ -63,6 +46,7 @@ class EventTableViewCell: UITableViewCell {
         if let time = event?.time {
             timeLabel.text = "• \(time)"
         }
+        headerImageView.kf.setImage(with: URL(string: event?.image ?? ""))
     }
     
     // MARK: - Layout
@@ -76,18 +60,3 @@ class EventTableViewCell: UITableViewCell {
     
 }
 
-// MARK: - Event Delegate
-
-extension EventTableViewCell: EventDelegate {
-    
-    func event(didFinishDownloadingImage image: UIImage) {
-        if image == event?.image {
-            headerImageView?.image = image
-            loadingIndicatorView.stopAnimating()
-            isImageDownloaded = true
-        }
-    }
-    
-    func event(didFinishDownloadingMap map: UIImage) {}
-    
-}

@@ -6,15 +6,9 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import FirebaseStorage
 import Foundation
 import ObjectMapper
 import UIKit
-
-protocol EventDelegate: class {
-    func event(didFinishDownloadingImage image: UIImage)
-    func event(didFinishDownloadingMap map: UIImage)
-}
 
 class Event: Mappable {
     
@@ -27,22 +21,8 @@ class Event: Mappable {
     public var id: String?
     public var timestamp: Date?
     public var address: String?
-    public var map: UIImage?
-    public var image: UIImage?
-    
-    public var mapString: String? {
-        didSet {
-            downloadMapFromFirebase()
-        }
-    }
-    
-    public var imageString: String? {
-        didSet {
-            downloadImageFromFirebase()
-        }
-    }
-
-    weak var delegate: EventDelegate?
+    public var map: String?
+    public var image: String?
     
     required init?(map: Map) {}
     
@@ -53,8 +33,8 @@ class Event: Mappable {
         time <- map["time"]
         id <- map["id"]
         address <- map["address"]
-        imageString <- map["image"]
-        mapString <- map["map"]
+        image <- map["image"]
+        self.map <- map["map"]
         points <- map["points"]
         description <- map ["description"]
         
@@ -62,38 +42,6 @@ class Event: Mappable {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         if let dateString = map["timestamp"].currentValue as? String, let date = dateFormatter.date(from: dateString) {
             timestamp = date
-        }
-    }
-
-    func downloadImageFromFirebase() {
-        let storage = Storage.storage()
-        guard let url = self.imageString else { return }
-        let gsReference = storage.reference(forURL: url)
-        
-        gsReference.getData(maxSize: 2 * 1024 * 1024) { data, error in
-            if let error = error {
-                log.debug("Error: \(error.localizedDescription)")
-            } else {
-                log.debug("Image downloaded.")
-                self.image = UIImage(data: data!)
-                self.delegate?.event(didFinishDownloadingImage: self.image!)
-            }
-        }
-    }
-    
-    func downloadMapFromFirebase() {
-        let storage = Storage.storage()
-        guard let url = self.mapString else { return }
-        let gsReference = storage.reference(forURL: url)
-        
-        gsReference.getData(maxSize: 2 * 1024 * 1024) { data, error in
-            if let error = error {
-                log.debug("Error: \(error.localizedDescription)")
-            } else {
-                log.debug("Map downloaded.")
-                self.map = UIImage(data: data!)
-                self.delegate?.event(didFinishDownloadingMap: UIImage(data: data!)!)
-            }
         }
     }
 

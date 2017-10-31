@@ -66,7 +66,6 @@ class BlogDetailsTableViewController: UITableViewController {
             case .headerImage:
                 if let imageCell = tableView.dequeueReusableCell(withIdentifier: HeaderImageTableViewCell.identifier) as? HeaderImageTableViewCell {
                     guard let data = bodyChunk.headerData else { return UITableViewCell() }
-                    shareImage = data.image
                     imageCell.configureCell(with: data)
                     cellHeights[indexPath.row] = imageCell.sizeThatFits(CGSize(width: view.bounds.width, height: .greatestFiniteMagnitude)).height
                     return imageCell

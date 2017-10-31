@@ -45,10 +45,11 @@ class EventDetailsTableViewCell: UITableViewCell {
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         var adjustedHeight = 24.0 + dateLabel.frame.height + titleLabel.sizeThatFits(CGSize(width: size.width - 28 - spiritPointsView.frame.width, height: size.height)).height
+        
         if adjustedHeight < (spiritPointsView.frame.height + 20) {
             adjustedHeight = spiritPointsView.frame.height + 20
-            
         }
+        
         return CGSize(width: bounds.width, height: adjustedHeight)
     }
     

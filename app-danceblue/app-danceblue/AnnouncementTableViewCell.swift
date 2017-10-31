@@ -23,12 +23,9 @@ class AnnouncementTableViewCell: UITableViewCell {
     
     func configureCell(with announcement: Announcement) {
         announcementLabel.text = announcement.text
-        guard let istring = announcement.imageString else { return }
-        let url = URL(string: istring)
-        
-        announcementImageView.kf.setImage(with: url!, placeholder: nil, options: nil, progressBlock: nil) { (image, error, cache, url) in
-            log.debug("Image displayed using KingFisher")
-        }
+        guard let istring = announcement.image else { return }
+        guard let url = URL(string: istring) else { return }
+        announcementImageView.kf.setImage(with: url)
     }
 
 }

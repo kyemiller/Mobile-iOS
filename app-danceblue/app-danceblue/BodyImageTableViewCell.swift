@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
+import Kingfisher
 import Gifu
 
 class BodyImageTableViewCell: UITableViewCell {
@@ -17,7 +17,6 @@ class BodyImageTableViewCell: UITableViewCell {
     fileprivate var data: BCBodyImage?
 
     @IBOutlet weak var bodyImageView: GIFImageView!
-    @IBOutlet weak var loadingIndicator: NVActivityIndicatorView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
     override func awakeFromNib() {
@@ -34,47 +33,22 @@ class BodyImageTableViewCell: UITableViewCell {
     
     func configureCell(with data: BCBodyImage) {
         self.data = data
-        data.delegate = self
         descriptionLabel.text = data.description
         setupViews()
     }
     
     func setupViews() {
         guard let data = data else { return }
-        loadingIndicator.type = .ballScale
-        loadingIndicator.color = Theme.Color.loader
-        if data.image == nil {
-            loadingIndicator.startAnimating()
-        } else {
-            if data.isGif ?? false {
+        if data.isGif ?? false {
                 bodyImageView.animate(withGIFData: data.data ?? Data())
-            } else {
-                bodyImageView.image = data.image
-        }
-            loadingIndicator.stopAnimating()
+        } else {
+                bodyImageView.kf.setImage(with: URL(string: data.image ?? ""))
         }
     }
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         let adjustedHeight = descriptionLabel.sizeThatFits(CGSize(width: size.width - 40.0, height: size.height)).height + bodyImageView.frame.height + 12.0
-        
         return CGSize(width: bounds.width, height: adjustedHeight)
-    }
-    
-}
-
-// MARK: - BlogDetailsBodyImageDelegate
-
-extension BodyImageTableViewCell: BlogDetailsBodyImageDelegate {
-    
-    func bodyImage(didFinishDownloading image: UIImage?) {
-        guard let data = data else { return }
-        if data.isGif ?? false {
-            bodyImageView.animate(withGIFData: data.data ?? Data())
-        } else {
-            bodyImageView.image = image
-        }
-        loadingIndicator.stopAnimating()
     }
     
 }
