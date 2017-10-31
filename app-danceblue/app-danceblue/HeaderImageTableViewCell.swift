@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
+import Kingfisher
 
 class HeaderImageTableViewCell: UITableViewCell {
 
@@ -15,7 +15,6 @@ class HeaderImageTableViewCell: UITableViewCell {
     
     private var data: BCHeaderImage?
     @IBOutlet weak var headerImageView: UIImageView!
-    @IBOutlet weak var loadingIndicator: NVActivityIndicatorView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
     override func awakeFromNib() {
@@ -26,38 +25,14 @@ class HeaderImageTableViewCell: UITableViewCell {
     
     func configureCell(with data: BCHeaderImage) {
         self.data = data
-        data.delegate = self
-        setupViews()
+        descriptionLabel.text = data.description
+        headerImageView.kf.setImage(with: URL(string: data.image ?? ""))
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         guard let header = headerImageView else { return CGSize() }
         let height: CGFloat = descriptionLabel.sizeThatFits(CGSize(width: size.width - 40.0, height: .greatestFiniteMagnitude)).height + header.frame.height + 8.0 + 8.0 + 8.0
         return CGSize(width: bounds.width, height: height)
-        
-    }
-    
-    func setupViews() {
-        loadingIndicator.color = Theme.Color.loader
-        loadingIndicator.type = .ballScale
-        descriptionLabel.text = data?.description
-        if data?.image == nil {
-            loadingIndicator.startAnimating()
-        } else {
-            loadingIndicator.stopAnimating()
-            headerImageView.image = data?.image
-        }
-    }
-    
-}
-
-// MARK: - BlogDetailsHeaderImageDelegate
-
-extension HeaderImageTableViewCell: BlogDetailsHeaderImageDelegate {
-    
-    func headerImage(didFinishDownloading image: UIImage?) {
-        loadingIndicator.stopAnimating()
-        headerImageView.image = image
     }
     
 }
