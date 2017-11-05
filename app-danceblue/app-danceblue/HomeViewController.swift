@@ -26,6 +26,7 @@ class HomeViewController: UITableViewController {
     
     private var countdownDate: Date?
     private var countdownTitle: String?
+    private var countdownImage: String?
     
     private var sponsorsData: [Sponsor] = []
     
@@ -48,6 +49,7 @@ class HomeViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         self.title = "Home"
+        //self.navigationController?.setNavigationBarHidden(true, animated: false)
         setUpNavigation(controller: self.navigationController, hidesBar: false)
         Analytics.logEvent("Home View Controller Did Appear.", parameters: nil)
     }
@@ -65,7 +67,7 @@ class HomeViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             if let countdownCell = tableView.dequeueReusableCell(withIdentifier: CountdownTableViewCell.identifier, for: indexPath) as? CountdownTableViewCell {
-                countdownCell.configureCell(with: countdownDate, title: countdownTitle)
+                countdownCell.configureCell(with: countdownDate, title: countdownTitle, image: countdownImage)
                 if cellHeights[indexPath.row] == 0 {
                     cellHeights[indexPath.row] = countdownCell.sizeThatFits(CGSize(width: tableView.bounds.width - 40.0, height: .greatestFiniteMagnitude)).height
                 }
@@ -158,6 +160,7 @@ class HomeViewController: UITableViewController {
         countdownAddHandle = firebaseReference?.child("countdown").observe(.childAdded, with: { (snapshot) in
             guard let data = snapshot.value as? [String : String] else { return }
             self.countdownTitle = data["title"]
+            self.countdownImage = data["image"]
             let dateString = data["date"]
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
@@ -169,6 +172,7 @@ class HomeViewController: UITableViewController {
         countdownChangeHandle = firebaseReference?.child("countdown").observe(.childChanged, with: { (snapshot) in
             guard let data = snapshot.value as? [String : String] else { return }
             self.countdownTitle = data["title"]
+            self.countdownImage = data["image"]
             let dateString = data["date"]
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"

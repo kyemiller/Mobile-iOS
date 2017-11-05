@@ -8,15 +8,13 @@
 
 import UIKit
 import EventKit
-import MapKit
-import NVActivityIndicatorView
 import FirebaseAnalytics
-
+import SafariServices
 
 class EventDetailsViewController: UITableViewController {
     
     var event: Event?
-    var cellHeights: [CGFloat] = [CGFloat].init(repeating: 0, count: 4)
+    var cellHeights: [CGFloat] = [CGFloat].init(repeating: 0, count: 5)
     
     // MARK: - Initialization
     
@@ -48,6 +46,8 @@ class EventDetailsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if event?.flyer != nil { print("5"); return 5 }
+        print("4")
         return 4
     }
     
@@ -80,6 +80,7 @@ class EventDetailsViewController: UITableViewController {
         case 2:
             if let descriptionCell = tableView.dequeueReusableCell(withIdentifier: EventDescriptionCell.identifier, for: indexPath) as? EventDescriptionCell {
                 descriptionCell.configureCell(with: event)
+                descriptionCell.delegate = self
                 if cellHeights[indexPath.row] == 0 {
                     cellHeights[indexPath.row] = descriptionCell.sizeThatFits(CGSize(width: view.bounds.width, height: .greatestFiniteMagnitude)).height
                 }
@@ -87,6 +88,23 @@ class EventDetailsViewController: UITableViewController {
                 return descriptionCell
             }
         case 3:
+            if event.flyer != nil, let flyerCell = tableView.dequeueReusableCell(withIdentifier: EventFlyerCell.identifier, for: indexPath) as? EventFlyerCell {
+                flyerCell.configureCell(with: event)
+                if cellHeights[indexPath.row] == 0 {
+                    cellHeights[indexPath.row] = flyerCell.sizeThatFits(CGSize(width: view.bounds.width, height: .greatestFiniteMagnitude)).height
+                }
+                return flyerCell
+            } else {
+                if let mapCell = tableView.dequeueReusableCell(withIdentifier: EventMapCell.identifier, for: indexPath) as? EventMapCell {
+                    mapCell.configureCell(with: event)
+                    if cellHeights[indexPath.row] == 0 {
+                        cellHeights[indexPath.row] = mapCell.sizeThatFits(CGSize(width: view.bounds.width, height: .greatestFiniteMagnitude)).height
+                    }
+                    
+                    return mapCell
+                }
+            }
+        case 4:
             if let mapCell = tableView.dequeueReusableCell(withIdentifier: EventMapCell.identifier, for: indexPath) as? EventMapCell {
                 mapCell.configureCell(with: event)
                 if cellHeights[indexPath.row] == 0 {
@@ -102,5 +120,16 @@ class EventDetailsViewController: UITableViewController {
     }
     
 }
+
+// MARK: - EventDescriptionDelegate
+
+extension EventDetailsViewController: EventDescriptionDelegate {
     
+    func textView(didPresentSafariViewController url: URL) {
+        let svc = SFSafariViewController(url: url)
+        svc.preferredControlTintColor = Theme.Color.main
+        self.present(svc, animated: true, completion: nil)
+    }
+    
+}
 

@@ -9,30 +9,65 @@
 import Foundation
 import UIKit
 
+protocol EventDescriptionDelegate: class {
+    func textView(didPresentSafariViewController url: URL)
+}
+
 class EventDescriptionCell: UITableViewCell {
     
     static let identifier = "EventDescriptionCell"
     
-    @IBOutlet weak var descriptionLabel: UILabel!
-    
+    @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var underlineView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     private var event: Event?
     
+    weak var delegate: EventDescriptionDelegate?
+    
     override func awakeFromNib() {
         underlineView.backgroundColor = Theme.Color.main
+        descriptionTextView.font = Theme.Font.body
         titleLabel.font = Theme.Font.header
         titleLabel.text = "DESCRIPTION"
+        setupTextView()
+    }
+
+    func setupTextView() {
+        descriptionTextView.delegate = self
+        descriptionTextView.dataDetectorTypes = [.link]
+        descriptionTextView.linkTextAttributes = [NSForegroundColorAttributeName: Theme.Color.main]
+        descriptionTextView.isSelectable = true
+        descriptionTextView.isEditable = false
+        descriptionTextView.tintColor = Theme.Color.main
+        descriptionTextView.textContainerInset = .zero
+        descriptionTextView.contentInset = .zero
+        descriptionTextView.textContainer.lineFragmentPadding = 0.0
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let adjustedHeight = 8.0 + titleLabel.frame.height + 2.0 +  underlineView.frame.height + 8.0 + descriptionLabel.sizeThatFits(CGSize(width: size.width - 40, height: size.height)).height + 16.0
+        var adjustedHeight = 8.0 + titleLabel.frame.height + 2.0 +  underlineView.frame.height + 16.0 + descriptionTextView.sizeThatFits(CGSize(width: size.width - 40, height: size.height)).height + 16.0
         return CGSize(width: bounds.width, height: adjustedHeight)
     }
     
     func configureCell(with event: Event) {
         self.event = event
-        descriptionLabel.text = event.description ?? ""
+        descriptionTextView.text = event.description ?? ""
+    }
+    
+}
+
+// MARK: - UITextViewDelegate
+
+extension EventDescriptionCell: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        
+        if URL.absoluteString.contains("mailto:") {
+            return true
+        }
+        
+        delegate?.textView(didPresentSafariViewController: URL)
+        return false
     }
     
 }

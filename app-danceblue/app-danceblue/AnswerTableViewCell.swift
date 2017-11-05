@@ -17,7 +17,7 @@ class AnswerTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        answerLabel.font = Theme.Font.blog
+        answerLabel.font = Theme.Font.body
     }
     
     func configureCell(with data: [String : String]) {

@@ -1,20 +1,20 @@
 PODS:
-  - Firebase/Core (4.4.0):
+  - Firebase/Core (4.5.0):
     - FirebaseAnalytics (= 4.0.4)
-    - FirebaseCore (= 4.0.9)
-  - Firebase/Crash (4.4.0):
+    - FirebaseCore (= 4.0.10)
+  - Firebase/Crash (4.5.0):
     - Firebase/Core
     - FirebaseCrash (= 2.0.2)
-  - Firebase/Database (4.4.0):
+  - Firebase/Database (4.5.0):
     - Firebase/Core
-    - FirebaseDatabase (= 4.1.1)
-  - Firebase/DynamicLinks (4.4.0):
+    - FirebaseDatabase (= 4.1.0)
+  - Firebase/DynamicLinks (4.5.0):
     - Firebase/Core
     - FirebaseDynamicLinks (= 2.1.0)
-  - Firebase/Messaging (4.4.0):
+  - Firebase/Messaging (4.5.0):
     - Firebase/Core
-    - FirebaseMessaging (= 2.0.5)
-  - Firebase/Storage (4.4.0):
+    - FirebaseMessaging (= 2.0.6)
+  - Firebase/Storage (4.5.0):
     - Firebase/Core
     - FirebaseStorage (= 2.0.2)
   - FirebaseAnalytics (4.0.4):
@@ -22,7 +22,7 @@ PODS:
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
-  - FirebaseCore (4.0.9):
+  - FirebaseCore (4.0.10):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
   - FirebaseCrash (2.0.2):
@@ -31,14 +31,14 @@ PODS:
     - GoogleToolboxForMac/Logger (~> 2.1)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - Protobuf (~> 3.1)
-  - FirebaseDatabase (4.1.1):
+  - FirebaseDatabase (4.1.0):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - leveldb-library (~> 1.18)
   - FirebaseDynamicLinks (2.1.0):
     - FirebaseAnalytics (~> 4.0)
   - FirebaseInstanceID (2.0.5)
-  - FirebaseMessaging (2.0.5):
+  - FirebaseMessaging (2.0.6):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -56,15 +56,12 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.3)
   - GTMSessionFetcher/Core (1.1.12)
   - Kingfisher (4.2.0)
-  - leveldb-library (1.18.3)
+  - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - NVActivityIndicatorView (4.0.0):
-    - NVActivityIndicatorView/Presenter (= 4.0.0)
-  - NVActivityIndicatorView/Presenter (4.0.0)
   - ObjcExceptionBridging (1.0.1):
     - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
   - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
@@ -84,32 +81,30 @@ DEPENDENCIES:
   - Firebase/Storage
   - Gifu (= 2.0)
   - Kingfisher (~> 4.0)
-  - NVActivityIndicatorView
   - ObjectMapper (~> 2.2)
   - XCGLogger (~> 5.0.1)
 
 SPEC CHECKSUMS:
-  Firebase: 3e92884a63e8f76d107c43a67d2ab9071e1eda10
+  Firebase: d83d287bdb6b1c78320561482706d1fcfc8ddfc1
   FirebaseAnalytics: 722b53c7b32bfc7806b06e0093a2f5180d4f2c5a
-  FirebaseCore: ebe73f64302705e693b1de9919a76edbdd17a19d
+  FirebaseCore: da5e8e372cb6046212739a4d81e42d32c22907cc
   FirebaseCrash: cded0fc566c03651aea606a101bc156085f333ca
-  FirebaseDatabase: 2e6e8e110b93b9a6e7aac71774c769a363035cb1
+  FirebaseDatabase: 607284a103e961d7f5863ee603cab5e85f443bd6
   FirebaseDynamicLinks: ed4cb6c42705aaa5e841ed2d76e3a4bddbec10c1
   FirebaseInstanceID: f2b688c66b972f30d7fa9f5f9f91455454a03b47
-  FirebaseMessaging: e25dc87045e76dfe9e920a5741dc3fe7e3ef2268
+  FirebaseMessaging: 75d83375b0f7a9911568d7bdd1a1a8261cbcbdef
   FirebaseStorage: 0cca42d9b889a0227c3a50121f45a4469fc9eb27
   Gifu: 56a4d8f1092399159fa32662aa2232158b48d8ac
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   Kingfisher: 9ee7e788d8ba07c3f21ce0d43f33cec310a4f781
-  leveldb-library: 10fb39c39e243db4af1828441162405bbcec1404
+  leveldb-library: 9e29a1d913f922444127a7d0f28b025a0e2ba053
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  NVActivityIndicatorView: 54c9b93b6f25a4f467512680c0c90c09a1095cf2
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   ObjectMapper: 63cfe41bc6f8e7c8f44344c49901b8ae7de14c52
   Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
   XCGLogger: 49bceee6dc0c738eae5d6454fdbf800d62256b74
 
-PODFILE CHECKSUM: 1b5c827c4bc7338a927ae58e787851e4275da52b
+PODFILE CHECKSUM: 6d5b7359489c0d64f64fba3fad0f50325c73fb7f
 
 COCOAPODS: 1.3.1

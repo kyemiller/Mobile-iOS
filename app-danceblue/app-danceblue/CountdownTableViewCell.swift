@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CountdownTableViewCell: UITableViewCell {
 
     static let identifier = "CountdownCell"
     
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var countdownImageView: UIImageView!
     
     @IBOutlet weak var daysNumberLabel: UILabel!
     @IBOutlet weak var hoursNumberLabel: UILabel!
@@ -29,6 +32,7 @@ class CountdownTableViewCell: UITableViewCell {
     @IBOutlet weak var minutesRoundedView: UIView!
     @IBOutlet weak var secondsRoundedView: UIView!
     
+    private var countdownImage: String?
     private var countdownTimer: Timer?
     private var countdownDate: Date? {
         didSet {
@@ -39,6 +43,8 @@ class CountdownTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        countdownImageView.backgroundColor = Theme.Color.background
+        
         daysRoundedView.layer.cornerRadius = 5.0
         hoursRoundedView.layer.cornerRadius = 5.0
         minutesRoundedView.layer.cornerRadius = 5.0
@@ -50,13 +56,16 @@ class CountdownTableViewCell: UITableViewCell {
         secondsRoundedView.clipsToBounds = true
     }
     
-    func configureCell(with date: Date?, title: String?) {
+    func configureCell(with date: Date?, title: String?, image: String?) {
         countdownDate = date
         titleLabel.text = title
+        
+        guard let image = image else { return }
+        countdownImageView.kf.setImage(with: URL(string: image))
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let adjustedHeight = 10.0 + titleLabel.frame.height + 15.0 + daysRoundedView.frame.height + daysTextLabel.frame.height + 20.0
+        let adjustedHeight = 10.0 + titleLabel.frame.height + 15.0 + daysRoundedView.frame.height + daysTextLabel.frame.height + 10.0 + logoImageView.frame.height + 20.0
         return CGSize(width: size.width, height: adjustedHeight)
     }
     

@@ -61,4 +61,5 @@ extension BodyTextTableViewCell: UITextViewDelegate {
         delegate?.textView(didPresentSafariViewController: URL)
         return false
     }
+    
 }

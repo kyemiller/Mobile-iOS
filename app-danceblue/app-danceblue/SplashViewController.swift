@@ -8,13 +8,12 @@
 
 import UIKit
 import UserNotifications
-import NVActivityIndicatorView
 import FirebaseAnalytics
 
 class SplashViewController: UIViewController {
     
+    @IBOutlet weak var gradientImageView: UIImageView!
     @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var containerView: UIView!
 
     private var homeViewController: HomeViewController?
@@ -28,16 +27,18 @@ class SplashViewController: UIViewController {
     }
 
     func setupViews() {
-        backgroundView.alpha = 1.0
-        backgroundView.isHidden = false
+        gradientImageView.alpha = 1.0
+        gradientImageView.isHidden = false
         containerView.isHidden = true
         logoImageView.layer.allowsEdgeAntialiasing = true
+        logoImageView.isHidden = false
     }
 
     func transition() {
         containerView.isHidden = false
         UIView.animate(withDuration: 0.5) {
-            self.backgroundView.alpha = 0.0
+            self.gradientImageView.alpha = 0.0
+            self.logoImageView.alpha = 0.0
         }
     }
     

@@ -15,7 +15,7 @@ extension NSAttributedString {
         do {
             if let data = message.data(using: String.Encoding.utf16, allowLossyConversion: true) {
                 let str = try NSMutableAttributedString(data: data,options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSForegroundColorAttributeName: Theme.Color.black],documentAttributes: nil)
-                str.addAttribute(NSFontAttributeName, value: Theme.Font.blog, range: NSMakeRange(0, str.length))
+                str.addAttribute(NSFontAttributeName, value: Theme.Font.body, range: NSMakeRange(0, str.length))
                 
                 let paragraphStyle = NSMutableParagraphStyle()
                 paragraphStyle.alignment = .left
