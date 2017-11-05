@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
 import SafariServices
 import FirebaseAnalytics
 
@@ -37,7 +36,7 @@ class BlogDetailsTableViewController: UITableViewController {
         if navigationController?.isNavigationBarHidden ?? false {
             navigationController?.setNavigationBarHidden(false, animated: false)
         }
-        setUpNavigation(controller: navigationController, hidesBar: true)
+        setUpNavigation(controller: navigationController, hidesBar: false)
         //self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
         
         Analytics.logEvent("Blog Post Did Appear", parameters: ["Title" : post?.details?.title ?? ""])

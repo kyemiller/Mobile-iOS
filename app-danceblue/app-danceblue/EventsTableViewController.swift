@@ -69,6 +69,10 @@ class EventsTableViewController: UITableViewController {
     func refreshTable() {
         refreshControl?.beginRefreshing()
         tableView.reloadData()
+        
+        // Since the database is realtime, reloading isn't necessary. However, while testing
+        // users enjoy being able to check for updates by pulling down and seeing the loading
+        // indicator for a second or two.
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             self.tableView.refreshControl?.endRefreshing()
         })

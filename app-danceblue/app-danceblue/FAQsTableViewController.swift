@@ -60,7 +60,6 @@ class FAQsTableViewController: UITableViewController {
                 questionCell.configureCell(with: FAQData[indexPath.row / 2])
                 if cellHeights[indexPath.row] == 0 {
                     cellHeights[indexPath.row] = questionCell.sizeThatFits(CGSize(width: tableView.bounds.width - 40, height: .greatestFiniteMagnitude)).height
-                    print(cellHeights[indexPath.row])
                 }
                 return questionCell
             }
@@ -69,7 +68,6 @@ class FAQsTableViewController: UITableViewController {
                 answerCell.configureCell(with: FAQData[indexPath.row / 2])
                 if cellHeights[indexPath.row] == 0 {
                     cellHeights[indexPath.row] = answerCell.sizeThatFits(CGSize(width: tableView.bounds.width - 40, height: .greatestFiniteMagnitude)).height
-                    print(cellHeights[indexPath.row])
                 }
                 return answerCell
             }

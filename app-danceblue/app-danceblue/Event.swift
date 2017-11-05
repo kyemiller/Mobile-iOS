@@ -23,6 +23,7 @@ class Event: Mappable {
     public var address: String?
     public var map: String?
     public var image: String?
+    public var flyer: String?
     
     required init?(map: Map) {}
     
@@ -37,6 +38,7 @@ class Event: Mappable {
         self.map <- map["map"]
         points <- map["points"]
         description <- map ["description"]
+        flyer <- map["flyer"] 
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
