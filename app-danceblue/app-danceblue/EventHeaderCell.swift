@@ -17,6 +17,8 @@ class EventHeaderCell: UITableViewCell {
     
     fileprivate var event: Event?
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         headerImageView.clipsToBounds = true
@@ -27,6 +29,8 @@ class EventHeaderCell: UITableViewCell {
         self.event = event
         headerImageView.kf.setImage(with: URL(string: event.image ?? ""))
     }
+    
+    // MARK: - Layout
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         guard let header = headerImageView else { return CGSize() }

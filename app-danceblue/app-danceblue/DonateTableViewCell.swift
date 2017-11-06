@@ -15,6 +15,8 @@ class DonateTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var donateImageView: UIImageView!
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none

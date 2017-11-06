@@ -6,7 +6,6 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import Foundation
 import ObjectMapper
 import UIKit
 
@@ -14,7 +13,6 @@ class BCHeaderImage: Mappable {
     
     var description: String?
     var image: String?
-    
     
     required init?(map: Map) {}
     

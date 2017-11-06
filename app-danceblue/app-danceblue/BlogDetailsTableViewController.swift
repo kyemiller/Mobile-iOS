@@ -39,7 +39,7 @@ class BlogDetailsTableViewController: UITableViewController {
         setUpNavigation(controller: navigationController, hidesBar: false)
         //self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
         
-        Analytics.logEvent("Blog Post Did Appear", parameters: ["Title" : post?.details?.title ?? ""])
+        Analytics.logEvent("Blog_Post_Did_Appear", parameters: ["Title" : post?.details?.title ?? ""])
     }
     
     func setupTableView() {
@@ -145,9 +145,13 @@ class BlogDetailsTableViewController: UITableViewController {
 extension BlogDetailsTableViewController: BodyTextTableViewDelegate {
     
     func textView(didPresentSafariViewController url: URL) {
-        let svc = SFSafariViewController(url: url)
-        svc.preferredControlTintColor = Theme.Color.main
-        self.present(svc, animated: true, completion: nil)
+        if url.absoluteString.contains("networkforgood") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            let svc = SFSafariViewController(url: url)
+            svc.preferredControlTintColor = Theme.Color.main
+            self.present(svc, animated: true, completion: nil)
+        }
     }
     
 }

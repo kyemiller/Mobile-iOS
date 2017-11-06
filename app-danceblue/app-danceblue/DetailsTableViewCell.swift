@@ -18,6 +18,8 @@ class DetailsTableViewCell: UITableViewCell {
     
     private var data: BCDetails?
     
+    // MARK: - Initialization
+    
     func configureCell(with data: BCDetails) {
         self.data = data
         guard let date = data.timestamp else { return }
@@ -29,6 +31,8 @@ class DetailsTableViewCell: UITableViewCell {
         authorLabel.text = data.author
         dateLabel.text = "• \(formatter.string(from: date))"
     }
+    
+    // MARK: - Layout
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         let adjustedHeight = 24.0 + dateLabel.frame.height + authorLabel.frame.height + titleLabel.sizeThatFits(CGSize(width: size.width - 40, height: size.height)).height

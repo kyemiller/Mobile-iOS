@@ -13,6 +13,8 @@ class EventsTableViewHeader: UIView {
     let headerLabel = UILabel()
     let underlineView = UIView()
     
+    // MARK: - Initialization
+    
     override init(frame: CGRect) {
        super.init(frame: frame)
         self.addSubview(headerLabel)

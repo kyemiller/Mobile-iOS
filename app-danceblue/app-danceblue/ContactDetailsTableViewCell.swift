@@ -22,6 +22,8 @@ class ContactDetailsTableViewCell: UITableViewCell {
     
     weak var delegate: ContactDelegate?
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         titleLabel.font = Theme.Font.header
@@ -45,6 +47,8 @@ class ContactDetailsTableViewCell: UITableViewCell {
         titleLabel.text = title
         descriptionTextView.text = description
     }
+    
+    // MARK: - Layout
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         return CGSize(width: size.width, height: 8.0 + titleLabel.sizeThatFits(CGSize(width: size.width, height: .greatestFiniteMagnitude)).height + 16.0 + descriptionTextView.sizeThatFits(CGSize(width: size.width, height: .greatestFiniteMagnitude)).height + 8.0)

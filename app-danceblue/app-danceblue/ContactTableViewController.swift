@@ -15,6 +15,8 @@ class ContactTableViewController: UITableViewController {
     private var contactData: [[String]] = [["CONTACT US", Strings.Contact.general], ["FUNDRAISING", Strings.Contact.fundraising]]
     private var cellHeights: [CGFloat] = [CGFloat].init(repeating: 0, count: 3)
     
+    // MARK: - Initialization
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -23,7 +25,7 @@ class ContactTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         setUpNavigation(controller: navigationController, hidesBar: false)
         self.title = "Contact"
-        Analytics.logEvent("Contact View Controller Did Appear", parameters: nil)
+        Analytics.logEvent("Contact_Page_Did_Appear", parameters: nil)
     }
     
     func setupTableView() {
@@ -32,7 +34,7 @@ class ContactTableViewController: UITableViewController {
         tableView.estimatedRowHeight = tableView.rowHeight
     }
     
-    // MARK: - Table view data source
+    // MARK: - TableView Data Source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -79,9 +81,13 @@ class ContactTableViewController: UITableViewController {
 extension ContactTableViewController: ContactDelegate {
     
     func textView(didPresentSafariViewController url: URL) {
-        let svc = SFSafariViewController(url: url)
-        svc.preferredControlTintColor = Theme.Color.main
-        self.present(svc, animated: true, completion: nil)
+        if url.absoluteString.contains("networkforgood") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            let svc = SFSafariViewController(url: url)
+            svc.preferredControlTintColor = Theme.Color.main
+            self.present(svc, animated: true, completion: nil)
+        }
     }
     
 }
@@ -98,4 +104,3 @@ extension ContactTableViewController: SocialMediaDelegate {
     }
 
 }
-

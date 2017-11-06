@@ -28,11 +28,12 @@ class SponsorsTableViewCell: UITableViewCell {
     
     weak var delegate: SponsorDelegate?
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         titleLabel.text = "SPONSORS"
         titleLabel.font = Theme.Font.header
         underlineView.backgroundColor = Theme.Color.main
-        
     }
     
     func setupCollectionView() {

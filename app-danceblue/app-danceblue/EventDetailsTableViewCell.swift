@@ -22,6 +22,8 @@ class EventDetailsTableViewCell: UITableViewCell {
     
     private var event: Event?
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         underlineView.backgroundColor = Theme.Color.background
         spiritPointsView.backgroundColor = Theme.Color.lightGray
@@ -42,6 +44,8 @@ class EventDetailsTableViewCell: UITableViewCell {
         pointsLabel.text = event.points ?? ""
         spiritPointWordsLabel.text = event.points == "1" ? "Spirit Point" : "Spirit Points"
     }
+    
+    // MARK: - Layout
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         var adjustedHeight = 24.0 + dateLabel.frame.height + titleLabel.sizeThatFits(CGSize(width: size.width - 28 - spiritPointsView.frame.width, height: size.height)).height

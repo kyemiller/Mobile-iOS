@@ -41,6 +41,8 @@ class HomeViewController: UITableViewController {
     private var countdownDeleteHandle: DatabaseHandle?
     private var sponsorsAddHandle: DatabaseHandle?
     
+    // MARK: - Initialization
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -51,7 +53,7 @@ class HomeViewController: UITableViewController {
         self.title = "Home"
         //self.navigationController?.setNavigationBarHidden(true, animated: false)
         setUpNavigation(controller: self.navigationController, hidesBar: false)
-        Analytics.logEvent("Home View Controller Did Appear.", parameters: nil)
+        Analytics.logEvent("Home_Screen_Did_Appear", parameters: nil)
     }
     
     func setupTableView() {

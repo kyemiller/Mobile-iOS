@@ -19,6 +19,8 @@ class BlogHorizontalCollectionViewCell: UICollectionViewCell {
     
     fileprivate var details: BlogDetails?
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         blogImageView.layer.cornerRadius = 5.0
         blogImageView.clipsToBounds = true

@@ -15,6 +15,8 @@ class ContactTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contactImageView: UIImageView!
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none

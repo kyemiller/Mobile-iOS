@@ -22,10 +22,7 @@ class BodyTextTableViewCell: UITableViewCell {
     
     weak var delegate: BodyTextTableViewDelegate?
     
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let adjustedHeight = 24.0 + bodyTextView.sizeThatFits(CGSize(width: size.width - 40, height: size.height)).height
-        return CGSize(width: bounds.width, height: adjustedHeight)
-    }
+    // MARK: - Initialization
     
     func configureCell(with data: BCBodyText) {
         self.data = data
@@ -44,6 +41,13 @@ class BodyTextTableViewCell: UITableViewCell {
         bodyTextView.textContainerInset = .zero
         bodyTextView.contentInset = .zero
         bodyTextView.textContainer.lineFragmentPadding = 0.0
+    }
+    
+    // MARK: - Layout
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let adjustedHeight = 24.0 + bodyTextView.sizeThatFits(CGSize(width: size.width - 40, height: size.height)).height
+        return CGSize(width: bounds.width, height: adjustedHeight)
     }
     
 }

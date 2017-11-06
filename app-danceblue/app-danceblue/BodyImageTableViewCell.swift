@@ -19,6 +19,8 @@ class BodyImageTableViewCell: UITableViewCell {
     @IBOutlet weak var bodyImageView: GIFImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         bodyImageView.clipsToBounds = true
@@ -39,13 +41,11 @@ class BodyImageTableViewCell: UITableViewCell {
     
     func setupViews() {
         guard let data = data else { return }
-        if data.isGif ?? false {
-                bodyImageView.animate(withGIFData: data.data ?? Data())
-        } else {
-                bodyImageView.kf.setImage(with: URL(string: data.image ?? ""))
-        }
+        bodyImageView.kf.setImage(with: URL(string: data.image ?? ""))
     }
 
+    // MARK: - Layout
+    
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         let adjustedHeight = descriptionLabel.sizeThatFits(CGSize(width: size.width - 40.0, height: size.height)).height + bodyImageView.frame.height + 12.0
         return CGSize(width: bounds.width, height: adjustedHeight)

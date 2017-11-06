@@ -15,6 +15,8 @@ class QuestionTableViewCell: UITableViewCell {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var underlineView: UIView!
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         questionLabel.font = Theme.Font.header
@@ -24,6 +26,8 @@ class QuestionTableViewCell: UITableViewCell {
     func configureCell(with data: [String : String]) {
         questionLabel.text = data["question"]
     }
+    
+    // MARK: - Layout
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         return CGSize(width: size.width, height: 20.0 + questionLabel.sizeThatFits(CGSize(width: size.width, height: .greatestFiniteMagnitude)).height)

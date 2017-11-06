@@ -30,8 +30,6 @@ class EventTableViewCell: UITableViewCell {
         self.backgroundColor = Theme.Color.white
         self.selectionStyle = .none
     }
-
-    // MARK: - Configuration
     
     func configureCell(with event: Event) {
         self.event = event

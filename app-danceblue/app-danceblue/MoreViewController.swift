@@ -7,11 +7,12 @@
 //
 
 import UIKit
-import SafariServices
 import FirebaseAnalytics
 
 class MoreViewController: UITableViewController {
 
+    // MARK: - Initialization
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -20,7 +21,7 @@ class MoreViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         setUpNavigation(controller: navigationController, hidesBar: false)
         self.title = "More"
-        Analytics.logEvent("More View Controller Did Appear", parameters: nil)
+        Analytics.logEvent("More_Page_Did_Appear", parameters: nil)
     }
 
     func setupTableView() {
@@ -28,7 +29,7 @@ class MoreViewController: UITableViewController {
         tableView.separatorStyle = .none
     }
     
-    // MARK: - Table view data source
+    // MARK: - TableView Data Source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -73,9 +74,7 @@ class MoreViewController: UITableViewController {
         tableView.reloadData()
         if indexPath.row == 0 {
             if let url = URL(string: "https://danceblue.networkforgood.com") {
-                let svc = SFSafariViewController(url: url)
-                svc.preferredControlTintColor = Theme.Color.main
-                self.present(svc, animated: true, completion: nil)
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }
         

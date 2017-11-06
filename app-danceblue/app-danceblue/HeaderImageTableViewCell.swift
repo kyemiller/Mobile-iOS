@@ -17,6 +17,8 @@ class HeaderImageTableViewCell: UITableViewCell {
     @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         headerImageView.clipsToBounds = true
@@ -28,6 +30,8 @@ class HeaderImageTableViewCell: UITableViewCell {
         descriptionLabel.text = data.description
         headerImageView.kf.setImage(with: URL(string: data.image ?? ""))
     }
+    
+    // MARK: - Layout
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         guard let header = headerImageView else { return CGSize() }

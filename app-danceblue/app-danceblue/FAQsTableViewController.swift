@@ -31,7 +31,7 @@ class FAQsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         setUpNavigation(controller: navigationController, hidesBar: false)
         self.title = "FAQs"
-        Analytics.logEvent("FAQs View Controller Did Appear", parameters: nil)
+        Analytics.logEvent("FAQs_Did_Appear", parameters: nil)
     }
     
     func setupTableView() {
@@ -40,7 +40,7 @@ class FAQsTableViewController: UITableViewController {
         tableView.estimatedRowHeight = tableView.rowHeight
     }
 
-    // MARK: - Table view data source
+    // MARK: - TableView Data Source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

@@ -1,5 +1,5 @@
 //
-//  GalleryCollectionViewCell.swift
+//  SponsorCollectionViewCell.swift
 //  app-danceblue
 //
 //  Created by Blake Swaidner on 10/16/17.
@@ -14,6 +14,8 @@ class SponsorCollectionViewCell: UICollectionViewCell {
     static let identifier = "SponsorCollectionCell"
     
     @IBOutlet weak var sponsorImageView: UIImageView!
+    
+    // MARK: - Initialization
     
     override func awakeFromNib() {
         sponsorImageView.backgroundColor = Theme.Color.white
