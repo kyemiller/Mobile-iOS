@@ -1,0 +1,20 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'app-danceblue' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for app-danceblue
+  pod 'Firebase/Core'
+  pod 'Firebase/Crash'
+  pod 'Firebase/Database'
+  pod 'Firebase/DynamicLinks'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Storage'
+  pod 'XCGLogger', '~> 5.0.1'
+  pod 'ObjectMapper', '~> 2.2'
+  pod 'Gifu', '2.0'
+  pod 'Kingfisher', '~> 4.0'
+
+end
