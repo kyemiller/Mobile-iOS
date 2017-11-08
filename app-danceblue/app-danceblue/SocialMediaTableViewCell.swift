@@ -18,6 +18,16 @@ class SocialMediaTableViewCell: UITableViewCell {
 
     weak var delegate: SocialMediaDelegate?
     
+    @IBOutlet weak var dividerView: UIView!
+    
+    // MARK: - Initialization
+    
+    override func awakeFromNib() {
+        dividerView.backgroundColor = Theme.Color.background
+    }
+    
+    // MARK: - Actions
+    
     @IBAction func facebookTapped(_ sender: Any) {
         UIApplication.shared.open(URL(string: "fb://profile?id=danceblue")!, options: [:], completionHandler: nil)
     }

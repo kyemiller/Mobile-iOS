@@ -20,6 +20,8 @@ class EventFlyerCell: UITableViewCell {
     
     fileprivate var event: Event?
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         underlineView.backgroundColor = Theme.Color.main
@@ -29,15 +31,19 @@ class EventFlyerCell: UITableViewCell {
         flyerImageView.layer.cornerRadius = 10.0
     }
     
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let adjustedHeight = 8.0 + titleLabel.frame.height + 2.0 + underlineView.frame.height + 16.0 + flyerImageView.frame.height + 16.0
-        return CGSize(width: bounds.width, height: adjustedHeight)
-    }
-    
     func configureCell(with event: Event) {
         self.event = event
         flyerImageView.kf.setImage(with: URL(string: event.flyer ?? ""))
         
     }
+    
+    // MARK: - Layout
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let adjustedHeight = 8.0 + titleLabel.frame.height + 2.0 + underlineView.frame.height + 16.0 + flyerImageView.frame.height + 16.0
+        return CGSize(width: bounds.width, height: adjustedHeight)
+    }
+    
+
     
 }

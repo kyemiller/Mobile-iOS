@@ -16,21 +16,5 @@ struct Router {
             return URL(string: "\(baseURL)address=\(address)")!
         }
     }
-    
-    struct Twitter {
         
-    }
-    
-    struct Facebook {
-        
-    }
-    
-    struct Snapchat {
-        
-    }
-    
-    struct Instagram {
-        
-    }
-    
 }

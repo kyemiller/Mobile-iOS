@@ -41,6 +41,8 @@ class CountdownTableViewCell: UITableViewCell {
         }
     }
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         countdownImageView.backgroundColor = Theme.Color.background

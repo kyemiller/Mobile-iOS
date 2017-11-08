@@ -15,6 +15,8 @@ class FAQsTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var faqImageView: UIImageView!
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none

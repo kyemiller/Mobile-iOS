@@ -24,6 +24,8 @@ class EventDescriptionCell: UITableViewCell {
     
     weak var delegate: EventDescriptionDelegate?
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         underlineView.backgroundColor = Theme.Color.main
         descriptionTextView.font = Theme.Font.body
@@ -44,16 +46,19 @@ class EventDescriptionCell: UITableViewCell {
         descriptionTextView.textContainer.lineFragmentPadding = 0.0
     }
     
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
-        var adjustedHeight = 8.0 + titleLabel.frame.height + 2.0 +  underlineView.frame.height + 16.0 + descriptionTextView.sizeThatFits(CGSize(width: size.width - 40, height: size.height)).height + 16.0
-        return CGSize(width: bounds.width, height: adjustedHeight)
-    }
-    
     func configureCell(with event: Event) {
         self.event = event
         descriptionTextView.text = event.description ?? ""
     }
     
+    // MARK: - Layout
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        var adjustedHeight = 8.0 + titleLabel.frame.height + 2.0 +  underlineView.frame.height + 16.0 + descriptionTextView.sizeThatFits(CGSize(width: size.width - 40, height: size.height)).height + 16.0
+        return CGSize(width: bounds.width, height: adjustedHeight)
+    }
+    
+
 }
 
 // MARK: - UITextViewDelegate

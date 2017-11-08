@@ -21,6 +21,8 @@ class EventMapCell: UITableViewCell {
     let tapRecognizer = UITapGestureRecognizer()
     fileprivate var event: Event?
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         underlineView.backgroundColor = Theme.Color.main
@@ -33,21 +35,24 @@ class EventMapCell: UITableViewCell {
         self.addGestureRecognizer(tapRecognizer)
     }
     
-    func mapTapped() {
-        if event?.address != nil {
-            UIApplication.shared.open(Router.Maps.buildAddressURL(from: (event?.address)!), options: [:], completionHandler: nil)
-        }
+    func configureCell(with event: Event) {
+        self.event = event
+        mapImageView.kf.setImage(with: URL(string: event.map ?? ""))
     }
+    
+    // MARK: - Layout
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         let adjustedHeight = 8.0 + titleLabel.frame.height + 2.0 + underlineView.frame.height + 16.0 + mapImageView.frame.height + 16.0
         return CGSize(width: bounds.width, height: adjustedHeight)
     }
     
-    func configureCell(with event: Event) {
-        self.event = event
-        mapImageView.kf.setImage(with: URL(string: event.map ?? ""))
-        
+    // MARK: - Action
+    
+    func mapTapped() {
+        if event?.address != nil {
+            UIApplication.shared.open(Router.Maps.buildAddressURL(from: (event?.address)!), options: [:], completionHandler: nil)
+        }
     }
     
 }

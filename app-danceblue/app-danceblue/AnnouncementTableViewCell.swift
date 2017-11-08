@@ -16,6 +16,8 @@ class AnnouncementTableViewCell: UITableViewCell {
     @IBOutlet weak var announcementLabel: UILabel!
     @IBOutlet weak var announcementImageView: UIImageView!
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         announcementImageView.layer.cornerRadius = 5.0
         announcementImageView.clipsToBounds = true

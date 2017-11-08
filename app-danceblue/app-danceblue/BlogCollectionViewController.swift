@@ -1,9 +1,9 @@
 //
 //  BlogCollectionViewController.swift
-//  
+//  app-danceblue
 //
 //  Created by Blake Swaidner on 7/31/17.
-//
+//  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
 import UIKit
@@ -57,7 +57,7 @@ class BlogCollectionViewController: UICollectionViewController {
         setUpNavigation(controller: navigationController, hidesBar: false)
         self.title = "Blog"
         blogCollectionView.reloadData()
-        Analytics.logEvent("Blog View Controller Did Appear.", parameters: nil)
+        Analytics.logEvent("Blog_List_Did_Appear", parameters: nil)
     }
     
     // MARK: - Storyboard
@@ -116,7 +116,7 @@ class BlogCollectionViewController: UICollectionViewController {
     }
 
 
-    // MARK: UICollectionViewDataSource
+    // MARK: UICollectionView Data Source
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2

@@ -33,13 +33,13 @@ class EventDetailsViewController: UITableViewController {
         if navigationController?.isNavigationBarHidden ?? false {
             navigationController?.setNavigationBarHidden(false, animated: false)
         }
-        Analytics.logEvent("Event Did Appear", parameters: ["Title" : event?.title ?? ""])
+        Analytics.logEvent("Event_Did_Appear", parameters: ["Title" : event?.title ?? ""])
         setUpNavigation(controller: navigationController, hidesBar: false)
         //self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addEvent))
         
     }
     
-    // MARK: - Tableview
+    // MARK: - TableView Data Source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

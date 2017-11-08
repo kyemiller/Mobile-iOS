@@ -19,11 +19,13 @@ class SplashViewController: UIViewController {
     private var homeViewController: HomeViewController?
     let networkController = UIAlertController(title: "Network Error", message: "We can't find an internet connection. Would you like to try again?", preferredStyle: .alert)
     
+    // MARK: - Initialization
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNetworkContoller()
         setupViews()
-        Analytics.logEvent("App Launched.", parameters: nil)
+        Analytics.logEvent("Splash_Screen_Did_Appear", parameters: nil)
     }
 
     func setupViews() {

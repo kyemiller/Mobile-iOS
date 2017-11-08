@@ -15,6 +15,8 @@ class AnnouncementsTitleTableViewCell: UITableViewCell {
     @IBOutlet weak var underlineView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         titleLabel.text = "ANNOUNCEMENTS"

@@ -23,6 +23,8 @@ class FeaturedCollectionViewCell: UICollectionViewCell {
     
     private var details: BlogDetails?
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         featuredImageView.layer.cornerRadius = 5.0
         featuredImageView.clipsToBounds = true

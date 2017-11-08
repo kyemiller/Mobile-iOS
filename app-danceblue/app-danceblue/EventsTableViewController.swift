@@ -48,7 +48,7 @@ class EventsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         setUpNavigation(controller: navigationController, hidesBar: false)
         self.title = "Events"
-        Analytics.logEvent("Events View Controller Did Appear", parameters: nil)
+        Analytics.logEvent("Events_List_Did_Appear", parameters: nil)
     }
     
     func setupTableView() {
@@ -78,7 +78,7 @@ class EventsTableViewController: UITableViewController {
         })
     }
     
-    // MARK: - Tableview
+    // MARK: - TableView Data Source
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: EventTableViewCell.identifier, for: indexPath) as? EventTableViewCell {

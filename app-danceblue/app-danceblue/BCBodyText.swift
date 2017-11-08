@@ -6,7 +6,6 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import Foundation
 import ObjectMapper
 
 class BCBodyText: Mappable {
