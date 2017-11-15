@@ -6,9 +6,9 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
+import FirebaseAnalytics
 import UIKit
 import UserNotifications
-import FirebaseAnalytics
 
 class SplashViewController: UIViewController {
     

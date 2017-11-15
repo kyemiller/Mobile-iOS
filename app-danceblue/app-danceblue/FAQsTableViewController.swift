@@ -6,9 +6,9 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import UIKit
-import Firebase
+import FirebaseAnalytics
 import FirebaseDatabase
+import UIKit
 
 class FAQsTableViewController: UITableViewController {
 

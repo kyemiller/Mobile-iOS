@@ -26,7 +26,7 @@ class FeaturedCollectionViewCell: UICollectionViewCell {
     // MARK: - Initialization
     
     override func awakeFromNib() {
-        featuredImageView.layer.cornerRadius = 5.0
+        featuredImageView.layer.cornerRadius = 10.0
         featuredImageView.clipsToBounds = true
         featuredImageView.backgroundColor = Theme.Color.background
         

@@ -6,9 +6,9 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import UIKit
-import FirebaseDatabase
 import FirebaseAnalytics
+import FirebaseDatabase
+import UIKit
 
 class BlogCollectionViewController: UICollectionViewController {
 
@@ -41,7 +41,7 @@ class BlogCollectionViewController: UICollectionViewController {
         blogCollectionView.refreshControl = refreshControl
     }
     
-    func refreshTable() {
+    @objc func refreshTable() {
         blogCollectionView.refreshControl?.beginRefreshing()
         blogCollectionView.reloadData()
         

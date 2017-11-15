@@ -34,7 +34,7 @@ class BodyTextTableViewCell: UITableViewCell {
         bodyTextView.delegate = self
         bodyTextView.dataDetectorTypes = [.link]
         bodyTextView.attributedText = NSAttributedString.stringFromHtml(text)
-        bodyTextView.linkTextAttributes = [NSForegroundColorAttributeName: Theme.Color.main]
+        bodyTextView.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: Theme.Color.main]
         bodyTextView.isSelectable = true
         bodyTextView.isEditable = false
         bodyTextView.tintColor = Theme.Color.main

@@ -34,7 +34,7 @@ class ContactDetailsTableViewCell: UITableViewCell {
     func setupTextView() {
         descriptionTextView.delegate = self
         descriptionTextView.dataDetectorTypes = [.link]
-        descriptionTextView.linkTextAttributes = [NSForegroundColorAttributeName: Theme.Color.main]
+        descriptionTextView.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: Theme.Color.main]
         descriptionTextView.isSelectable = true
         descriptionTextView.isEditable = false
         descriptionTextView.tintColor = Theme.Color.main
