@@ -43,9 +43,9 @@ class EventDetailsTableViewCell: UITableViewCell {
         titleLabel.text = event.title
         
         if event.time != nil {
-            timeLabel.text = ""
-        } else {
             timeLabel.text = "• \(event.time!)"
+        } else {
+            timeLabel.text = ""
         }
         
         guard let points = event.points else {
