@@ -14,7 +14,7 @@ target 'app-danceblue' do
   pod 'Firebase/Storage'
   pod 'XCGLogger', '~> 5.0.1'
   pod 'ObjectMapper', '~> 2.2'
-  pod 'Gifu', '2.0'
+  pod 'Gifu'
   pod 'Kingfisher', '~> 4.0'
 
 end
