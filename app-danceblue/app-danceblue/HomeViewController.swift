@@ -6,11 +6,10 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import Firebase
-import FirebaseDatabase
-import Foundation
-import UIKit
 import FirebaseAnalytics
+import FirebaseDatabase
+import UIKit
+
 import SafariServices
 
 protocol HomeDelegate: class {

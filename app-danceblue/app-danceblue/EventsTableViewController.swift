@@ -6,10 +6,9 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import UIKit
-import Firebase
 import FirebaseAnalytics
 import FirebaseDatabase
+import UIKit
 
 protocol EventsTableViewDelegate: class {
     func tableDidLoad()
@@ -66,7 +65,7 @@ class EventsTableViewController: UITableViewController {
         tableView.refreshControl = refreshControl
     }
 
-    func refreshTable() {
+    @objc func refreshTable() {
         refreshControl?.beginRefreshing()
         tableView.reloadData()
         

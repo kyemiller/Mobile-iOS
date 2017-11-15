@@ -6,8 +6,8 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import UIKit
 import Kingfisher
+import UIKit
 
 class AnnouncementTableViewCell: UITableViewCell {
 

@@ -6,8 +6,8 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import UIKit
 import Kingfisher
+import UIKit
 
 class EventHeaderCell: UITableViewCell {
     
@@ -21,6 +21,7 @@ class EventHeaderCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         headerImageView.clipsToBounds = true
         headerImageView.backgroundColor = Theme.Color.background
     }

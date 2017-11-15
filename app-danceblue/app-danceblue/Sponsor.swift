@@ -7,7 +7,6 @@
 //
 
 import ObjectMapper
-import UIKit
 
 class Sponsor: Mappable {
     

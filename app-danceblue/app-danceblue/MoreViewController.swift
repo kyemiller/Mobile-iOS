@@ -6,8 +6,8 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import UIKit
 import FirebaseAnalytics
+import UIKit
 
 class MoreViewController: UITableViewController {
 
@@ -74,6 +74,7 @@ class MoreViewController: UITableViewController {
         tableView.reloadData()
         if indexPath.row == 0 {
             if let url = URL(string: "https://danceblue.networkforgood.com") {
+                Analytics.logEvent("Donate_Tapped", parameters: nil)
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }

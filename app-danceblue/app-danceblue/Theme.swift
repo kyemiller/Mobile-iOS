@@ -14,9 +14,9 @@ struct Theme {
     // MARK: - Font
     
     struct Font {
-        static let body: UIFont = UIFont.systemFont(ofSize: 18, weight: UIFontWeightLight)
-        static let title: UIFont = UIFont.systemFont(ofSize: 18, weight: UIFontWeightHeavy)
-        static let header: UIFont = UIFont.systemFont(ofSize: 20, weight: UIFontWeightHeavy)
+        static let body: UIFont = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)
+        static let title: UIFont = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.heavy)
+        static let header: UIFont = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.heavy)
     }
     
     // MARK: - Color
