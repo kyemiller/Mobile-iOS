@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleURLSchemes</key>
 	<array>
 		<string>twitterkit-&lt;Lhyv3NLgU16loBbc5uzi99drv&gt;</string>
@@ -36,7 +36,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>8</string>
+	<string>1</string>
 	<key>LSAppliationQueriesSchemes</key>
 	<array>
 		<string>twitter</string>

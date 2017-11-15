@@ -14,14 +14,15 @@ extension NSAttributedString {
     class func stringFromHtml(_ message: String) -> NSMutableAttributedString? {
         do {
             if let data = message.data(using: String.Encoding.utf16, allowLossyConversion: true) {
-                let str = try NSMutableAttributedString(data: data,options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSForegroundColorAttributeName: Theme.Color.black],documentAttributes: nil)
-                str.addAttribute(NSFontAttributeName, value: Theme.Font.body, range: NSMakeRange(0, str.length))
+                let str = try NSMutableAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+                str.addAttribute(.font, value: Theme.Font.body, range: NSMakeRange(0, str.length))
+                str.addAttribute(.foregroundColor, value: Theme.Color.black, range: NSMakeRange(0, str.length))
                 
                 let paragraphStyle = NSMutableParagraphStyle()
                 paragraphStyle.alignment = .left
                 paragraphStyle.lineSpacing = 6.0
                 
-                str.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, str.length))
+                str.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, str.length))
                 
                 
                 return str

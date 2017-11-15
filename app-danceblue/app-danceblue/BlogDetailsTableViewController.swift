@@ -6,9 +6,9 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import UIKit
-import SafariServices
 import FirebaseAnalytics
+import SafariServices
+import UIKit
 
 class BlogDetailsTableViewController: UITableViewController {
 

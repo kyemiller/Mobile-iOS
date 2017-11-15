@@ -6,7 +6,6 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import Foundation
 import Kingfisher
 import UIKit
 
@@ -25,11 +24,12 @@ class EventMapCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         underlineView.backgroundColor = Theme.Color.main
         titleLabel.font = Theme.Font.header
         titleLabel.text = "DIRECTIONS"
         mapImageView.clipsToBounds = true
-        mapImageView.layer.cornerRadius = 5.0
+        mapImageView.layer.cornerRadius = 10.0
         mapImageView.backgroundColor = Theme.Color.background
         tapRecognizer.addTarget(self, action: #selector(mapTapped))
         self.addGestureRecognizer(tapRecognizer)
@@ -49,7 +49,7 @@ class EventMapCell: UITableViewCell {
     
     // MARK: - Action
     
-    func mapTapped() {
+    @objc func mapTapped() {
         if event?.address != nil {
             UIApplication.shared.open(Router.Maps.buildAddressURL(from: (event?.address)!), options: [:], completionHandler: nil)
         }

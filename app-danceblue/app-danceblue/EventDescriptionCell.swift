@@ -6,7 +6,6 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol EventDescriptionDelegate: class {
@@ -27,6 +26,7 @@ class EventDescriptionCell: UITableViewCell {
     // MARK: - Initialization
     
     override func awakeFromNib() {
+        self.selectionStyle = .none
         underlineView.backgroundColor = Theme.Color.main
         descriptionTextView.font = Theme.Font.body
         titleLabel.font = Theme.Font.header
@@ -37,7 +37,7 @@ class EventDescriptionCell: UITableViewCell {
     func setupTextView() {
         descriptionTextView.delegate = self
         descriptionTextView.dataDetectorTypes = [.link]
-        descriptionTextView.linkTextAttributes = [NSForegroundColorAttributeName: Theme.Color.main]
+        descriptionTextView.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: Theme.Color.main]
         descriptionTextView.isSelectable = true
         descriptionTextView.isEditable = false
         descriptionTextView.tintColor = Theme.Color.main
@@ -54,7 +54,7 @@ class EventDescriptionCell: UITableViewCell {
     // MARK: - Layout
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        var adjustedHeight = 8.0 + titleLabel.frame.height + 2.0 +  underlineView.frame.height + 16.0 + descriptionTextView.sizeThatFits(CGSize(width: size.width - 40, height: size.height)).height + 16.0
+        let adjustedHeight = 8.0 + titleLabel.frame.height + 2.0 +  underlineView.frame.height + 16.0 + descriptionTextView.sizeThatFits(CGSize(width: size.width - 40, height: size.height)).height + 16.0
         return CGSize(width: bounds.width, height: adjustedHeight)
     }
     

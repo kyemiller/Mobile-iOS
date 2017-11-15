@@ -6,9 +6,10 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import UIKit
-import Kingfisher
 import Gifu
+import Kingfisher
+import UIKit
+
 
 class BodyImageTableViewCell: UITableViewCell {
     

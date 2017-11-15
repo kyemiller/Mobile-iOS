@@ -6,10 +6,10 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import UIKit
 import EventKit
 import FirebaseAnalytics
 import SafariServices
+import UIKit
 
 class EventDetailsViewController: UITableViewController {
     
@@ -24,7 +24,7 @@ class EventDetailsViewController: UITableViewController {
     }
     
     func setupTableView() {
-        tableView.allowsSelection = false
+        tableView.allowsSelection = true
         tableView.separatorStyle = .none
     }
     
@@ -46,9 +46,9 @@ class EventDetailsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if event?.flyer != nil { print("5"); return 5 }
-        print("4")
-        return 4
+        if event?.flyer != nil && event?.map != nil { return 5 }
+        else if event?.flyer != nil || event?.map != nil { return 4 }
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -117,6 +117,13 @@ class EventDetailsViewController: UITableViewController {
             return UITableViewCell()
         }
         return UITableViewCell()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("HERE")
+        if segue.identifier == "FlyerSegue", let ivc = segue.destination as? ImageViewController {
+            ivc.setupViews(with: event?.flyer)
+        }
     }
     
 }

@@ -6,9 +6,9 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import UIKit
 import FirebaseAnalytics
 import SafariServices
+import UIKit
 
 class ContactTableViewController: UITableViewController {
     
@@ -97,6 +97,7 @@ extension ContactTableViewController: ContactDelegate {
 extension ContactTableViewController: SocialMediaDelegate {
 
     func didTapVimeo() {
+        Analytics.logEvent("Vimeo_Icon_Tapped", parameters: nil)
         let url = URL(string: "https://vimeo.com/ukdanceblue")
         let svc = SFSafariViewController(url: url!)
         svc.preferredControlTintColor = Theme.Color.main

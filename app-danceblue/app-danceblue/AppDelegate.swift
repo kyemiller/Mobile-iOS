@@ -6,9 +6,8 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import UIKit
 import Firebase
-import FirebaseMessaging
+import UIKit
 import UserNotifications
 import XCGLogger
 

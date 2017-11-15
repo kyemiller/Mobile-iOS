@@ -25,6 +25,7 @@ class EventDetailsTableViewCell: UITableViewCell {
     // MARK: - Initialization
     
     override func awakeFromNib() {
+        self.selectionStyle = .none
         underlineView.backgroundColor = Theme.Color.background
         spiritPointsView.backgroundColor = Theme.Color.lightGray
         spiritPointsView.layer.cornerRadius = spiritPointsView.frame.size.width / 2
@@ -40,9 +41,21 @@ class EventDetailsTableViewCell: UITableViewCell {
         
         dateLabel.text = formatter.string(from: date)
         titleLabel.text = event.title
-        timeLabel.text = "• \(event.time ?? "")"
-        pointsLabel.text = event.points ?? ""
-        spiritPointWordsLabel.text = event.points == "1" ? "Spirit Point" : "Spirit Points"
+        
+        if event.time != nil {
+            timeLabel.text = ""
+        } else {
+            timeLabel.text = "• \(event.time!)"
+        }
+        
+        guard let points = event.points else {
+            spiritPointsView.isHidden = true
+            pointsLabel.isHidden = true
+            spiritPointWordsLabel.isHidden = true
+            return
+        }
+        pointsLabel.text = points
+        spiritPointWordsLabel.text = points == "1" ? "Spirit Point" : "Spirit Points"
     }
     
     // MARK: - Layout

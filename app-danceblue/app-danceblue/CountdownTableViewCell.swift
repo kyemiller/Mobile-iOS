@@ -6,8 +6,8 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import UIKit
 import Kingfisher
+import UIKit
 
 class CountdownTableViewCell: UITableViewCell {
 
@@ -75,7 +75,7 @@ class CountdownTableViewCell: UITableViewCell {
         countdownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
     }
     
-    func updateCountdown() {
+    @objc func updateCountdown() {
         guard let countdownDate = countdownDate else { return }
         let components = Calendar.current.dateComponents([.day, .hour,.minute,.second], from: Date(), to: countdownDate)
         

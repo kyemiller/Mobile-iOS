@@ -6,6 +6,7 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
+import FirebaseAnalytics
 import UIKit
 
 protocol SocialMediaDelegate: class {
@@ -29,14 +30,17 @@ class SocialMediaTableViewCell: UITableViewCell {
     // MARK: - Actions
     
     @IBAction func facebookTapped(_ sender: Any) {
+        Analytics.logEvent("Facebook_Icon_Tapped", parameters: nil)
         UIApplication.shared.open(URL(string: "fb://profile?id=danceblue")!, options: [:], completionHandler: nil)
     }
     
     @IBAction func instagramTapped(_ sender: Any) {
+        Analytics.logEvent("Instagram_Icon_Tapped", parameters: nil)
         UIApplication.shared.open(URL(string: "instagram://user?username=UK_DanceBlue")!, options: [:], completionHandler: nil)
     }
     
     @IBAction func twitterTapped(_ sender: Any) {
+        Analytics.logEvent("Twitter_Icon_Tapped", parameters: nil)
         UIApplication.shared.open(URL(string: "twitter:///user?screen_name=UKDanceBlue")!, options: [:], completionHandler: nil)
         
     }

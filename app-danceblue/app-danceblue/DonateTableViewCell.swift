@@ -22,7 +22,7 @@ class DonateTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         donateImageView.layer.cornerRadius = 5.0
         donateImageView.clipsToBounds = true
-        donateImageView.image = #imageLiteral(resourceName: "Donate")
+        donateImageView.image = #imageLiteral(resourceName: "DanceBlueReveal")
         titleLabel.text = "DONATE"
         titleLabel.font = Theme.Font.header
     }

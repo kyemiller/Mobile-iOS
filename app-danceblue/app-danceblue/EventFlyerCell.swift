@@ -6,7 +6,6 @@
 //  Copyright © 2017 DanceBlue. All rights reserved.
 //
 
-import Foundation
 import Kingfisher
 import UIKit
 
@@ -24,11 +23,11 @@ class EventFlyerCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         underlineView.backgroundColor = Theme.Color.main
         titleLabel.font = Theme.Font.header
         titleLabel.text = "FLYER"
         flyerImageView.clipsToBounds = true
-        flyerImageView.layer.cornerRadius = 10.0
     }
     
     func configureCell(with event: Event) {
@@ -43,7 +42,5 @@ class EventFlyerCell: UITableViewCell {
         let adjustedHeight = 8.0 + titleLabel.frame.height + 2.0 + underlineView.frame.height + 16.0 + flyerImageView.frame.height + 16.0
         return CGSize(width: bounds.width, height: adjustedHeight)
     }
-    
-
     
 }
