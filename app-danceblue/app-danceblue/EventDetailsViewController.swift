@@ -14,6 +14,7 @@ import UIKit
 class EventDetailsViewController: UITableViewController {
     
     var event: Event?
+    let eventStore = EKEventStore()
     var cellHeights: [CGFloat] = [CGFloat].init(repeating: 0, count: 5)
     
     // MARK: - Initialization
@@ -35,7 +36,7 @@ class EventDetailsViewController: UITableViewController {
         }
         Analytics.logEvent("Event_Did_Appear", parameters: ["Title" : event?.title ?? ""])
         setUpNavigation(controller: navigationController, hidesBar: false)
-        //self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addEvent))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addEventToCalendar(addAnyways:)))
         
     }
     
@@ -120,10 +121,89 @@ class EventDetailsViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("HERE")
         if segue.identifier == "FlyerSegue", let ivc = segue.destination as? ImageViewController {
             ivc.setupViews(with: event?.flyer)
         }
+    }
+    
+    // MARK: - Calendar
+    
+    @objc func addEventToCalendar(addAnyways: Bool = false) {
+        guard let event = event else { return }
+        eventStore.requestAccess(to: .event) { (granted, error) in
+            
+            if (granted) && (error == nil) {
+                let calendarEvent = EKEvent(eventStore: self.eventStore)
+                
+                guard let startDate = event.timestamp else {
+                    self.showFailedAlert()
+                    return
+                }
+                guard let endDate = event.endTime else {
+                    self.showFailedAlert()
+                    return
+                }
+                
+                calendarEvent.title = event.title
+                calendarEvent.startDate = startDate
+                calendarEvent.endDate = endDate
+                calendarEvent.notes = event.description
+                calendarEvent.location = event.address
+                calendarEvent.calendar = self.eventStore.defaultCalendarForNewEvents
+                
+                do {
+                    
+                    let CALENDAR_DEFAULTS_KEY = "\(calendarEvent.title)\(startDate.description)_ADDED_TO_CALENDAR"
+                    
+                    if let _: Bool = UserDefaults.standard.bool(forKey: CALENDAR_DEFAULTS_KEY), !addAnyways {
+                        self.showDuplicateAlert()
+                    } else {
+                        print("Here")
+                        UserDefaults.standard.set(true, forKey: CALENDAR_DEFAULTS_KEY)
+                        try self.eventStore.save(calendarEvent, span: .thisEvent)
+                        self.showSuccessAlert()
+                    }
+                    
+                } catch let error as NSError {
+                    self.showFailedAlert()
+                    log.debug("Failed to save event with error : \(error)")
+                }
+            }
+            else{
+                self.showFailedAlert()
+                log.debug("Failed to save event with error : \(String(describing: error)) or access not granted")
+            }
+        }
+    }
+    
+    // MARK: - Alerts
+    
+    func showFailedAlert() {
+        let alertController = UIAlertController(title: "Something went wrong.", message: "We were unable to add this event to your calendar.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func showDuplicateAlert() {
+        let alertController = UIAlertController(title: "Duplicate Event", message: "This event has already been added to your calendar.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Add Anyways", style: .default, handler: { (alert) in
+            self.addEventToCalendar(addAnyways: true)
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func showSuccessAlert() {
+        let alertController = UIAlertController(title: "Event Added", message: nil, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Go To Calendar", style: .default, handler: { alert in
+                if let url = URL(string: "calshow://") {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+                
+            }))
+        alertController.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
 }

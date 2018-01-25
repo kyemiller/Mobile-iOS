@@ -21,7 +21,13 @@ class Announcement: Mappable {
         text <- map["text"]
         id <- map["id"]
         image <- map["image"]
-        timestamp <- map["timestamp"]
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        if let dateString = map["timestamp"].currentValue as? String, let date = dateFormatter.date(from: dateString) {
+            timestamp = date
+        }
+        
     }
 
 }
