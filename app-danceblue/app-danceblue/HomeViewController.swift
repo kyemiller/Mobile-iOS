@@ -81,6 +81,7 @@ class HomeViewController: UITableViewController {
         case 2:
             if let announcementCell = tableView.dequeueReusableCell(withIdentifier: AnnouncementTableViewCell.identifier, for: indexPath) as? AnnouncementTableViewCell {
                 announcementCell.configureCell(with: announcementData[indexPath.row])
+                
                 return announcementCell
             }
         case 3:
@@ -111,6 +112,10 @@ class HomeViewController: UITableViewController {
         }
     }
     
+    func sortAnnouncements() {
+        announcementData.sort(by: {$0.timestamp ?? Date() > $1.timestamp ?? Date()})
+    }
+    
     // MARK: - Firebase
     
     func setupFirebase() {
@@ -129,6 +134,7 @@ class HomeViewController: UITableViewController {
                 self.announcementMap[id] = announcement
                 self.announcementData.append(announcement)
             }
+            self.sortAnnouncements()
             self.tableView.reloadData()
             self.delegate?.tableDidLoad()
         })
@@ -141,6 +147,8 @@ class HomeViewController: UITableViewController {
                 self.announcementMap.updateValue(announcement, forKey: id)
                 self.announcementData = Array(self.announcementMap.values)
             }
+            
+            self.sortAnnouncements()
             self.tableView.reloadData()
         })
         
@@ -152,6 +160,8 @@ class HomeViewController: UITableViewController {
                 self.announcementMap.removeValue(forKey: id)
                 self.announcementData = Array(self.announcementMap.values)
             }
+            
+            self.sortAnnouncements()
             self.tableView.reloadData()
         })
     }
