@@ -11,11 +11,17 @@ import FirebaseAnalytics
 import SafariServices
 import UIKit
 
+protocol EventDetailsViewControllerDelegate: class {
+    func heartButton(didChangeValueFor event: Event, value: Int)
+}
+
 class EventDetailsViewController: UITableViewController {
     
     var event: Event?
     let eventStore = EKEventStore()
     var cellHeights: [CGFloat] = [CGFloat].init(repeating: 0, count: 5)
+    
+    weak var delegate: EventDetailsViewControllerDelegate?
     
     // MARK: - Initialization
     
@@ -63,6 +69,7 @@ class EventDetailsViewController: UITableViewController {
         case 0:
             if let headerCell = tableView.dequeueReusableCell(withIdentifier: EventHeaderCell.identifier, for: indexPath) as? EventHeaderCell {
                 headerCell.configureCell(with: event)
+                //headerCell.delegate = self    // used for "going"
                 if cellHeights[indexPath.row] == 0 {
                     cellHeights[indexPath.row] = headerCell.sizeThatFits(CGSize(width: view.bounds.width, height: .greatestFiniteMagnitude)).height
                 }
@@ -168,8 +175,10 @@ class EventDetailsViewController: UITableViewController {
                     self.showFailedAlert()
                     log.debug("Failed to save event with error : \(error)")
                 }
-            }
-            else{
+            } else if !granted {
+                self.showSettingsAlert()
+                
+            } else {
                 self.showFailedAlert()
                 log.debug("Failed to save event with error : \(String(describing: error)) or access not granted")
             }
@@ -177,6 +186,19 @@ class EventDetailsViewController: UITableViewController {
     }
     
     // MARK: - Alerts
+    
+    func showSettingsAlert() {
+        let alertController = UIAlertController(title: "DanceBlue needs access to your Calendar", message: nil, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Go To Settings", style: .default, handler: { alert in
+            if let url = URL(string: "app-settings:root=Privacy&path=CALENDARS") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+            
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
     
     func showFailedAlert() {
         let alertController = UIAlertController(title: "Something went wrong.", message: "We were unable to add this event to your calendar.", preferredStyle: .alert)
@@ -220,3 +242,13 @@ extension EventDetailsViewController: EventDescriptionDelegate {
     
 }
 
+// MARK: - EventHeaderDelegate
+/*
+extension EventDetailsViewController: EventHeaderDelegate {
+    
+    func heartButton(didChangeValueFor event: Event, value: Int) {
+        delegate?.heartButton(didChangeValueFor: event, value: value)
+    }
+    
+}
+*/

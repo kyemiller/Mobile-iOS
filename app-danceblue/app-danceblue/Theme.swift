@@ -22,6 +22,16 @@ struct Theme {
     // MARK: - Color
     
     struct Color {
+        
+        struct Rave {
+            static let blue: UIColor = .blue
+            static let red: UIColor = .red
+            static let green: UIColor = .green
+            static let cyan: UIColor = .cyan
+            static let magenta: UIColor = .magenta
+            static let yellow: UIColor = .yellow
+        }
+        
         static let white: UIColor = .white
         static let black: UIColor = .black
         static let lightGray: UIColor = .lightGray

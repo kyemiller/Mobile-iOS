@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A0009487337291F9C2F228CC /* Pods_app_danceblue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD2FC4D9F274FB611523672 /* Pods_app_danceblue.framework */; };
+		CB0CB6DD202243DF000C0664 /* MarathonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0CB6DC202243DF000C0664 /* MarathonViewController.swift */; };
+		CB0CB6E020224427000C0664 /* MoraleCupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0CB6DF20224427000C0664 /* MoraleCupTableViewCell.swift */; };
 		CB0E9A551F23F8A400A717DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E9A541F23F8A400A717DC /* AppDelegate.swift */; };
 		CB0E9A5E1F23F8A400A717DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB0E9A5D1F23F8A400A717DC /* Assets.xcassets */; };
 		CB0E9A611F23F8A400A717DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB0E9A5F1F23F8A400A717DC /* LaunchScreen.storyboard */; };
@@ -46,6 +48,7 @@
 		CB6605011F630D0A00FBC1CA /* DispatchQueue+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6605001F630D0A00FBC1CA /* DispatchQueue+Sync.swift */; };
 		CB665BB41FA6CD9200A1D567 /* Sponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB665BB31FA6CD9200A1D567 /* Sponsor.swift */; };
 		CB6843871F3894ED000720F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB6843851F3894ED000720F2 /* Main.storyboard */; };
+		CB74FD702023D50B000A3F2E /* RaveHourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB74FD6F2023D50B000A3F2E /* RaveHourViewController.swift */; };
 		CB7DE1D21F25267200235145 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1D11F25267200235145 /* Announcement.swift */; };
 		CB7DE1DA1F2597FF00235145 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DE1D91F2597FF00235145 /* EventDetailsViewController.swift */; };
 		CB8798751F3636B60091CA38 /* NSAttributedString+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8798741F3636B60091CA38 /* NSAttributedString+HTML.swift */; };
@@ -88,6 +91,8 @@
 		16C6CFE043AAFC2142091E3D /* Pods-app-danceblue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app-danceblue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-app-danceblue/Pods-app-danceblue.debug.xcconfig"; sourceTree = "<group>"; };
 		1A8A115CD742EF18B9148B54 /* Pods-app-danceblue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app-danceblue.release.xcconfig"; path = "Pods/Target Support Files/Pods-app-danceblue/Pods-app-danceblue.release.xcconfig"; sourceTree = "<group>"; };
 		BFD2FC4D9F274FB611523672 /* Pods_app_danceblue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app_danceblue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB0CB6DC202243DF000C0664 /* MarathonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarathonViewController.swift; sourceTree = "<group>"; };
+		CB0CB6DF20224427000C0664 /* MoraleCupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoraleCupTableViewCell.swift; sourceTree = "<group>"; };
 		CB0E9A511F23F8A400A717DC /* app-danceblue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "app-danceblue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB0E9A541F23F8A400A717DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB0E9A5D1F23F8A400A717DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -130,6 +135,7 @@
 		CB6605001F630D0A00FBC1CA /* DispatchQueue+Sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Sync.swift"; sourceTree = "<group>"; };
 		CB665BB31FA6CD9200A1D567 /* Sponsor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sponsor.swift; sourceTree = "<group>"; };
 		CB6843861F3894ED000720F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "app-danceblue/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		CB74FD6F2023D50B000A3F2E /* RaveHourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaveHourViewController.swift; sourceTree = "<group>"; };
 		CB7DE1D11F25267200235145 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		CB7DE1D91F2597FF00235145 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		CB7DE1DB1F28418700235145 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +192,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CB0CB6DB202243C0000C0664 /* Marathon */ = {
+			isa = PBXGroup;
+			children = (
+				CB0CB6DC202243DF000C0664 /* MarathonViewController.swift */,
+				CB74FD6F2023D50B000A3F2E /* RaveHourViewController.swift */,
+			);
+			name = Marathon;
+			sourceTree = "<group>";
+		};
+		CB0CB6DE20224408000C0664 /* Marathon */ = {
+			isa = PBXGroup;
+			children = (
+				CB0CB6DF20224427000C0664 /* MoraleCupTableViewCell.swift */,
+			);
+			name = Marathon;
+			sourceTree = "<group>";
+		};
 		CB0E9A481F23F8A400A717DC = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				CB143A3C1F50897B00295D9A /* Home */,
+				CB0CB6DE20224408000C0664 /* Marathon */,
 				CB8CDCF71F2FFCB600CF822A /* Events */,
 				CB8CDCF81F2FFCC100CF822A /* Blog */,
 				CB143A3D1F50898300295D9A /* More */,
@@ -252,6 +276,7 @@
 			children = (
 				CB7DE1DD1F28418D00235145 /* Splash */,
 				CB7DE1CD1F25149900235145 /* Home */,
+				CB0CB6DB202243C0000C0664 /* Marathon */,
 				CB7DE1CE1F2514A600235145 /* Events */,
 				CB8CDCEE1F2FF0FC00CF822A /* Blog */,
 				CB1D523C1FA0E34D003BDA0A /* More */,
@@ -716,6 +741,7 @@
 				CB2AE8F01F3163AA00571243 /* BodyTextTableViewCell.swift in Sources */,
 				CBF6374C1F74573900270724 /* EventMapCell.swift in Sources */,
 				CBCC092C1FA2318A0027CAFD /* ContactTableViewCell.swift in Sources */,
+				CB74FD702023D50B000A3F2E /* RaveHourViewController.swift in Sources */,
 				CB665BB41FA6CD9200A1D567 /* Sponsor.swift in Sources */,
 				CB129C9B1F9500CC00FDD3FF /* SponsorCollectionViewCell.swift in Sources */,
 				CB19AF351F32C85600429C18 /* BCHeaderImage.swift in Sources */,
@@ -733,9 +759,11 @@
 				CB8D3EE11F70343C006A9777 /* EventHeaderCell.swift in Sources */,
 				CB129C941F9131E000FDD3FF /* CountdownTableViewCell.swift in Sources */,
 				CBF637461F73FA0A00270724 /* NetworkHelper.swift in Sources */,
+				CB0CB6E020224427000C0664 /* MoraleCupTableViewCell.swift in Sources */,
 				CB7DE1DA1F2597FF00235145 /* EventDetailsViewController.swift in Sources */,
 				CB8CDCF61F2FFCA000CF822A /* FeaturedCollectionViewCell.swift in Sources */,
 				CB19AF311F32C82000429C18 /* BCQuote.swift in Sources */,
+				CB0CB6DD202243DF000C0664 /* MarathonViewController.swift in Sources */,
 				CB19AF3B1F32C94800429C18 /* BlogDetails.swift in Sources */,
 				CB19AF411F3499A600429C18 /* SectionTitleTableViewCell.swift in Sources */,
 				CB22DFB41F96545F00C4927E /* AnnouncementTableViewCell.swift in Sources */,
