@@ -9,27 +9,69 @@
 import Kingfisher
 import UIKit
 
-class ImageViewController: UIViewController {
+class ImageViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var displayImageView: UIImageView!
-
+    
+    let doubleTapGestureRecognizer = UITapGestureRecognizer()
+    
     private var flyer: String?
+    private var map: UIImage?
     private var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.isUserInteractionEnabled = true
-        guard let istring = flyer else { return }
-        guard let url = URL(string: istring) else { return }
-        displayImageView.kf.setImage(with: url)
+        self.displayImageView.isUserInteractionEnabled = true
+        setupDoubleTap()
+        setupScrollView()
+        if let istring = flyer, let url = URL(string: istring)  {
+            displayImageView.kf.setImage(with: url)
+        } else if map != nil {
+            displayImageView.image = map
+        }
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return displayImageView
     }
     
     func setupViews(with image: String?) {
         flyer = image
     }
     
+    func setupMap() {
+        map = #imageLiteral(resourceName: "DB_FloorMap")
+    }
+    
+    func setupDoubleTap() {
+        doubleTapGestureRecognizer.numberOfTapsRequired = 2
+        doubleTapGestureRecognizer.addTarget(self, action: #selector(doubleTapGestrureRecognizerHandler))
+        doubleTapGestureRecognizer.delegate = self
+        view.addGestureRecognizer(doubleTapGestureRecognizer)
+    }
+    
+    func setupScrollView() {
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 6.0
+        scrollView.zoomScale = 1.0
+        scrollView.alwaysBounceVertical = false
+        scrollView.alwaysBounceHorizontal = false
+        scrollView.showsVerticalScrollIndicator = true
+        scrollView.flashScrollIndicators()
+    }
+    
     // MARK: - Actions
 
+    @objc func doubleTapGestrureRecognizerHandler() {
+        if scrollView.zoomScale == 1.0 {
+            scrollView.setZoomScale(3.0, animated: true)
+        } else {
+            scrollView.setZoomScale(1.0, animated: true)
+        }
+    }
+    
     @IBAction func cancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

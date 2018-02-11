@@ -18,7 +18,7 @@ protocol HomeDelegate: class {
 
 class HomeViewController: UITableViewController {
     
-    private var cellHeights: [CGFloat] = [0.0, 56.0, 120.0, 240.0]
+    private var cellHeights: [CGFloat] = [0.0, 56.0, 120.0, 235.0, 365.0, 240.0]
     
     private var announcementData: [Announcement] = []
     private var announcementMap: [String : Announcement] = [:]
@@ -28,6 +28,9 @@ class HomeViewController: UITableViewController {
     private var countdownImage: String?
     
     private var sponsorsData: [Sponsor] = []
+    
+    private var moraleCupData: [MoraleTeam] = []
+    private var moraleCupMap: [String : MoraleTeam] = [:]
     
     weak var delegate: HomeDelegate?
     
@@ -39,6 +42,9 @@ class HomeViewController: UITableViewController {
     private var countdownChangeHandle: DatabaseHandle?
     private var countdownDeleteHandle: DatabaseHandle?
     private var sponsorsAddHandle: DatabaseHandle?
+    private var moraleCupAddHandle: DatabaseHandle?
+    private var moraleCupChangeHandle: DatabaseHandle?
+    private var moraleCupDeleteHandle: DatabaseHandle?
     
     // MARK: - Initialization
     
@@ -53,10 +59,11 @@ class HomeViewController: UITableViewController {
         //self.navigationController?.setNavigationBarHidden(true, animated: false)
         setUpNavigation(controller: self.navigationController, hidesBar: false)
         Analytics.logEvent("Home_Screen_Did_Appear", parameters: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Rave"), style: .plain, target: self, action: #selector(presentRave))
     }
     
     func setupTableView() {
-        tableView.allowsSelection = false
+        tableView.allowsSelection = true
         tableView.backgroundColor = Theme.Color.white
         tableView.separatorStyle = .none
     }
@@ -85,6 +92,15 @@ class HomeViewController: UITableViewController {
                 return announcementCell
             }
         case 3:
+            if let moraleCupCell = tableView.dequeueReusableCell(withIdentifier: MoraleCupTableViewCell.identifier, for: indexPath) as? MoraleCupTableViewCell {
+                moraleCupCell.configureCell(with: moraleCupData)
+                return moraleCupCell
+            }
+        case 4:
+            if let floorPlanCell = tableView.dequeueReusableCell(withIdentifier: FloorPlanTableViewCell.identifier, for: indexPath) as? FloorPlanTableViewCell {
+                return floorPlanCell
+            }
+        case 5:
             if let sponsorsCell = tableView.dequeueReusableCell(withIdentifier: SponsorsTableViewCell.identifier, for: indexPath) as? SponsorsTableViewCell {
                 sponsorsCell.configureCell(with: sponsorsData)
                 sponsorsCell.delegate = self
@@ -101,7 +117,7 @@ class HomeViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 6
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -116,13 +132,39 @@ class HomeViewController: UITableViewController {
         announcementData.sort(by: {$0.timestamp ?? Date() > $1.timestamp ?? Date()})
     }
     
+    // MARK: - Rave Action
+    
+    @objc func presentRave() {
+        performSegue(withIdentifier: "RaveSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "RaveSegue", let raveVC = segue.destination as? RaveHourViewController {
+            raveVC.delegate = self
+        }
+        
+        if segue.identifier == "FloorPlanSegue", let ivc = segue.destination as? ImageViewController {
+            ivc.setupMap()
+        }
+        
+        
+        
+        if segue.identifier == "MoraleCupSegue", let moraleCupListVC = segue.destination as? MoraleCupTableViewController {
+            moraleCupListVC.moraleCupData = self.moraleCupData
+        }
+
+    }
+    
     // MARK: - Firebase
     
     func setupFirebase() {
         setupAnnouncementsReference()
         setupCountdownReference()
         setupSponsorsReference()
+        setupMoraleCupReference()
     }
+    
+    // MARK: - Announcements
     
     func setupAnnouncementsReference() {
         firebaseReference = Database.database().reference()
@@ -166,6 +208,8 @@ class HomeViewController: UITableViewController {
         })
     }
     
+    // MARK: - Countdown
+    
     func setupCountdownReference() {
         firebaseReference = Database.database().reference()
         countdownAddHandle = firebaseReference?.child("countdown").observe(.childAdded, with: { (snapshot) in
@@ -193,6 +237,8 @@ class HomeViewController: UITableViewController {
         })
     }
     
+    // MARK: - Sponsors
+    
     func setupSponsorsReference() {
         firebaseReference = Database.database().reference()
         sponsorsAddHandle = firebaseReference?.child("sponsors").observe(.childAdded, with: { (snapshot) in
@@ -202,6 +248,46 @@ class HomeViewController: UITableViewController {
             self.tableView.reloadData()
             self.delegate?.tableDidLoad()
         })
+    }
+    
+    // MARK: - Morale Cup
+    
+    func setupMoraleCupReference() {
+        
+        firebaseReference = Database.database().reference()
+        
+        moraleCupAddHandle = firebaseReference?.child("marathon").child("moraleCup").observe(.childAdded, with: { (snapshot) in
+            guard let data = snapshot.value as? [String : AnyObject]  else { return }
+            guard let team = MoraleTeam(JSON: data) else { return }
+            self.moraleCupData.append(team)
+            self.moraleCupMap["\(team.number ?? 0)"] = team
+            
+            self.sortTeams()
+            self.tableView.reloadData()
+            
+        })
+        
+        moraleCupChangeHandle = firebaseReference?.child("marathon").child("moraleCup").observe(.childChanged, with: { (snapshot) in
+            guard let data = snapshot.value as? [String : AnyObject]  else { return }
+            guard let team = MoraleTeam(JSON: data) else { return }
+            self.moraleCupMap.updateValue(team, forKey: "\(team.number ?? 0)")
+            self.moraleCupData = Array(self.moraleCupMap.values)
+            self.sortTeams()
+            self.tableView.reloadData()
+        })
+        
+        moraleCupDeleteHandle = firebaseReference?.child("marathon").child("moraleCup").observe(.childRemoved, with: { (snapshot) in
+            guard let data = snapshot.value as? [String : AnyObject]  else { return }
+            guard let team = MoraleTeam(JSON: data) else { return }
+            self.moraleCupMap.removeValue(forKey: "\(team.number ?? 0)")
+            self.moraleCupData = Array(self.moraleCupMap.values)
+            self.sortTeams()
+            self.tableView.reloadData()
+        })
+    }
+    
+    func sortTeams() {
+        moraleCupData.sort(by: {$0.standing ?? 0 < $1.standing ?? 0})
     }
 
 }
@@ -215,6 +301,14 @@ extension HomeViewController: SponsorDelegate {
         let svc = SFSafariViewController(url: url)
         svc.preferredControlTintColor = Theme.Color.main
         self.present(svc, animated: true, completion: nil)
+    }
+    
+}
+
+extension HomeViewController: RaveDelegate {
+    
+    func closeTapped() {
+        dismiss(animated: true, completion: nil)
     }
     
 }
