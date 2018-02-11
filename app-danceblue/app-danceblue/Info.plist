@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.1</string>
+	<string>1.2.0</string>
 	<key>CFBundleURLSchemes</key>
 	<array>
 		<string>twitterkit-&lt;Lhyv3NLgU16loBbc5uzi99drv&gt;</string>
@@ -49,7 +49,7 @@
 		<true/>
 	</dict>
 	<key>NSCalendarsUsageDescription</key>
-	<string>&quot;&quot;</string>
+	<string>""</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>“Allow us to access your current location for directions!”</string>
 	<key>UIBackgroundModes</key>
