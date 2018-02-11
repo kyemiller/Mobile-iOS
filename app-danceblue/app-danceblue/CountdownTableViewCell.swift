@@ -45,6 +45,9 @@ class CountdownTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.selectionStyle = .none
+        
         countdownImageView.backgroundColor = Theme.Color.background
         
         daysRoundedView.layer.cornerRadius = 5.0

@@ -31,6 +31,7 @@ class SponsorsTableViewCell: UITableViewCell {
     // MARK: - Initialization
     
     override func awakeFromNib() {
+        self.selectionStyle = .none
         titleLabel.text = "SPONSORS"
         titleLabel.font = Theme.Font.header
         underlineView.backgroundColor = Theme.Color.main

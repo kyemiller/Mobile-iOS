@@ -17,6 +17,11 @@ struct Theme {
         static let body: UIFont = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)
         static let title: UIFont = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.heavy)
         static let header: UIFont = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.heavy)
+        
+        struct MoraleCup {
+            static let bold: UIFont = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.heavy)
+            static let thin: UIFont = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.regular)
+        }
     }
     
     // MARK: - Color
@@ -30,6 +35,12 @@ struct Theme {
             static let cyan: UIColor = .cyan
             static let magenta: UIColor = .magenta
             static let yellow: UIColor = .yellow
+        }
+        
+        struct MoraleCup {
+            static let gold: UIColor = UIColor(displayP3Red: 246.0/255.0, green: 223.0/255.0, blue: 19.0/255.0, alpha: 1.0)
+            static let silver: UIColor = UIColor(displayP3Red: 214.0/255.0, green: 224.0/255.0, blue: 225.0/255.0, alpha: 1.0)
+            static let bronze: UIColor = UIColor(displayP3Red: 192.0/255.0, green: 119.0/255.0, blue: 48.0/255.0, alpha: 1.0)
         }
         
         static let white: UIColor = .white

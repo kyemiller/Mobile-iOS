@@ -19,6 +19,7 @@ class AnnouncementTableViewCell: UITableViewCell {
     // MARK: - Initialization
     
     override func awakeFromNib() {
+        self.selectionStyle = .none
         announcementImageView.layer.cornerRadius = 5.0
         announcementImageView.clipsToBounds = true
     }

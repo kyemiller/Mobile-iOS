@@ -19,6 +19,7 @@ class AnnouncementsTitleTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         titleLabel.text = "ANNOUNCEMENTS"
         titleLabel.font = Theme.Font.header
         underlineView.backgroundColor = Theme.Color.main
